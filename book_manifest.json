@@ -3,7 +3,7 @@
   "subtitle": "AX 시대, 일과 조직을 다시 짜는 법",
   "author": "김상기",
   "language": "ko",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "series": {
     "name": "코드 너머의",
     "position": "III",
@@ -12,11 +12,11 @@
     "predecessor_ii": "코드 너머의 직업들",
     "predecessor_ii_path": "beyond-code-jobs"
   },
-  "target_audience": "HR 리더·조직개발·변화 관리자 (1순위) + 기술 리더 CTO·VP·엔지니어링 매니저 (확장안)",
+  "target_audience": "HR 리더·조직개발·변화 관리자 + 기술 리더 (CTO·VP·엔지니어링 매니저)",
   "expected_length": {
-    "characters": 181000,
-    "pages": 302,
-    "format": "한빛 실용서 두께 + α"
+    "characters": 70000,
+    "pages": 120,
+    "format": "한빛 실용서 두께"
   },
   "chapters": [
     "책을 펴내며",
@@ -34,10 +34,8 @@
     "8장. 새로운 기여자 보상 — Skills-based pay와 한국의 직무기반 전환",
     "9장. Skill Marketplace — Schneider·Unilever의 교과서와 한국의 짝",
     "막간. 정직한 한 페이지: 우리가 틀릴 수 있는 9가지",
-    "PART 4. 한국에서, 두 리더의 길",
+    "PART 4. 한국에서",
     "10장. 한국 AX 풍경 — 안에서 겪은 풍경",
-    "11장. 두 90일 플랜 — HR 리더의 길 / 기술 리더의 길",
-    "에필로그. 코드 너머의 조직 — 사람의 자리는 새로 만들어진다",
-    "부록 A. 빠르게 자라는 다른 시도들"
+    "에필로그. 코드 너머의 조직 — 사람의 자리는 새로 만들어진다"
   ]
 }
