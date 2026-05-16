@@ -1,0 +1,43 @@
+{
+  "title": "코드 너머의 조직",
+  "subtitle": "AX 시대, 일과 조직을 다시 짜는 법",
+  "author": "김상기",
+  "language": "ko",
+  "version": "1.0.0",
+  "series": {
+    "name": "코드 너머의",
+    "position": "III",
+    "predecessor_i": "코드 너머의 시대",
+    "predecessor_i_path": "beyond-code-era",
+    "predecessor_ii": "코드 너머의 직업들",
+    "predecessor_ii_path": "beyond-code-jobs"
+  },
+  "target_audience": "HR 리더·조직개발·변화 관리자 (1순위) + 기술 리더 CTO·VP·엔지니어링 매니저 (확장안)",
+  "expected_length": {
+    "characters": 181000,
+    "pages": 302,
+    "format": "한빛 실용서 두께 + α"
+  },
+  "chapters": [
+    "책을 펴내며",
+    "프롤로그. AX 동상이몽 — 같은 단어를 다른 의미로 쓰는 시대",
+    "PART 1. AX란 무엇인가 — 일과 조직의 재설계",
+    "1장. AX는 DX가 아니다 — 결과 중심의 재설계",
+    "2장. 95%는 왜 가치를 만들지 못하는가",
+    "3장. 한국이 보내는 신호 — 위에서 본 풍경",
+    "PART 2. 일의 재정의 — 작동 원리",
+    "4장. 직무에서 task로 — 작동 원리",
+    "5장. 인간·AI 협업의 두 모드 — EPOCH + Centaur·Cyborg",
+    "6장. Agentic Organization과 매니저 재정의",
+    "PART 3. AX 실행 세 시도",
+    "7장. 새로운 성과 관리 — EPOCH의 한국형 매핑",
+    "8장. 새로운 기여자 보상 — Skills-based pay와 한국의 직무기반 전환",
+    "9장. Skill Marketplace — Schneider·Unilever의 교과서와 한국의 짝",
+    "막간. 정직한 한 페이지: 우리가 틀릴 수 있는 9가지",
+    "PART 4. 한국에서, 두 리더의 길",
+    "10장. 한국 AX 풍경 — 안에서 겪은 풍경",
+    "11장. 두 90일 플랜 — HR 리더의 길 / 기술 리더의 길",
+    "에필로그. 코드 너머의 조직 — 사람의 자리는 새로 만들어진다",
+    "부록 A. 빠르게 자라는 다른 시도들"
+  ]
+}
