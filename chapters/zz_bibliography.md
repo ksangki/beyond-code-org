@@ -104,7 +104,7 @@
 - 고용노동부. *2025년 국내 직업종사자 분석 보도.* 2025.
 - About HR. *People Analytics World 2025 컨퍼런스 리포트.* 2025. https://www.abouthr.co.kr/
 - HR Insight. *AI 시대, 중간관리자의 역할 변화.* https://m.hrinsight.co.kr/
-- SK Devocean. *AI 5단계 내재화 모델.* https://devocean.sk.com/
+- DEVOCEAN. *AI 5단계 내재화 모델.* https://devocean.sk.com/
 - 잡코리아. *PMPO Day — AI 활용 PM론.*
 - KPC. *2025 HRD Trend Report.* https://www.kpc.or.kr/
 
