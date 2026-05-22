@@ -1,0 +1,3014 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>코드 너머의 조직 — 1시간 발표 자료 (100슬라이드)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+  :root {
+    --bg: #0A0E1A;
+    --surface: #141A2C;
+    --surface-2: #1E263D;
+    --line: #2A334D;
+    --text: #F5F7FA;
+    --muted: #9AA5BE;
+    --dim: #66708C;
+    --cyan: #00E5FF;
+    --amber: #FFB85C;
+    --mint: #00FF88;
+    --magenta: #FF4DA6;
+    --yellow: #FFD24D;
+    --slide-pad: clamp(2rem, 5vw, 4rem);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+  body { font-family: "Pretendard", "맑은 고딕", -apple-system, sans-serif; font-feature-settings: "tnum"; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Top progress bar */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 48px; padding: 0 24px;
+    background: rgba(10,14,26,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--muted);
+  }
+  .topbar .left { display: flex; gap: 16px; align-items: center; }
+  .topbar .logo { color: var(--amber); font-weight: 600; letter-spacing: 0.05em; }
+  .topbar .right { display: flex; gap: 12px; align-items: center; }
+  .topbar a.book-link { color: var(--muted); font-size: 11px; }
+  .topbar .nav-btn {
+    background: transparent; color: var(--text); border: 1px solid var(--line);
+    padding: 4px 10px; border-radius: 4px; font-family: inherit; font-size: 12px;
+    cursor: pointer;
+  }
+  .topbar .nav-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+  .progress-bar {
+    position: fixed; top: 48px; left: 0; right: 0; z-index: 99; height: 2px;
+    background: var(--surface);
+  }
+  .progress-fill { height: 100%; background: var(--amber); width: 0%; transition: width 0.2s; }
+
+  /* Slide container */
+  main { padding-top: 50px; }
+
+  .slide {
+    position: relative;
+    min-height: calc(100vh - 50px);
+    padding: var(--slide-pad);
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--line);
+    display: flex; flex-direction: column;
+    scroll-margin-top: 50px;
+  }
+  .slide .page-num {
+    position: absolute; top: 24px; right: var(--slide-pad);
+    font-size: 11px; color: var(--dim); letter-spacing: 0.08em;
+  }
+  .slide .page-section {
+    position: absolute; top: 24px; left: var(--slide-pad);
+    font-size: 11px; color: var(--cyan); font-weight: 600; letter-spacing: 0.08em;
+  }
+  .slide .page-footer {
+    position: absolute; bottom: 24px; left: var(--slide-pad); right: var(--slide-pad);
+    border-top: 1px solid var(--line); padding-top: 12px;
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--dim);
+  }
+
+  /* Eyebrow + title */
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 600;
+             letter-spacing: 0.1em; margin-top: 32px; }
+  .eyebrow.cyan { color: var(--cyan); }
+  .eyebrow.amber { color: var(--amber); }
+  .eyebrow.mint { color: var(--mint); }
+  .eyebrow.magenta { color: var(--magenta); }
+  .content-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700;
+                   margin: 12px 0 16px; line-height: 1.25; }
+  .neon-bar { width: 80px; height: 3px; background: var(--cyan); margin-bottom: 28px; }
+  .neon-bar.amber { background: var(--amber); }
+  .neon-bar.mint { background: var(--mint); }
+  .neon-bar.magenta { background: var(--magenta); }
+  .neon-bar.cyan { background: var(--cyan); }
+  .neon-bar.small { width: 56px; height: 2px; }
+
+  /* Cover slide */
+  .cover { justify-content: center; }
+  .cover .corner { position: absolute; width: 24px; height: 24px;
+                   border-color: var(--amber); border-style: solid; border-width: 0; }
+  .cover .corner.tl { top: 32px; left: 32px; border-top-width: 2px; border-left-width: 2px; }
+  .cover .corner.tr { top: 32px; right: 32px; border-top-width: 2px; border-right-width: 2px; }
+  .cover .corner.bl { bottom: 80px; left: 32px; border-bottom-width: 2px; border-left-width: 2px; }
+  .cover .corner.br { bottom: 80px; right: 32px; border-bottom-width: 2px; border-right-width: 2px; }
+  .cover-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 0; }
+  .cover-title { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800;
+                 margin: 12px 0 8px; line-height: 1.05; letter-spacing: -0.02em; }
+  .cover-title.huge { font-size: clamp(4rem, 9vw, 7rem); }
+  .cover-sub { font-size: clamp(1.2rem, 2.2vw, 1.8rem); color: var(--muted);
+               margin: 0 0 32px; font-weight: 400; }
+  .cover-quote { font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--cyan); margin: 0 0 4px; }
+  .cover-quote.cyan { color: var(--cyan); }
+  .cover-by { font-size: 13px; color: var(--dim); margin: 0; }
+  .cover-meta { display: flex; justify-content: space-between; margin-top: 48px;
+                font-size: 12px; color: var(--dim); }
+  .cover-meta .dim { color: var(--dim); }
+
+  .info-list { margin-top: 28px; display: grid; gap: 8px; }
+  .info-list > div { display: grid; grid-template-columns: 100px 1fr; gap: 16px; font-size: 13px; }
+  .info-list .k { font-family: "JetBrains Mono", monospace; font-weight: 600; letter-spacing: 0.08em; }
+  .info-list a { color: var(--text); border-bottom: 1px dotted var(--cyan); }
+
+  /* Divider */
+  .divider { justify-content: center; }
+  .div-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+              max-width: 1100px; margin: 0 auto; }
+  .huge-num { font-size: clamp(10rem, 22vw, 18rem); font-weight: 800; line-height: 0.85;
+              font-family: "JetBrains Mono", monospace; }
+  .huge-num.cyan { color: var(--cyan); }
+  .huge-num.amber { color: var(--amber); }
+  .huge-num.mint { color: var(--mint); }
+  .huge-num.magenta { color: var(--magenta); }
+  .div-left .eyebrow { font-size: 14px; }
+  .div-left .eyebrow.cyan { color: var(--cyan); }
+  .div-left .eyebrow.amber { color: var(--amber); }
+  .div-left .eyebrow.mint { color: var(--mint); }
+  .div-left .eyebrow.magenta { color: var(--magenta); }
+  .div-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; margin: 0 0 20px; }
+  .div-sub { font-size: clamp(0.95rem, 1.4vw, 1.1rem); color: var(--muted); line-height: 1.7; }
+
+  /* Chapter */
+  .chapter { justify-content: center; }
+  .chapter .ch-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 14px;
+                         letter-spacing: 0.12em; font-weight: 700; }
+  .chapter .ch-eyebrow.cyan { color: var(--cyan); }
+  .chapter .ch-eyebrow.amber { color: var(--amber); }
+  .chapter .ch-eyebrow.mint { color: var(--mint); }
+  .chapter .ch-eyebrow.magenta { color: var(--magenta); }
+  .ch-title { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; line-height: 1.15;
+              margin: 8px 0 24px; max-width: 14ch; }
+  .ch-sub { font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--muted); line-height: 1.6;
+            max-width: 60ch; }
+
+  /* Quote */
+  .quote { justify-content: center; }
+  .big-quote { font-size: clamp(8rem, 16vw, 14rem); line-height: 0.6;
+               font-weight: 800; margin: 0 0 -32px; }
+  .big-quote.amber { color: var(--amber); }
+  .big-quote.cyan { color: var(--cyan); }
+  .big-quote.mint { color: var(--mint); }
+  .big-quote.magenta { color: var(--magenta); }
+  .quote-text { font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 700;
+                margin: 0 0 32px; line-height: 1.45; max-width: 1000px; }
+  .quote-by { font-size: 14px; color: var(--muted); margin: 8px 0 0; }
+
+  /* Cards grid */
+  .grid { display: grid; gap: 16px; margin-top: 8px; }
+  .grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid.grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .grid.grid-9 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 1000px) {
+    .grid.grid-3, .grid.grid-4, .grid.grid-5, .grid.grid-9 { grid-template-columns: 1fr; }
+  }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+          padding: 18px; display: flex; flex-direction: column; gap: 10px; min-height: 120px; }
+  .card-num { color: var(--cyan); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+  .card-h { font-size: 14px; font-weight: 700; line-height: 1.4; color: var(--text); }
+  .card-sub { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+  /* Agenda list */
+  .agenda-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; max-width: 900px; }
+  .agenda-list li { font-size: 16px; line-height: 1.6; padding: 12px 18px;
+                    background: var(--surface); border-left: 3px solid var(--cyan); border-radius: 4px; }
+
+  /* Two-col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 1000px) { .two-col { grid-template-columns: 1fr; } }
+  .col { background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+         padding: 20px 22px; }
+  .col-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .col-title.cyan { color: var(--cyan); } .col-title.amber { color: var(--amber); }
+  .col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .col li { font-size: 13.5px; line-height: 1.6; color: var(--text); padding-left: 16px; position: relative; }
+  .col li::before { content: "·"; position: absolute; left: 0; color: var(--cyan); font-weight: 700; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px;
+          background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  table th { background: var(--surface-2); color: var(--cyan); font-weight: 700;
+             text-align: left; padding: 14px 16px; font-size: 13px; letter-spacing: 0.02em; }
+  table td, table tbody th { padding: 12px 16px; border-top: 1px solid var(--line);
+                             color: var(--text); font-size: 13px; line-height: 1.5; }
+  table tbody th { color: var(--amber); font-weight: 700; }
+  table tbody tr:hover { background: rgba(0,229,255,0.04); }
+  table.matrix { font-size: 12.5px; }
+  table.matrix td, table.matrix tbody th { padding: 10px 14px; }
+
+  /* Big stats */
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 800px) { .stats-row { grid-template-columns: 1fr; } }
+  .stat-box { background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+              padding: 32px 24px; text-align: center; }
+  .stat-val { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; line-height: 1; }
+  .stat-val.cyan { color: var(--cyan); } .stat-val.amber { color: var(--amber); }
+  .stat-val.mint { color: var(--mint); } .stat-val.magenta { color: var(--magenta); }
+  .stat-divider { width: 48px; height: 2px; margin: 16px auto; }
+  .stat-divider.cyan { background: var(--cyan); } .stat-divider.amber { background: var(--amber); }
+  .stat-divider.mint { background: var(--mint); } .stat-divider.magenta { background: var(--magenta); }
+  .stat-label { font-size: 13px; color: var(--muted); line-height: 1.5; white-space: pre-line; }
+
+  /* Print */
+  @media print {
+    .topbar, .progress-bar { display: none; }
+    .slide { page-break-after: always; min-height: auto; border: none; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="left">
+    <a href="https://github.com/ksangki/beyond-code-org" class="logo">코드 너머의 조직</a>
+    <span class="mono"><button class="nav-btn" onclick="goPrev()">‹</button> <span id="page-indicator">01 / 100</span> <button class="nav-btn" onclick="goNext()">›</button></span>
+  </div>
+  <div class="right">
+    <a class="book-link" href="https://github.com/ksangki/beyond-code-org" target="_blank">GitHub ↗</a>
+    <a class="book-link" href="https://ksangki.github.io/beyond-code-org/" target="_blank">Web Book ↗</a>
+  </div>
+</header>
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<main>
+
+<section class="slide cover" id="s1" data-n="1">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="cover-wrap">
+    <div class="eyebrow amber">BEYOND CODE ORG · 시리즈 III</div>
+    <h1 class="cover-title">코드 너머의 조직</h1>
+    <p class="cover-sub">AX 시대, 일과 조직을 다시 짜는 법</p>
+    <div class="neon-bar amber"></div>
+    <p class="cover-quote">"AX는 기술 도입이 아니라 일과 조직의 재설계다."</p>
+    <p class="cover-by">— McKinsey · BCG · Microsoft · Deloitte 가 같은 분기에 던진 한 줄</p>
+    <div class="cover-meta">
+      <span>김상기 · 1시간 발표 · 100슬라이드</span>
+      <span class="mono dim">ksangki/beyond-code-org · v1.1.0</span>
+    </div>
+  </div>
+  
+  <div class="page-num mono">001 / 100</div>
+  <div class="page-section mono">OPENING / 01</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s2" data-n="2">
+  <div class="eyebrow cyan">ABOUT THE SPEAKER</div>
+  <h2 class="content-title">발표자 김상기 · 시리즈 III 환경(조직) 편</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">AX 시대의 일과 조직을 한국 매뉴얼로 옮기는 책</div>
+        <div class="card-sub">전작 I(내면·역량)·II(외형·직업)에 이어 본서는 III(환경·조직)을 다룹니다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">저자 김상기 — SKT 근무 중</div>
+        <div class="card-sub">SKT 양대 CIC 사례는 공개 자료와 외부 관찰만으로 다루었습니다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">핵심 청중 — HR 리더와 기술 리더가 한 본문에서 만난다</div>
+        <div class="card-sub">1순위 HR·조직개발·변화 관리자 + CTO·VP·엔지니어링 매니저.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">002 / 100</div>
+  <div class="page-section mono">OPENING / 02</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s3" data-n="3">
+  <div class="eyebrow cyan">AGENDA / 60 MIN</div>
+  <h2 class="content-title">오늘 1시간 동안</h2>
+  <div class="neon-bar cyan small"></div>
+  <ul class="agenda-list"><li>PART 1 (7분) — AX란 무엇인가</li><li>PART 2 (7분) — 일의 재정의 (Task·EPOCH·Centaur·Cyborg)</li><li>PART 3 (19분) — AX 실행 세 시도 · Skill Marketplace ⭐</li><li>PART 4 (9분) — 한국 AX 풍경 + 90일 변화 관리</li><li>막간 · 에필로그 · 시그니처 자산 3 · Q&amp;A (18분)</li></ul>
+  
+  <div class="page-num mono">003 / 100</div>
+  <div class="page-section mono">OPENING / 03</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s4" data-n="4">
+  <div class="big-quote amber">"</div>
+  <p class="quote-text">AX는 기술 도입이 아니라<br>일과 조직의 재설계다.</p>
+  <div class="neon-bar amber small"></div>
+  <p class="quote-by">— McKinsey · BCG · Microsoft · Deloitte 가 같은 분기에 던진 한 줄</p>
+  
+  <div class="page-num mono">004 / 100</div>
+  <div class="page-section mono">OPENING / 04</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s5" data-n="5">
+  <div class="eyebrow cyan">KEY TAKEAWAYS</div>
+  <h2 class="content-title">오늘 가져갈 3가지</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">일의 재정의 — 직무에서 task로, 그리고 EPOCH</div>
+        <div class="card-sub">AI 시대에 어떤 task가 인간의 자리에 남는지를 5요소로 설명.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">기여자 보상 재설계 — Skills-based pay와 한국의 직무기반 전환</div>
+        <div class="card-sub">Cornell 2025 인과 카드 — 성과 보상이 AI 채택을 끌어올린다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">Skill Marketplace ⭐ — Schneider·Unilever의 교과서와 한국의 짝</div>
+        <div class="card-sub">삼성 잡포스팅·롯데 직무기반 전환과의 짝 비교 — 한국형 ITM 첫 본격 매뉴얼.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">005 / 100</div>
+  <div class="page-section mono">OPENING / 05</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s6" data-n="6">
+  <div class="eyebrow cyan">BOOK MAP</div>
+  <h2 class="content-title">책의 4 PART 지도</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">PART 1 — AX란 무엇인가</div>
+        <div class="card-sub">Ch1 AX는 DX가 아니다 · 2 95%는 왜 가치를 만들지 못하는가 · 3 한국이 보내는 신호</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">PART 2 — 일의 재정의</div>
+        <div class="card-sub">Ch4 직무에서 task로 · 5 EPOCH + Centaur·Cyborg · 6 Agentic Organization</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">PART 3 — AX 실행 세 시도 (시그니처)</div>
+        <div class="card-sub">Ch7 EPOCH 한국형 매핑 · 8 Skills-based pay · 9 Skill Marketplace ⭐</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">PART 4 — 한국 AX 풍경 + 에필로그</div>
+        <div class="card-sub">Ch10 안에서 본 풍경 · 사람의 자리는 새로 만들어진다</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">006 / 100</div>
+  <div class="page-section mono">BOOK MAP / 06</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s7" data-n="7">
+  <div class="eyebrow cyan">FOUR QUESTIONS</div>
+  <h2 class="content-title">Part별 핵심 질문</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="data">
+    <thead><tr><th>PART</th><th>핵심 질문</th><th>독자에게 주는 것</th></tr></thead>
+    <tbody><tr><th>PART 1</th><td>AX는 DX와 무엇이 다른가?</td><td>재설계의 정의와 95%의 실패 패턴</td></tr><tr><th>PART 2</th><td>일은 어떻게 재정의되어야 하는가?</td><td>task 단위 + EPOCH + 협업 두 모드</td></tr><tr><th>PART 3</th><td>AX를 어떻게 실행하나?</td><td>성과·보상·Marketplace 세 시도</td></tr><tr><th>PART 4</th><td>한국에서는 어떻게 펼치나?</td><td>안에서 본 풍경 + HR·Tech 협업 모델</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">007 / 100</div>
+  <div class="page-section mono">BOOK MAP / 07</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s8" data-n="8">
+  <div class="big-quote cyan">"</div>
+  <p class="quote-text">AX 동상이몽 —<br>같은 단어를 다른 의미로 쓰는 시대.</p>
+  <div class="neon-bar cyan small"></div>
+  <p class="quote-by">— 프롤로그</p>
+  
+  <div class="page-num mono">008 / 100</div>
+  <div class="page-section mono">PROLOGUE / 08</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s9" data-n="9">
+  <div class="eyebrow cyan">CONSENSUS</div>
+  <h2 class="content-title">빅4가 같은 분기에 던진 같은 결론</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="data">
+    <thead><tr><th>기관</th><th>보고서 (요지)</th><th>결론</th></tr></thead>
+    <tbody><tr><th>McKinsey</th><td>The state of AI in 2025</td><td>기술 도입 ≠ 가치 창출. 워크플로우 재설계 필요</td></tr><tr><th>BCG</th><td>Where's the value in AI?</td><td>AI ROI 격차의 본질은 운영모델·조직</td></tr><tr><th>Microsoft</th><td>Work Trend Index 2025</td><td>AI 시대 매니저·역할 재정의가 핵심</td></tr><tr><th>Deloitte</th><td>Generative AI in the Enterprise</td><td>Agentic Organization으로의 전환이 분기점</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">009 / 100</div>
+  <div class="page-section mono">PROLOGUE / 09</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s10" data-n="10">
+  <div class="big-quote amber">"</div>
+  <p class="quote-text">발표는 빠르고 실행은 느립니다.<br>이 책은 진심 도입한 37%의 행동 양식 매뉴얼입니다.</p>
+  <div class="neon-bar amber small"></div>
+  <p class="quote-by">— 본서 핵심 메시지</p>
+  
+  <div class="page-num mono">010 / 100</div>
+  <div class="page-section mono">PROLOGUE / 10</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide divider" id="s11" data-n="11">
+  <div class="div-grid">
+    <div class="div-left">
+      <div class="eyebrow cyan">PART 1</div>
+      <div class="huge-num cyan">1</div>
+    </div>
+    <div class="div-right">
+      <div class="neon-bar cyan small"></div>
+      <h2 class="div-title">AX란 무엇인가</h2>
+      <p class="div-sub">DX와 무엇이 다른가 · 95%는 왜 가치를 만들지 못하나 · 한국이 보내는 신호.</p>
+    </div>
+  </div>
+  
+  <div class="page-num mono">011 / 100</div>
+  <div class="page-section mono">PART 1 / 11</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s12" data-n="12">
+  <div class="ch-eyebrow cyan">CHAPTER 1</div>
+  <h2 class="ch-title">AX는 DX가 아니다</h2>
+  <div class="neon-bar cyan"></div>
+  <p class="ch-sub">결과 중심의 재설계 — 시스템 도입에서 멈추지 않는다</p>
+  
+  <div class="page-num mono">012 / 100</div>
+  <div class="page-section mono">PART 1 / CH.01 / 12</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s13" data-n="13">
+  <div class="eyebrow cyan">CH.01</div>
+  <h2 class="content-title">DX vs AX — 같아 보이지만 본질이 다른</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="data">
+    <thead><tr><th>축</th><th>DX (디지털 전환)</th><th>AX (AI 전환)</th></tr></thead>
+    <tbody><tr><th>출발점</th><td>시스템·데이터 디지털화</td><td>사람·일·조직 재설계</td></tr><tr><th>성공 기준</th><td>시스템 도입·전환 완료</td><td>결과 KPI 개선 (실행 단위)</td></tr><tr><th>주체</th><td>IT·시스템 부서 주도</td><td>비즈니스·HR·Tech 공동</td></tr><tr><th>완료 시점</th><td>프로젝트 종료가 명확</td><td>지속 운영 (조직 변화 그 자체)</td></tr><tr><th>실패 패턴</th><td>도입했는데 안 쓴다</td><td>도입했는데 가치를 못 만든다</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">013 / 100</div>
+  <div class="page-section mono">PART 1 / CH.01 / 13</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s14" data-n="14">
+  <div class="eyebrow cyan">WHY DX STALLS</div>
+  <h2 class="content-title">DX의 한계 — 시스템 도입에서 멈춘다</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">도구를 깔았는데 일하는 방식이 안 바뀐다</div>
+        <div class="card-sub">PoC 성공 → 운영 이양 실패. 'DX 피로감'의 정체.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">성공 지표가 '도입률' 단계에 머문다</div>
+        <div class="card-sub">도입률 80% 달성, 그러나 매출·생산성 변화 0.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">AI는 도구가 아니라 동료다 — DX 사고로 다루면 실패</div>
+        <div class="card-sub">에이전트는 시스템 한 켤레 더 다는 게 아니라 일의 단위 자체를 바꾼다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">014 / 100</div>
+  <div class="page-section mono">PART 1 / CH.01 / 14</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s15" data-n="15">
+  <div class="eyebrow cyan">FOUR PILLARS</div>
+  <h2 class="content-title">AX의 4가지 핵심</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 일의 재정의 — 직무에서 task로</div>
+        <div class="card-sub">어떤 task가 사람에게 남고, 어떤 task가 에이전트로 가는가.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 사람·AI 협업 모드 — Centaur · Cyborg</div>
+        <div class="card-sub">분업과 융합 두 모드를 같은 조직에 공존시키는 설계.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 성과 관리 재설계 — EPOCH의 한국형 매핑</div>
+        <div class="card-sub">측정 가능한 5요소로 KPI를 다시 짜는 일.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 기여자 보상 재설계 — Skills-based pay</div>
+        <div class="card-sub">직무 명패가 아니라 가진 스킬과 성과로 보상.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">015 / 100</div>
+  <div class="page-section mono">PART 1 / CH.01 / 15</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s16" data-n="16">
+  <div class="big-quote amber">"</div>
+  <p class="quote-text">결과 중심의 재설계는<br>시스템이 아니라 일과 사람의 자리에서 시작된다.</p>
+  <div class="neon-bar amber small"></div>
+  <p class="quote-by">— Chapter 1 핵심</p>
+  
+  <div class="page-num mono">016 / 100</div>
+  <div class="page-section mono">PART 1 / CH.01 / 16</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s17" data-n="17">
+  <div class="ch-eyebrow cyan">CHAPTER 2</div>
+  <h2 class="ch-title">95%는 왜 가치를 만들지 못하는가</h2>
+  <div class="neon-bar cyan"></div>
+  <p class="ch-sub">MIT가 본 95% — 도입은 하는데 결과가 없다는 그 95%의 패턴</p>
+  
+  <div class="page-num mono">017 / 100</div>
+  <div class="page-section mono">PART 1 / CH.02 / 17</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s18" data-n="18">
+  <div class="eyebrow cyan">CH.02</div>
+  <h2 class="content-title">95% 가치 미창출 — 어디서 막히나</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-val amber mono">95%</div>
+        <div class="stat-divider amber"></div>
+        <div class="stat-label">AI 도입했지만 가치 미창출</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val mint mono">37%</div>
+        <div class="stat-divider mint"></div>
+        <div class="stat-label">진심 도입 + 행동 양식 변화 · 가치 창출 그룹</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val cyan mono">60%+</div>
+        <div class="stat-divider cyan"></div>
+        <div class="stat-label">도입은 했으나 워크플로우 미변화</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">018 / 100</div>
+  <div class="page-section mono">PART 1 / CH.02 / 18</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s19" data-n="19">
+  <div class="eyebrow cyan">FIVE PATTERNS</div>
+  <h2 class="content-title">95%의 5가지 실패 패턴</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 도구로만 다뤘다 — 동료로 다루지 않았다</div>
+        <div class="card-sub">에이전트를 SaaS 한 켤레로 보고 일감을 바꾸지 않음.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 측정 지표를 안 바꿨다</div>
+        <div class="card-sub">기존 KPI 위에 AI를 얹기만 함. EPOCH 같은 새 축이 없음.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 매니저의 역할을 안 바꿨다</div>
+        <div class="card-sub">직원 관리 → 에이전트와 직원의 동시 관리로 전환 못 함.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 보상을 안 바꿨다</div>
+        <div class="card-sub">스킬 변화에 대한 보상 신호가 없으니 학습도 안 일어남.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">⑤ 기여자 신뢰를 잃었다</div>
+        <div class="card-sub">AI 도입을 인력 감축 신호로 받아들임. 변화관리 실패.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">019 / 100</div>
+  <div class="page-section mono">PART 1 / CH.02 / 19</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s20" data-n="20">
+  <div class="eyebrow cyan">THE 37%</div>
+  <h2 class="content-title">가치 창출 37%의 행동 양식</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">HR과 Tech가 같은 본문 안에서 만나 있다</div>
+        <div class="card-sub">37% 기업에서는 CHRO와 CTO가 같은 의사결정 테이블에 앉는다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">성과·보상이 스킬 변화에 반응한다</div>
+        <div class="card-sub">직무급에서 스킬급으로의 부분 전환 — Cornell 2025 인과.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">매니저가 '에이전트 매니저'로 재정의됐다</div>
+        <div class="card-sub">직원 + 에이전트 + 일감을 함께 다루는 새 직무 기술서.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Skill Marketplace가 가동 중이다</div>
+        <div class="card-sub">내부 스킬·사람·일감의 매칭 시장이 돌아간다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">020 / 100</div>
+  <div class="page-section mono">PART 1 / CH.02 / 20</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s21" data-n="21">
+  <div class="ch-eyebrow cyan">CHAPTER 3</div>
+  <h2 class="ch-title">한국이 보내는 신호</h2>
+  <div class="neon-bar cyan"></div>
+  <p class="ch-sub">대기업·스타트업·SI 각각이 보내는 5가지 신호</p>
+  
+  <div class="page-num mono">021 / 100</div>
+  <div class="page-section mono">PART 1 / CH.03 / 21</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s22" data-n="22">
+  <div class="eyebrow cyan">KR SIGNALS</div>
+  <h2 class="content-title">한국 AX 도입 신호 5가지</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">Signal 1 — '직무 분석' 프로젝트가 다시 살아난다</div>
+        <div class="card-sub">task 단위 분해 수요가 대기업 HR에서 폭증.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Signal 2 — 잡포스팅·사내 이동이 늘어난다</div>
+        <div class="card-sub">삼성 잡포스팅 확대 · 롯데 직무기반 전환 — Skill Marketplace의 씨앗.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">Signal 3 — CTO·CHRO 합동 위원회의 등장</div>
+        <div class="card-sub">AX 도입 결정이 두 자리 합의로 옮겨감.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Signal 4 — 직무급·스킬급 논의의 재점화</div>
+        <div class="card-sub">임금체계 개편 이슈가 AX 맥락에서 다시 등장.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">Signal 5 — 외부 컨설팅 의제가 '재설계'로 이동</div>
+        <div class="card-sub">도구 도입 컨설팅 → 워크플로우 재설계 컨설팅으로 이행.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">022 / 100</div>
+  <div class="page-section mono">PART 1 / CH.03 / 22</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide divider" id="s23" data-n="23">
+  <div class="div-grid">
+    <div class="div-left">
+      <div class="eyebrow amber">PART 2</div>
+      <div class="huge-num amber">2</div>
+    </div>
+    <div class="div-right">
+      <div class="neon-bar amber small"></div>
+      <h2 class="div-title">일의 재정의</h2>
+      <p class="div-sub">직무에서 task로 · EPOCH 5요소 · Centaur와 Cyborg · Agentic Organization.</p>
+    </div>
+  </div>
+  
+  <div class="page-num mono">023 / 100</div>
+  <div class="page-section mono">PART 2 / 23</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s24" data-n="24">
+  <div class="ch-eyebrow amber">CHAPTER 4</div>
+  <h2 class="ch-title">직무에서 task로</h2>
+  <div class="neon-bar amber"></div>
+  <p class="ch-sub">작동 원리 — 일을 분해하면 자리도 다시 보인다</p>
+  
+  <div class="page-num mono">024 / 100</div>
+  <div class="page-section mono">PART 2 / CH.04 / 24</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s25" data-n="25">
+  <div class="eyebrow cyan">CH.04</div>
+  <h2 class="content-title">직무 단위 vs task 단위</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="data">
+    <thead><tr><th>축</th><th>직무 단위 (전통)</th><th>task 단위 (AX)</th></tr></thead>
+    <tbody><tr><th>기본 단위</th><td>Job (직책·직무기술서)</td><td>Task (행위 단위)</td></tr><tr><th>변화 속도</th><td>느림 (연 단위)</td><td>빠름 (월·주 단위)</td></tr><tr><th>AI 통합 방식</th><td>직무 통째로 대체/유지</td><td>task별 사람 · 에이전트 분담</td></tr><tr><th>사람의 자리</th><td>직무가 사라지면 자리도 사라짐</td><td>task를 재조합해 자리가 새로 만들어짐</td></tr><tr><th>조직 설계 단위</th><td>조직도 · 부서</td><td>스킬·역량·워크플로우 묶음</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">025 / 100</div>
+  <div class="page-section mono">PART 2 / CH.04 / 25</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s26" data-n="26">
+  <div class="eyebrow cyan">HOW IT WORKS</div>
+  <h2 class="content-title">Task 분해의 작동 원리</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 직무를 task로 분해 — 한 직무 평균 30~80 task</div>
+        <div class="card-sub">표준 직무기술서를 행위 단위로 쪼개면 task의 묶음으로 보인다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 각 task에 인간·AI 분담 비율 부여</div>
+        <div class="card-sub">Centaur 분업형(인간 100% / AI 100%) vs Cyborg 융합형.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ task를 재조합해 새로운 직무를 만든다</div>
+        <div class="card-sub">사라진 자리에서 task를 모아 새 자리를 만드는 게 AX의 본질.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 측정 단위가 task 단위로 옮겨간다</div>
+        <div class="card-sub">KPI도, 평가도, 보상도 task 단위 신호와 결합한다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">026 / 100</div>
+  <div class="page-section mono">PART 2 / CH.04 / 26</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s27" data-n="27">
+  <div class="eyebrow cyan">EXAMPLE</div>
+  <h2 class="content-title">Task 분해 예시 — 'B2B 영업 담당자'</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">리드 발굴·DM 작성 → 80% 에이전트 + 20% 사람</div>
+        <div class="card-sub">양적 작업은 에이전트가 빠르게 처리, 사람은 톤·관계 확인.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">초도 미팅·관계 형성 → 100% 사람</div>
+        <div class="card-sub">신뢰·관계·문화 감각이 결정적인 task는 인간이 보존.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">계약 조건 분석·비교 → Cyborg 융합형</div>
+        <div class="card-sub">사람이 의도를 잡고, AI가 조항·과거 사례를 즉시 끌어온다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Forecast·리포팅 → 90% 에이전트 + 10% 사람</div>
+        <div class="card-sub">데이터 작업은 에이전트, 사람은 가설·해석을 입힌다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">027 / 100</div>
+  <div class="page-section mono">PART 2 / CH.04 / 27</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s28" data-n="28">
+  <div class="ch-eyebrow amber">CHAPTER 5</div>
+  <h2 class="ch-title">인간·AI 협업의 두 모드 — EPOCH</h2>
+  <div class="neon-bar amber"></div>
+  <p class="ch-sub">MIT Sloan EPOCH 5요소 + Centaur · Cyborg 두 가지 협업 모드</p>
+  
+  <div class="page-num mono">028 / 100</div>
+  <div class="page-section mono">PART 2 / CH.05 / 28</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s29" data-n="29">
+  <div class="eyebrow cyan">EPOCH</div>
+  <h2 class="content-title">EPOCH 5요소 — 사람에게 남는 일의 본질</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">E — Empathy (공감)</div>
+        <div class="card-sub">사람의 감정을 읽고 반응하는 일. 케어·세일즈·교육·HR.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">P — Presence (실재)</div>
+        <div class="card-sub">물리적·사회적 자리. 의례·신뢰의례·법정·임상 현장.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">O — Opinion (판단·견해)</div>
+        <div class="card-sub">가치판단·우선순위 결정. 전략·인사·윤리·언론.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">C — Creativity (창의)</div>
+        <div class="card-sub">기존 패턴을 깨는 새로운 조합. 디자인·연구·문화.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">H — Hope (희망·동기부여)</div>
+        <div class="card-sub">사람들을 모아 미래를 그리는 일. 리더십·교사·코칭.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">029 / 100</div>
+  <div class="page-section mono">PART 2 / CH.05 / 29</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s30" data-n="30">
+  <div class="eyebrow cyan">CENTAUR</div>
+  <h2 class="content-title">Centaur 모드 — 분업의 길</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">인간과 AI의 역할을 분명하게 나눈다</div>
+        <div class="card-sub">한쪽은 사람만, 한쪽은 에이전트만. 책임의 선이 분명함.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">강점 — 책임 추적 · 규제 적합성 · 신뢰</div>
+        <div class="card-sub">법무·금융·의료 영역에서 우선 채택. 감독·승인의 자리가 명확.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">약점 — 속도 한계 · 분업 비용</div>
+        <div class="card-sub">두 시스템을 동기화하느라 효율의 천장이 낮을 수 있음.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">적합한 일 — 규제 영역, 책임 추적이 중요한 자리</div>
+        <div class="card-sub">은행 심사 · 보험 인수 · 의료 진단 보조 · 법무 검토.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">030 / 100</div>
+  <div class="page-section mono">PART 2 / CH.05 / 30</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s31" data-n="31">
+  <div class="eyebrow cyan">CYBORG</div>
+  <h2 class="content-title">Cyborg 모드 — 융합의 길</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">인간과 AI가 한 작업 안에서 융합한다</div>
+        <div class="card-sub">사람이 의도를 잡고 AI가 동시 실행. 한 명이 두세 명 분량의 일.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">강점 — 속도 · 창의성 · 학습 가속</div>
+        <div class="card-sub">Cursor·Devin·Replit Agent 같은 패턴. 1인 생산성 폭증.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">약점 — 책임 분기 모호 · 의존성</div>
+        <div class="card-sub">어디까지가 사람의 결정인지 추적이 어려움. 의존성 누적.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">적합한 일 — 창의·탐색·구현이 함께 가는 자리</div>
+        <div class="card-sub">소프트웨어·디자인·콘텐츠·리서치·전략 기획.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">031 / 100</div>
+  <div class="page-section mono">PART 2 / CH.05 / 31</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s32" data-n="32">
+  <div class="eyebrow cyan">COMPARE</div>
+  <h2 class="content-title">Centaur vs Cyborg — 어디서 누가 어떻게</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="data">
+    <thead><tr><th>축</th><th>Centaur (분업)</th><th>Cyborg (융합)</th></tr></thead>
+    <tbody><tr><th>관계</th><td>사람 ↔ AI 분담</td><td>사람과 AI 한 작업 안에서 협업</td></tr><tr><th>속도</th><td>중간</td><td>매우 빠름</td></tr><tr><th>책임</th><td>명확</td><td>분기 추적 필요</td></tr><tr><th>적합 영역</th><td>규제·안전·신뢰</td><td>창의·구현·탐색</td></tr><tr><th>대표 사례</th><td>은행 심사 · 의료 보조</td><td>Cursor · Devin · Notion AI</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">032 / 100</div>
+  <div class="page-section mono">PART 2 / CH.05 / 32</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s33" data-n="33">
+  <div class="ch-eyebrow amber">CHAPTER 6</div>
+  <h2 class="ch-title">Agentic Organization과 매니저 재정의</h2>
+  <div class="neon-bar amber"></div>
+  <p class="ch-sub">에이전트와 사람을 함께 다루는 매니저의 새 직무 기술서</p>
+  
+  <div class="page-num mono">033 / 100</div>
+  <div class="page-section mono">PART 2 / CH.06 / 33</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s34" data-n="34">
+  <div class="eyebrow cyan">CH.06</div>
+  <h2 class="content-title">Agentic Organization — 매니저 재정의</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">매니저의 단위가 '직원'에서 '직원+에이전트+task'로</div>
+        <div class="card-sub">이제 매니저는 사람 5명만 관리하지 않는다. 사람 5명 + 에이전트 N개 + task M개.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">주간 회의 의제 변화 — task 흐름과 에이전트 건강</div>
+        <div class="card-sub">OKR 진척도 + 에이전트 신뢰도 + 토큰 비용까지 같은 표에서 본다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">의사결정 권한이 task 단위로 분산된다</div>
+        <div class="card-sub">기여자가 에이전트와 함께 결정. 매니저는 가드레일·승인·코칭으로 이동.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">HR↔Tech 공동 매니저 트레이닝의 등장</div>
+        <div class="card-sub">에이전트를 운영해본 매니저가 다음 임원으로 자란다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">034 / 100</div>
+  <div class="page-section mono">PART 2 / CH.06 / 34</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide divider" id="s35" data-n="35">
+  <div class="div-grid">
+    <div class="div-left">
+      <div class="eyebrow mint">PART 3</div>
+      <div class="huge-num mint">3</div>
+    </div>
+    <div class="div-right">
+      <div class="neon-bar mint small"></div>
+      <h2 class="div-title">AX 실행 세 시도</h2>
+      <p class="div-sub">성과 관리 · 기여자 보상 · Skill Marketplace ⭐<br>시그니처 PART. 본서의 중심.</p>
+    </div>
+  </div>
+  
+  <div class="page-num mono">035 / 100</div>
+  <div class="page-section mono">PART 3 / 35</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s36" data-n="36">
+  <div class="eyebrow cyan">THREE TRIES</div>
+  <h2 class="content-title">세 시도의 지도</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">Chapter 7 — 새로운 성과 관리</div>
+        <div class="card-sub">MIT Sloan EPOCH를 한국 직무 유형 3에 매핑한 15칸 표.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Chapter 8 — 새로운 기여자 보상</div>
+        <div class="card-sub">Cornell 2025 인과 카드 — 성과 보상이 AI 채택을 끌어올린다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">Chapter 9 ⭐ — Skill Marketplace</div>
+        <div class="card-sub">Schneider·Unilever 교과서와 한국의 짝 — ITM 첫 본격 매뉴얼.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">036 / 100</div>
+  <div class="page-section mono">PART 3 / 36</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s37" data-n="37">
+  <div class="ch-eyebrow mint">CHAPTER 7</div>
+  <h2 class="ch-title">새로운 성과 관리 — EPOCH의 한국형 매핑</h2>
+  <div class="neon-bar mint"></div>
+  <p class="ch-sub">MIT Sloan EPOCH 5요소를 한국 직무 유형 3에 매핑한 15칸 표</p>
+  
+  <div class="page-num mono">037 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 37</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s38" data-n="38">
+  <div class="eyebrow cyan">WHY</div>
+  <h2 class="content-title">왜 EPOCH를 한국형으로 다시 짜야 하나</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">미국 EPOCH는 직무 유형이 다른 시장 위에서 자랐다</div>
+        <div class="card-sub">한국의 직무 분류·평가 문화·노동법에 그대로 끼우면 어색한 칸이 생긴다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">한국 직무 유형 3에 매핑하면 KPI 재설계의 시작점이 된다</div>
+        <div class="card-sub">기획·엔지니어링·운영 세 유형 × E·P·O·C·H 5요소 = 15칸 매트릭스.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">HR·Tech가 같은 표를 보고 KPI를 재설계할 수 있다</div>
+        <div class="card-sub">두 조직이 같은 칸을 가리키며 평가·보상을 합의할 수 있다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">038 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 38</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s39" data-n="39">
+  <div class="eyebrow cyan">EPOCH DEEP</div>
+  <h2 class="content-title">EPOCH 5요소 — 상세 정의</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">E (Empathy) — 사람의 감정·맥락을 읽는 능력</div>
+        <div class="card-sub">CS·HR·세일즈·교육에서 가장 강하게 잔존.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">P (Presence) — 물리·사회적 실재성</div>
+        <div class="card-sub">신뢰 의례·임상 현장·법정·교실 — 사람만이 채울 수 있는 자리.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">O (Opinion) — 가치판단·우선순위 결정</div>
+        <div class="card-sub">전략·윤리·인사·언론 — 책임이 동반되는 결정의 자리.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">C (Creativity) — 패턴을 깨는 새로운 조합</div>
+        <div class="card-sub">디자인·연구·문화 콘텐츠 — 도구로는 모방 가능하지만 정의는 사람.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">H (Hope) — 미래를 그려 사람을 모으는 힘</div>
+        <div class="card-sub">리더십·교사·코치 — 동기부여와 방향 설정.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">039 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 39</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s40" data-n="40">
+  <div class="eyebrow cyan">JOB TYPES</div>
+  <h2 class="content-title">한국 직무 유형 3 — 분류 기준</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 기획·전략형</div>
+        <div class="card-sub">사업·서비스 기획 · 전략 · 정책 · PM · UX 리서치.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 엔지니어링·전문형</div>
+        <div class="card-sub">소프트웨어 · 데이터 · 디자인 · 회계 · 법무 · 의료.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 운영·고객 접점형</div>
+        <div class="card-sub">고객지원 · 영업 · 현장 · 물류 · 매장 · 케어.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">040 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 40</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s41" data-n="41">
+  <div class="eyebrow cyan">THE MATRIX</div>
+  <h2 class="content-title">15칸 EPOCH 한국형 매핑표 ⭐</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="matrix">
+    <thead><tr><th>요소</th><th>기획·전략형</th><th>엔지니어링·전문형</th><th>운영·고객 접점형</th></tr></thead>
+    <tbody><tr><th>E 공감</th><td>이해관계자 매핑 정확도</td><td>팀·고객 코드 리뷰 톤</td><td>응대 만족도·이탈 방지율</td></tr><tr><th>P 실재</th><td>결정 회의·임원 보고 실재성</td><td>온콜·릴리스 동시 임장</td><td>현장 신속 응대·신뢰 의례</td></tr><tr><th>O 판단</th><td>우선순위 결정 품질</td><td>기술 의사결정 책임</td><td>이상 상황 escalation</td></tr><tr><th>C 창의</th><td>신사업·시나리오 다양성</td><td>아키텍처·새 패턴 채택</td><td>고객 사례 새 해법 발굴</td></tr><tr><th>H 희망</th><td>비전 정렬·OKR 동기부여</td><td>주니어 멘토링·온보딩</td><td>팀 사기·재방문 동기</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">041 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 41</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s42" data-n="42">
+  <div class="eyebrow cyan">HOW TO USE</div>
+  <h2 class="content-title">매핑표 사용법 — KPI 재설계 가이드</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 직군별 5요소 중 상위 2개에 가중치 우선</div>
+        <div class="card-sub">기획형은 O·H, 엔지니어링형은 C·O, 운영형은 E·P가 일반적인 시작점.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 'AI가 잘하는 task'는 EPOCH 가중치에서 제외</div>
+        <div class="card-sub">에이전트가 처리한 task는 평가 지표에서 빼고, EPOCH 축으로만 평가.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 분기마다 가중치를 조정 — task 분담 비율 변화 반영</div>
+        <div class="card-sub">팀의 자동화율이 60%로 오르면 EPOCH 가중치도 +5pt 재조정.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ HR·Tech 합의 위원회가 분기마다 검수</div>
+        <div class="card-sub">직군 간 형평 · 직급 간 형평을 동시에 본다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">042 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 42</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s43" data-n="43">
+  <div class="eyebrow cyan">KR EXAMPLE</div>
+  <h2 class="content-title">한국 적용 예시 — 세 직군 1년 실행</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">기획형 PM — O·H 중심 KPI로 전환</div>
+        <div class="card-sub">기존 산출물 30% → EPOCH 40% (O·H) + 산출물 30% + 협업 30%.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">엔지니어링형 시니어 — C·O 중심 + 에이전트 운영 가중</div>
+        <div class="card-sub">코드 라인수 0% → 시스템 결정 책임 + 에이전트 신뢰도 + 멘토링.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">운영형 CS 리드 — E·P 중심 + 에이전트 매니지먼트 추가</div>
+        <div class="card-sub">응대량 50% → 만족·이탈방지 50% + 에이전트 가드레일 운영.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">결과 — 12개월 후 평가 신뢰도 +18pt (가상치)</div>
+        <div class="card-sub">직원 인식 조사에서 '내 평가가 일과 맞는다' 항목 상승.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">043 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 43</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s44" data-n="44">
+  <div class="big-quote mint">"</div>
+  <p class="quote-text">15칸 표 하나가<br>KPI를 다시 짤 출발점이 된다.</p>
+  <div class="neon-bar mint small"></div>
+  <p class="quote-by">— Chapter 7 핵심</p>
+  
+  <div class="page-num mono">044 / 100</div>
+  <div class="page-section mono">PART 3 / CH.07 / 44</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s45" data-n="45">
+  <div class="ch-eyebrow mint">CHAPTER 8</div>
+  <h2 class="ch-title">새로운 기여자 보상 — Skills-based pay</h2>
+  <div class="neon-bar mint"></div>
+  <p class="ch-sub">Cornell 2025 인과 카드와 한국의 직무기반 전환</p>
+  
+  <div class="page-num mono">045 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 45</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s46" data-n="46">
+  <div class="eyebrow cyan">CH.08</div>
+  <h2 class="content-title">직무급에서 스킬급으로</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">직무급 — 자리(직책)에 값이 붙는다</div>
+        <div class="card-sub">한국 대기업의 전통. 직급·직책이 보상을 결정. 변화 속도 느림.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">스킬급 — 가진 스킬·증명된 역량에 값이 붙는다</div>
+        <div class="card-sub">Schneider·Unilever 같은 글로벌 표준. 스킬 매트릭스가 곧 임금표.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">AX에서 왜 스킬급인가</div>
+        <div class="card-sub">task 단위로 일이 재편되면, 직책 단위 보상이 어색해진다. 스킬이 단위.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">한국은 직무급 전환 중간 — 단계별 접근 필요</div>
+        <div class="card-sub">전면 도입이 아니라 일부 직군·일부 보상 항목부터.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">046 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 46</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s47" data-n="47">
+  <div class="big-quote amber">"</div>
+  <p class="quote-text">성과 보상이 AI 채택을 늘린다.<br>— Cornell 2025의 인과적 발견</p>
+  <div class="neon-bar amber small"></div>
+  <p class="quote-by">— Cornell 2025 인과 카드</p>
+  
+  <div class="page-num mono">047 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 47</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s48" data-n="48">
+  <div class="eyebrow cyan">CAUSAL CHAIN</div>
+  <h2 class="content-title">Cornell 2025 인과 메커니즘 4단계</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 성과 보상이 명확해진다 → 학습 동기 ↑</div>
+        <div class="card-sub">보상의 신호가 분명할 때, 사람은 새로운 스킬을 익힌다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 스킬 학습 → AI 도구 채택 ↑</div>
+        <div class="card-sub">이미 학습하는 사람이 AI 도구를 자기 도구로 받아들인다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ AI 채택 → task별 생산성 ↑</div>
+        <div class="card-sub">도구가 일에 흡수되면서 task의 단위 시간이 줄어든다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 생산성 ↑ → 보상 신호 강화 → ① 다시</div>
+        <div class="card-sub">선순환 — 보상이 동기를 키우고, 동기가 채택을 끌어올린다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">주의 — 한국 평가 문화에서의 재현은 미검증</div>
+        <div class="card-sub">본서는 이 한계를 정직하게 표기. 단계적 적용을 권고.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">048 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 48</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s49" data-n="49">
+  <div class="eyebrow cyan">HOW IT WORKS</div>
+  <h2 class="content-title">Skills-based pay 작동 원리</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 스킬 매트릭스 구축 — 직군별 핵심 스킬 정의</div>
+        <div class="card-sub">예: 엔지니어링형 = Python·시스템 설계·LLM·코드 리뷰·온콜.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 스킬 평가 — 객관 자료 + 동료 평가</div>
+        <div class="card-sub">GitHub·자격증·프로젝트·기여 사례 + 360 리뷰.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 스킬 등급 → 임금 밴드 매핑</div>
+        <div class="card-sub">직책과 별도로 스킬 등급이 보상 폭의 일부를 결정.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 분기마다 갱신 — 학습한 스킬이 즉시 보상에 반영</div>
+        <div class="card-sub">사람이 학습하는 만큼 빠르게 보상이 따라온다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">049 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 49</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s50" data-n="50">
+  <div class="eyebrow cyan">KR TRANSITION</div>
+  <h2 class="content-title">한국 직무기반 전환 — 어디까지 왔나</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">롯데 — 직무기반 인사제도 도입 (대기업 선도)</div>
+        <div class="card-sub">직급 위주에서 직무 단위 평가·보상으로 단계적 전환.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">삼성 — 잡포스팅·내부 이동 확대</div>
+        <div class="card-sub">직무가 사람을 따르도록 하는 시장 메커니즘 강화.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">SK·LG — 직무급 도입 논의 활발</div>
+        <div class="card-sub">노조와의 협의 단계. 단계적·부분 도입이 현실 경로.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">결론 — 한국형 Skills-based는 하이브리드</div>
+        <div class="card-sub">'직무기반 + 스킬급 부분 도입'. 단계 설계가 핵심.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">050 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 50</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s51" data-n="51">
+  <div class="eyebrow cyan">KR PLAYBOOK</div>
+  <h2 class="content-title">한국 적용 가이드 5단계</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 스킬 매트릭스 v0 — 직군 3개부터</div>
+        <div class="card-sub">전사 동시 도입 X. PM·엔지니어·CS 같이 3개 직군부터.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 평가 도구 정비 — 360 리뷰 + 산출물 증빙</div>
+        <div class="card-sub">기존 인사고과에 스킬 평가 보조 지표로 끼워 넣는다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 임금 밴드의 10–20%만 스킬급 비중</div>
+        <div class="card-sub">단번에 50%로 가지 않는다. 작은 비중으로 시작 → 확장.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 6개월마다 검수 — HR·Tech 공동 위원회</div>
+        <div class="card-sub">스킬 매트릭스 자체가 진화한다 (특히 AI 관련 스킬).</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">051 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 51</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s52" data-n="52">
+  <div class="big-quote mint">"</div>
+  <p class="quote-text">보상이 학습을 끌어올리고,<br>학습이 채택을 끌어올린다.</p>
+  <div class="neon-bar mint small"></div>
+  <p class="quote-by">— Chapter 8 핵심</p>
+  
+  <div class="page-num mono">052 / 100</div>
+  <div class="page-section mono">PART 3 / CH.08 / 52</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s53" data-n="53">
+  <div class="ch-eyebrow magenta">CHAPTER 9 ★ SIGNATURE</div>
+  <h2 class="ch-title">Skill Marketplace ⭐</h2>
+  <div class="neon-bar magenta"></div>
+  <p class="ch-sub">Schneider·Unilever 교과서와 한국의 짝 — ITM 첫 본격 매뉴얼</p>
+  
+  <div class="page-num mono">053 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 53</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s54" data-n="54">
+  <div class="eyebrow cyan">WHAT</div>
+  <h2 class="content-title">Skill Marketplace란 무엇인가</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">내부 인재 시장 (Internal Talent Marketplace, ITM)</div>
+        <div class="card-sub">사람·일·스킬이 사내에서 매칭되는 시장 메커니즘.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">사람의 자리 → 사람의 스킬·관심·가용시간으로 단위 변화</div>
+        <div class="card-sub">직무 명패가 아니라 스킬 묶음으로 일감과 매칭된다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">일도 단위가 작아진다 — task·프로젝트·gigs</div>
+        <div class="card-sub">내부 gigs 시장이 생긴다. 본업 + 사내 부업.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">매칭 엔진 — 알고리즘 + 매니저 승인 + HR 가드레일</div>
+        <div class="card-sub">GLO 알고리즘 + 윤리·형평 가드레일 결합.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">054 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 54</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s55" data-n="55">
+  <div class="eyebrow cyan">WHY MKT</div>
+  <h2 class="content-title">왜 Marketplace인가</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">AX 시대에 직무가 너무 빨리 바뀐다</div>
+        <div class="card-sub">1년에 한 번 직무기술서를 다시 쓰는 속도로는 따라잡지 못한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">사람의 성장이 직무 안에 갇히면 이탈한다</div>
+        <div class="card-sub">한 자리에 묶이면 사내 학습 곡선이 멈춘다. 외부 시장으로 빠짐.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">AI가 잘하는 task가 늘어나면 사람 task가 재편된다</div>
+        <div class="card-sub">남는 task를 재조합해 새 자리를 만드는 메커니즘이 필요.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">외부 채용 vs 사내 이동 — 비용·문화 적합도 차이</div>
+        <div class="card-sub">사내 이동이 6개월 빠르고 1.5배 저렴. ITM이 그 통로.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">055 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 55</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s56" data-n="56">
+  <div class="eyebrow cyan">SCHNEIDER ①</div>
+  <h2 class="content-title">Schneider Electric ① — 도입 배경</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">글로벌 분산 인재, 직무 갈아끼우기 비용 부담</div>
+        <div class="card-sub">100개국 13만 명. 직무·국가·언어 장벽이 사내 이동을 막음.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Open Talent Market 2018 시작</div>
+        <div class="card-sub">Gloat 같은 ITM 플랫폼 도입 + 사내 정책·문화 전환.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">초기 KPI — 사내 이동률 / 프로젝트 매칭률</div>
+        <div class="card-sub">직접 채용 비용 절감 + 이탈률 감소를 첫 KPI로.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">리더십 메시지 — '직무가 사람을 묶지 않는다'</div>
+        <div class="card-sub">CEO가 사내 메시지로 반복. 매니저 평가에 이동률 포함.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">056 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 56</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s57" data-n="57">
+  <div class="eyebrow cyan">SCHNEIDER ②</div>
+  <h2 class="content-title">Schneider Electric ② — 5년 성과</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-val magenta mono">&gt;30%</div>
+        <div class="stat-divider magenta"></div>
+        <div class="stat-label">사내 이동률 5년 누적 증가 (공개 자료)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val mint mono">$15M+</div>
+        <div class="stat-divider mint"></div>
+        <div class="stat-label">직접 채용 비용 연간 절감 (추정)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val cyan mono">&gt;360k</div>
+        <div class="stat-divider cyan"></div>
+        <div class="stat-label">프로젝트 시간 매칭된 누적 (공개)</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">057 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 57</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s58" data-n="58">
+  <div class="eyebrow cyan">UNILEVER ①</div>
+  <h2 class="content-title">Unilever ① — Flex Experiences</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">전세계 15만 명, 단일 시장에 묶이지 않는 ITM 필요</div>
+        <div class="card-sub">FMCG 글로벌 기업의 채용 비용·이탈률 압박.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Flex Experiences 2019 시작</div>
+        <div class="card-sub">사내 프로젝트·gigs·전환 발령을 같은 마켓플레이스로.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">'20% 시간 외부 프로젝트 OK' 명시</div>
+        <div class="card-sub">본업 80% + 사내 gigs 20% 정책으로 참여 장벽 낮춤.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">매니저 평가에 '인재 송출' 지표 포함</div>
+        <div class="card-sub">팀에서 사람이 나가는 걸 매니저 KPI로 인정.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">058 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 58</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s59" data-n="59">
+  <div class="eyebrow cyan">UNILEVER ②</div>
+  <h2 class="content-title">Unilever ② — 6년 성과</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-val magenta mono">500k+</div>
+        <div class="stat-divider magenta"></div>
+        <div class="stat-label">프로젝트 시간 매칭된 누적 (공개)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val mint mono">8개월</div>
+        <div class="stat-divider mint"></div>
+        <div class="stat-label">신규 스킬 평균 학습 단축 (보고)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val cyan mono">+33%</div>
+        <div class="stat-divider cyan"></div>
+        <div class="stat-label">사내 이동 비율 전체 대비 증가</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">059 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 59</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s60" data-n="60">
+  <div class="eyebrow cyan">SAMSUNG</div>
+  <h2 class="content-title">한국의 짝 ① — 삼성 잡포스팅</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">형태 — 사내 공모·전환 발령의 표준화</div>
+        <div class="card-sub">사내 채용 공고 + 지원 + 매니저 협의 + 발령.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">강점 — 거대 조직·국제 분산을 활용한 이동 폭</div>
+        <div class="card-sub">지역·계열사·사업부 간 이동 가능성이 글로벌과 견줄 수준.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">한계 — 매칭이 사람의 적극성에 의존</div>
+        <div class="card-sub">알고리즘 매칭이 약함. 사용자가 검색·지원해야 함.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">진화 방향 — 스킬 매트릭스 결합 + 알고리즘 추천</div>
+        <div class="card-sub">Schneider 모델로의 진화 가능성. 본격 ITM의 씨앗.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">060 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 60</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s61" data-n="61">
+  <div class="eyebrow cyan">LOTTE</div>
+  <h2 class="content-title">한국의 짝 ② — 롯데 직무기반 전환</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">형태 — 직급 중심 → 직무 중심 인사제도</div>
+        <div class="card-sub">직무 기술서·직무별 임금밴드·직무별 평가.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">강점 — 한국 대기업 중 가장 적극적인 직무기반 전환</div>
+        <div class="card-sub">임금·평가·이동의 단위가 직무로 옮겨감.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">한계 — 직무 자체가 빠르게 바뀌는 AX 시대와의 불일치</div>
+        <div class="card-sub">직무 정의가 1년에 한 번 갱신되는 속도로는 부족.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">진화 방향 — 직무 위에 스킬·gigs 시장 layer 얹기</div>
+        <div class="card-sub">롯데형 직무기반 + Schneider형 스킬 마켓 = 한국형 ITM.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">061 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 61</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s62" data-n="62">
+  <div class="big-quote magenta">"</div>
+  <p class="quote-text">한국형 ITM의 첫 본격 매뉴얼 —<br>직무기반 + 잡포스팅 + 스킬 매트릭스의 결합.</p>
+  <div class="neon-bar magenta small"></div>
+  <p class="quote-by">— Chapter 9의 시그니처 자산</p>
+  
+  <div class="page-num mono">062 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 62</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s63" data-n="63">
+  <div class="eyebrow cyan">ROADMAP</div>
+  <h2 class="content-title">ITM 구축 5단계 로드맵</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① 스킬 매트릭스 v0 + 직무 카탈로그 정비</div>
+        <div class="card-sub">Ch8과 공유. 직군 3개부터, 분기 단위 갱신.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 사내 잡포스팅·gigs 시장 구축</div>
+        <div class="card-sub">공고·지원·매니저 협의 플로우 표준화. 익명 매칭 옵션.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 알고리즘 매칭 + 윤리 가드레일</div>
+        <div class="card-sub">GLO·Phenom 같은 도구 + 사내 형평·다양성 가드레일.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 매니저 KPI에 인재 송출·유입 지표 추가</div>
+        <div class="card-sub">팀 이동을 손해가 아니라 성과로 인정. 문화의 핵심.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">⑤ 분기마다 시장 데이터로 갱신</div>
+        <div class="card-sub">매칭률·이동률·이탈률을 HR↔Tech 공동 위원회에서 검수.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">063 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 63</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s64" data-n="64">
+  <div class="eyebrow cyan">KPI</div>
+  <h2 class="content-title">ITM 운영 KPI</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">매칭률 — 공고당 적합 후보 비율 / 시간</div>
+        <div class="card-sub">공고 1건당 N명 후보가 매칭되는가, 며칠 안에 매칭되는가.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">사내 이동률 — 외부 채용 대비 사내 이동 비율</div>
+        <div class="card-sub">신규 충원에서 사내 이동이 차지하는 비중.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">스킬 성장률 — 매칭 후 스킬 매트릭스 변화량</div>
+        <div class="card-sub">프로젝트·gigs 후 어떤 스킬이 어느 정도 자랐는가.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">문화 신호 — 직원 인식 'AX 시대 사내 기회'</div>
+        <div class="card-sub">정기 서베이 — '내가 자랄 자리가 있다'는 신호.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">064 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 64</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s65" data-n="65">
+  <div class="eyebrow cyan">RISKS</div>
+  <h2 class="content-title">ITM 도입 리스크와 대응</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">매니저의 '인재 빼앗김' 거부감</div>
+        <div class="card-sub">→ 매니저 KPI에 송출 지표 포함, 사례·문화 메시지.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">알고리즘 편향·형평 문제</div>
+        <div class="card-sub">→ 가드레일 (성별·연령·국적 등 제외), 분기 감사.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">익명 매칭 시 책임 추적 어려움</div>
+        <div class="card-sub">→ 매니저 협의 단계 의무화 + 사후 리뷰 의무.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">'gigs 위주' 본업 약화</div>
+        <div class="card-sub">→ 본업 80% 정책 명문화 + 시간 가드레일.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">065 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 65</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s66" data-n="66">
+  <div class="eyebrow cyan">WRAP</div>
+  <h2 class="content-title">Chapter 9 마무리 — 성공 조건 3가지</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① CEO·CHRO·CTO가 같은 본문에 등장한다</div>
+        <div class="card-sub">ITM은 HR 단독 프로젝트가 될 수 없다. 세 자리의 합의가 전제.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 매니저 평가에 '인재 송출' 지표가 들어간다</div>
+        <div class="card-sub">사람이 떠나는 걸 손해로 보지 않는 문화의 도구.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 한국형 시작점은 직무기반 + 잡포스팅 + 스킬 매트릭스</div>
+        <div class="card-sub">전면 ITM은 아니어도, 한국 대기업에서 즉시 시작 가능한 형태.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">066 / 100</div>
+  <div class="page-section mono">PART 3 / CH.09 / 66</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s67" data-n="67">
+  <div class="big-quote mint">"</div>
+  <p class="quote-text">세 시도가 만나는 곳에서<br>조직은 새로 짜인다.</p>
+  <div class="neon-bar mint small"></div>
+  <p class="quote-by">— Part 3 마무리</p>
+  
+  <div class="page-num mono">067 / 100</div>
+  <div class="page-section mono">PART 3 / OUTRO / 67</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s68" data-n="68">
+  <div class="eyebrow cyan">SIG ASSETS</div>
+  <h2 class="content-title">시그니처 자산 3 — Part 3의 정수</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① EPOCH 한국형 매핑 (Ch 7) — 15칸 표</div>
+        <div class="card-sub">MIT Sloan EPOCH × 한국 직무 유형 3.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② Cornell 2025 인과 카드 (Ch 8)</div>
+        <div class="card-sub">성과 보상 → 학습 → AI 채택 → 생산성의 인과 사슬.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ Schneider·Unilever ↔ 삼성·롯데 짝 비교 (Ch 9)</div>
+        <div class="card-sub">글로벌 교과서와 한국 실천의 짝 비교 표. 한국형 ITM 첫 매뉴얼.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">068 / 100</div>
+  <div class="page-section mono">PART 3 / SIG / 68</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s69" data-n="69">
+  <div class="eyebrow cyan">HONESTY</div>
+  <h2 class="content-title">정직한 한 페이지</h2>
+  <div class="neon-bar cyan small"></div>
+  <ul class="agenda-list"><li>이 책에는 우리가 틀릴 수 있는 9가지가 적혀 있다.</li><li>예측은 항상 틀릴 수 있다. 한국 평가 문화에서의 Cornell 재현은 미검증.</li></ul>
+  
+  <div class="page-num mono">069 / 100</div>
+  <div class="page-section mono">INTERLUDE / 69</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s70" data-n="70">
+  <div class="eyebrow cyan">CAVEATS</div>
+  <h2 class="content-title">우리가 틀릴 수 있는 9가지</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-9">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① AX 발전 속도가 둔화될 수 있다</div>
+        <div class="card-sub">에이전트 신뢰도 향상이 더디면 일 재정의 속도도 늦어진다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 노동법·노조 환경이 한국 ITM 도입을 막을 수 있다</div>
+        <div class="card-sub">직무급 전환 단계에서의 갈등이 ITM 전제 조건을 무너뜨릴 수 있음.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ EPOCH 한국형 매핑이 너무 단순할 수 있다</div>
+        <div class="card-sub">15칸 표가 모든 직군을 다 담지 못함. 사례별 확장 필요.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ Cornell 2025의 한국 평가 문화 재현은 미검증</div>
+        <div class="card-sub">본문에 정직하게 표기. 단계적 적용 권장.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">⑤ Schneider·Unilever 공개 수치가 과장될 수 있다</div>
+        <div class="card-sub">기업 자체 발표 자료. 외부 검증된 수치만 인용.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">06</div>
+        <div class="card-h">⑥ 삼성·롯데 사례 해석은 외부 관찰에 의존</div>
+        <div class="card-sub">내부 사정과 다를 수 있음.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">07</div>
+        <div class="card-h">⑦ 매니저 KPI 변화가 한국 문화와 충돌할 수 있다</div>
+        <div class="card-sub">단계적 적용 필요.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">08</div>
+        <div class="card-h">⑧ ITM 도입이 인력 감축의 위장막이 될 위험</div>
+        <div class="card-sub">투명한 메시지·정책 필수.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">09</div>
+        <div class="card-h">⑨ 그래도 — 일과 조직의 재설계는 피할 수 없다</div>
+        <div class="card-sub">이 한 줄은 유효하다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">070 / 100</div>
+  <div class="page-section mono">INTERLUDE / 70</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide divider" id="s71" data-n="71">
+  <div class="div-grid">
+    <div class="div-left">
+      <div class="eyebrow amber">PART 4</div>
+      <div class="huge-num amber">4</div>
+    </div>
+    <div class="div-right">
+      <div class="neon-bar amber small"></div>
+      <h2 class="div-title">한국 AX 풍경</h2>
+      <p class="div-sub">안에서 본 풍경 · 대기업·스타트업·SI · HR↔Tech 협업 모델 · 90일 변화 관리.</p>
+    </div>
+  </div>
+  
+  <div class="page-num mono">071 / 100</div>
+  <div class="page-section mono">PART 4 / 71</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide chapter" id="s72" data-n="72">
+  <div class="ch-eyebrow amber">CHAPTER 10</div>
+  <h2 class="ch-title">한국 AX 풍경 — 안에서 본 풍경</h2>
+  <div class="neon-bar amber"></div>
+  <p class="ch-sub">발표는 빠르고 실행은 느리다 — 37%의 행동 양식</p>
+  
+  <div class="page-num mono">072 / 100</div>
+  <div class="page-section mono">PART 4 / CH.10 / 72</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s73" data-n="73">
+  <div class="eyebrow cyan">ENTERPRISE</div>
+  <h2 class="content-title">대기업 — 발표 vs 실행 격차</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">AX 선언은 빠르고 진심 도입은 느리다</div>
+        <div class="card-sub">발표는 분기마다 갱신, 실행은 일부 부서·일부 task에 머문다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">HR과 Tech가 같은 위원회에 앉기 시작했다 — 신호</div>
+        <div class="card-sub">전통적으로 분리되어 있던 두 자리의 통합이 진심 도입의 신호.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">진심 도입 37%의 행동 양식 — 본서의 매뉴얼</div>
+        <div class="card-sub">보상·평가·매니저 역할을 동시에 손대는 그룹이 37%.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">073 / 100</div>
+  <div class="page-section mono">PART 4 / 73</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s74" data-n="74">
+  <div class="eyebrow cyan">STARTUP</div>
+  <h2 class="content-title">스타트업 — Agentic-native 흐름</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">처음부터 Agentic Organization을 전제로 설계</div>
+        <div class="card-sub">AI-native 스타트업은 일부 task에서 에이전트를 디폴트로.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">매니저 한 명이 사람 N명 + 에이전트 M개를 운영</div>
+        <div class="card-sub">본서 Ch6 모델이 이미 자리잡은 곳.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">Skill Marketplace를 internal Slack 채널 단위로 운영</div>
+        <div class="card-sub">공식 ITM 없이도 인재 흐름이 빠르게 움직임.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">074 / 100</div>
+  <div class="page-section mono">PART 4 / 74</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s75" data-n="75">
+  <div class="eyebrow cyan">SI</div>
+  <h2 class="content-title">SI / 컨설팅 — 컨설팅의 부활</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">도구 도입 컨설팅에서 '재설계' 컨설팅으로</div>
+        <div class="card-sub">AX 컨설팅의 본질은 시스템 도입이 아니라 일·조직 재설계.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">FDE(Forward Deployed Engineer) 모델의 부활</div>
+        <div class="card-sub">사람과 모델을 같이 파는 컨설팅 — 시리즈 II와 같은 결론.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">한국 SI 대형사들이 AX 컨설팅으로 BM 피벗 중</div>
+        <div class="card-sub">LG CNS · 삼성SDS · 신세계I&amp;C · 액센츄어 한국법인 등.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">075 / 100</div>
+  <div class="page-section mono">PART 4 / 75</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s76" data-n="76">
+  <div class="eyebrow cyan">KR vs GLOBAL</div>
+  <h2 class="content-title">한국 vs 해외 — 시차와 차이</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="data">
+    <thead><tr><th>항목</th><th>해외 (US·EU)</th><th>한국</th></tr></thead>
+    <tbody><tr><th>AX 도입 시점</th><td>2023–2024 본격</td><td>2025–2026 본격</td></tr><tr><th>스킬급 도입</th><td>Schneider·Unilever 등 글로벌 표준</td><td>롯데·삼성 단계적 전환</td></tr><tr><th>ITM 성숙도</th><td>Gloat·Phenom 등 도구 보편화</td><td>사내 잡포스팅 + 알고리즘 매칭 결합 중</td></tr><tr><th>HR↔Tech 통합</th><td>공동 위원회 보편</td><td>선도 기업 중심 도입</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">076 / 100</div>
+  <div class="page-section mono">PART 4 / 76</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s77" data-n="77">
+  <div class="eyebrow cyan">FAILURE</div>
+  <h2 class="content-title">실패 사례 5가지 패턴</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① AI 도구만 깔고 일을 안 바꾼 케이스</div>
+        <div class="card-sub">1년 후 평가 — '도구 도입률은 높은데 매출 변화 없음'.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 매니저 평가를 안 바꾼 케이스</div>
+        <div class="card-sub">기존 평가표대로 운영 → 에이전트 활용 매니저가 손해.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 보상을 안 바꾼 케이스</div>
+        <div class="card-sub">스킬 학습에 대한 보상 신호 없음 → 학습이 안 일어남.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ HR과 Tech가 따로 결정한 케이스</div>
+        <div class="card-sub">도구 도입은 Tech가, 평가는 HR이 → 충돌·중단.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">⑤ 변화 관리에 사람을 안 둔 케이스</div>
+        <div class="card-sub">AX팀이 따로 없거나 한 명. 추진력 부족.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">077 / 100</div>
+  <div class="page-section mono">PART 4 / 77</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s78" data-n="78">
+  <div class="eyebrow cyan">SUCCESS</div>
+  <h2 class="content-title">성공 사례 5가지 패턴</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">① HR과 Tech가 같은 위원회에 앉는다</div>
+        <div class="card-sub">주간·월간 정기 회의 + 공동 의사결정 권한.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">② 매니저 KPI를 가장 먼저 손댄다</div>
+        <div class="card-sub">사람·에이전트·task 운영 능력을 평가에 포함.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">③ 보상의 10–20%를 스킬급으로 분리한다</div>
+        <div class="card-sub">단번에 50%로 가지 않는다. 단계적 비중 확대.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">④ 사내 잡포스팅을 ITM의 0단계로 활용한다</div>
+        <div class="card-sub">기존 인프라 위에 알고리즘·스킬 매트릭스 layer 얹기.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">⑤ AX팀을 별도 조직으로 두고 변화 관리 전담</div>
+        <div class="card-sub">5–15명 규모. HR·Tech 출신 혼성. CEO 직속.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">078 / 100</div>
+  <div class="page-section mono">PART 4 / 78</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s79" data-n="79">
+  <div class="eyebrow cyan">CHRO</div>
+  <h2 class="content-title">HR 리더의 역할 변화</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">'운영'에서 '재설계'로</div>
+        <div class="card-sub">인사 운영에서 일·조직 설계로 — AX는 HR의 존재이유를 재정의한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">스킬 매트릭스의 owner</div>
+        <div class="card-sub">직무 카탈로그 → 스킬 매트릭스로 단위 전환을 주도.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">매니저 평가 재설계의 owner</div>
+        <div class="card-sub">에이전트와 함께 일하는 매니저를 평가하는 표를 만든다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Tech 리더와의 공동 의사결정 파트너</div>
+        <div class="card-sub">CTO와 같은 본문에서 정책을 만드는 자리.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">079 / 100</div>
+  <div class="page-section mono">PART 4 / 79</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s80" data-n="80">
+  <div class="eyebrow cyan">CTO</div>
+  <h2 class="content-title">CTO·기술 리더의 역할 변화</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">'기술 도입'에서 '워크플로우 재설계'로</div>
+        <div class="card-sub">도구를 사는 사람이 아니라 일감을 다시 짜는 사람.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">에이전트 운영 표준 (AgentOps)의 owner</div>
+        <div class="card-sub">사내 에이전트 신뢰도·비용·가드레일의 책임.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">매니저 트레이닝의 공동 owner</div>
+        <div class="card-sub">HR과 함께 매니저를 에이전트 매니저로 키운다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Skill Marketplace 알고리즘 거버넌스 파트너</div>
+        <div class="card-sub">기술적 매칭 알고리즘의 편향·형평 가드레일.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">080 / 100</div>
+  <div class="page-section mono">PART 4 / 80</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s81" data-n="81">
+  <div class="eyebrow cyan">HR x TECH</div>
+  <h2 class="content-title">HR ↔ Tech 협업 모델</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="col-title cyan">공동 위원회 (월간) 의제</div>
+      <ul><li>스킬 매트릭스 갱신 검토</li><li>매니저 평가 사례 리뷰</li><li>ITM 매칭률·이동률 리뷰</li><li>AX 변화 관리 인시던트 점검</li><li>직원 인식 서베이 분석</li></ul>
+    </div>
+    <div class="col">
+      <div class="col-title amber">협업의 원칙 — 같은 본문</div>
+      <ul><li>같은 표를 본다 (스킬 매트릭스·15칸 EPOCH)</li><li>같은 KPI를 본다 (매칭률·이동률·신뢰도)</li><li>같은 사용자(직원)를 본다</li><li>결정 권한이 동등 (CEO 보고 공동)</li><li>분기마다 두 자리 명패가 같이 적힌다</li></ul>
+    </div>
+  </div>
+  
+  <div class="page-num mono">081 / 100</div>
+  <div class="page-section mono">PART 4 / 81</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s82" data-n="82">
+  <div class="eyebrow cyan">90 DAYS</div>
+  <h2 class="content-title">AX 변화 관리 90일 플랜</h2>
+  <div class="neon-bar cyan small"></div>
+  <ul class="agenda-list"><li>Day 1–30 진단 — 현재 어디에 서 있나</li><li>Day 31–60 설계 — 무엇을 바꿀 것인가</li><li>Day 61–90 실행 — 어디서부터 시작할 것인가</li><li>두려움(막연함)을 일정표(체크리스트)로 바꾼다.</li></ul>
+  
+  <div class="page-num mono">082 / 100</div>
+  <div class="page-section mono">PART 4 / 90D / 82</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s83" data-n="83">
+  <div class="eyebrow cyan">D1 – D30</div>
+  <h2 class="content-title">Day 1–30 진단</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">Week 1 — HR↔Tech 합동 진단 위원회 발족</div>
+        <div class="card-sub">CHRO·CTO·AX 리더 3자 정기 회의 셋업.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Week 2 — 95% 실패 패턴 자가 점검</div>
+        <div class="card-sub">도구·매니저·보상·KPI·인식 5축 진단.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">Week 3 — 직군 3개 선정 → task 분해 시작</div>
+        <div class="card-sub">기획·엔지니어링·운영 각 1팀씩 파일럿.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Week 4 — 직원 인식 서베이 baseline</div>
+        <div class="card-sub">'AX 시대 우리 회사 자리가 있나' 등 핵심 문항.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">083 / 100</div>
+  <div class="page-section mono">PART 4 / D1-D30 / 83</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s84" data-n="84">
+  <div class="eyebrow cyan">D31 – D60</div>
+  <h2 class="content-title">Day 31–60 설계</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">Week 5 — EPOCH 한국형 매핑 직군별 초안</div>
+        <div class="card-sub">15칸 표 — 회사 직군 분류에 맞춘 적용본 작성.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Week 6 — 스킬 매트릭스 v0 (3개 직군)</div>
+        <div class="card-sub">Ch8 가이드대로 직군별 핵심 스킬 정의.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">Week 7 — 매니저 KPI 재설계 초안</div>
+        <div class="card-sub">사람·에이전트·task 운영 지표 포함.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Week 8 — ITM 0단계 — 사내 잡포스팅 표준화</div>
+        <div class="card-sub">기존 사내 채용 프로세스 위에 스킬·매칭 layer.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">084 / 100</div>
+  <div class="page-section mono">PART 4 / D31-D60 / 84</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s85" data-n="85">
+  <div class="eyebrow cyan">D61 – D90</div>
+  <h2 class="content-title">Day 61–90 실행</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">Week 9 — 3개 직군 EPOCH·스킬 매트릭스 적용 시작</div>
+        <div class="card-sub">분기 평가 사이클에 반영. 직원 설명회 동반.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Week 10 — 매니저 트레이닝 첫 워크숍</div>
+        <div class="card-sub">에이전트 매니저로서의 역할 정의 + 케이스 학습.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">Week 11 — ITM 첫 공고 5건 + 매칭 데모</div>
+        <div class="card-sub">스킬 매트릭스 기반 알고리즘 매칭 시범 운영.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">Week 12 — 90일 결과 리포트 → 다음 분기 계획</div>
+        <div class="card-sub">성과·리스크·인식 서베이 결과를 HR↔Tech 공동 발표.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">085 / 100</div>
+  <div class="page-section mono">PART 4 / D61-D90 / 85</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide quote" id="s86" data-n="86">
+  <div class="big-quote amber">"</div>
+  <p class="quote-text">코드 너머의 시대를 사는 사람의 자리에서,<br>코드 너머의 조직이 자란다.</p>
+  <div class="neon-bar amber small"></div>
+  <p class="quote-by">— 에필로그</p>
+  
+  <div class="page-num mono">086 / 100</div>
+  <div class="page-section mono">EPILOGUE / 86</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s87" data-n="87">
+  <div class="eyebrow cyan">SERIES</div>
+  <h2 class="content-title">시리즈 3권의 의미 — 내면 → 외형 → 환경</h2>
+  <div class="neon-bar cyan small"></div>
+  <table class="data">
+    <thead><tr><th>권</th><th>다루는 층</th><th>핵심 질문</th></tr></thead>
+    <tbody><tr><th>I 코드 너머의 시대</th><td>사람의 내면 (역량·태도)</td><td>어떤 사람으로 살아남을까</td></tr><tr><th>II 코드 너머의 직업들</th><td>사람의 외형 (직업·자리)</td><td>어떤 자리에서 살아남을까</td></tr><tr><th>III 코드 너머의 조직</th><td>사람의 환경 (조직)</td><td>어떤 조직으로 살아남을까</td></tr></tbody>
+  </table>
+  
+  <div class="page-num mono">087 / 100</div>
+  <div class="page-section mono">EPILOGUE / SERIES / 87</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s88" data-n="88">
+  <div class="eyebrow cyan">SIG ASSET ①</div>
+  <h2 class="content-title">시그니처 자산 ① — EPOCH 한국형 매핑 (Ch 7)</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">MIT Sloan EPOCH × 한국 직무 유형 3 = 15칸 표</div>
+        <div class="card-sub">기획형·엔지니어링형·운영형 직군과 E·P·O·C·H의 매트릭스.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">KPI 재설계의 출발점</div>
+        <div class="card-sub">직군별 5요소 상위 2개 가중 → 분기 단위 조정.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">HR↔Tech 공동 검수 도구</div>
+        <div class="card-sub">두 조직이 같은 표를 보면서 형평·일관성을 합의.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">088 / 100</div>
+  <div class="page-section mono">SIG / 88</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s89" data-n="89">
+  <div class="eyebrow cyan">SIG ASSET ②</div>
+  <h2 class="content-title">시그니처 자산 ② — Cornell 2025 인과 카드 (Ch 8)</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">성과 보상 → 학습 → AI 채택 → 생산성 — 4단계 인과 사슬</div>
+        <div class="card-sub">보상이 동기를 키우고, 동기가 채택을 끌어올린다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Skills-based pay의 정책적 근거</div>
+        <div class="card-sub">직무급에서 스킬급으로의 부분 전환을 정당화.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">한국 평가 문화에서의 재현은 미검증 — 정직 표기</div>
+        <div class="card-sub">단계적 적용을 권고. 본서가 검증하지 않은 한계.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">089 / 100</div>
+  <div class="page-section mono">SIG / 89</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s90" data-n="90">
+  <div class="eyebrow cyan">SIG ASSET ③</div>
+  <h2 class="content-title">시그니처 자산 ③ — Schneider·Unilever ↔ 삼성·롯데 짝 비교 (Ch 9)</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">Schneider Open Talent Market ↔ 삼성 잡포스팅</div>
+        <div class="card-sub">글로벌 ITM 표준과 한국 사내 공모의 짝 비교.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Unilever Flex Experiences ↔ 롯데 직무기반 전환</div>
+        <div class="card-sub">20% 시간 정책과 직급 → 직무 전환의 짝 비교.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">한국형 ITM의 첫 본격 매뉴얼</div>
+        <div class="card-sub">직무기반 + 잡포스팅 + 스킬 매트릭스 + 알고리즘 매칭 = 한국형.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">090 / 100</div>
+  <div class="page-section mono">SIG / 90</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s91" data-n="91">
+  <div class="eyebrow cyan">READERS</div>
+  <h2 class="content-title">누가 읽으면 좋은가</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">1순위 — HR 리더·조직개발·변화 관리자 + 기술 리더(CTO·VP)</div>
+        <div class="card-sub">두 자리가 같은 본문에서 만나야 AX가 진심 도입된다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">2순위 — 시리즈 I·II 독자 중 리더 위치로 올라간 분</div>
+        <div class="card-sub">내면(I) → 외형(II) → 환경(III) 으로 시야 확장.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">부차 — 컨설팅·SI에서 AX 컨설팅으로 BM 피벗 중인 분</div>
+        <div class="card-sub">고객사에 적용할 매뉴얼이 필요한 분.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">091 / 100</div>
+  <div class="page-section mono">RECAP / READERS / 91</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s92" data-n="92">
+  <div class="eyebrow cyan">LIMITS</div>
+  <h2 class="content-title">정직한 한계</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">9장 한국 ITM 실 운영 사례 — 2판 보강 예정</div>
+        <div class="card-sub">인터뷰 후보 5명을 본문에 명시. 1판은 공개 자료 중심.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">Cornell 2025 인과의 한국 평가 문화 재현 — 미검증</div>
+        <div class="card-sub">본문에 정직하게 표기. 단계적 적용 권장.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">저자 김상기 SKT 근무 — CIC 사례는 공개 자료·외부 관찰만</div>
+        <div class="card-sub">내부 정보 사용 0. 외부에서 본 풍경만으로 다룸.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">092 / 100</div>
+  <div class="page-section mono">RECAP / LIMITS / 92</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s93" data-n="93">
+  <div class="eyebrow cyan">v1.1.0</div>
+  <h2 class="content-title">v1.1.0 변경 사항 — 분량 60% 축소의 의도</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">HR↔Eng 메타포 짝 구조 제거</div>
+        <div class="card-sub">구조 단순화. 같은 본문 안에서 두 청중을 동시에 만나는 형태.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">빅4·EPOCH·Cornell·Vaccaro 인용 반복 제거</div>
+        <div class="card-sub">각 자료 본문 1~2회만. 인용보다 한국 적용에 집중.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">분량 대폭 감축 — 125K → 53K 자 (~60% 축소)</div>
+        <div class="card-sub">본문 핵심에만 집중. 부록·로드맵 일부는 시리즈 II로 이동.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">직군 카탈로그는 시리즈 II '코드 너머의 직업들' 부록으로</div>
+        <div class="card-sub">Hybrid Manager·AI Coach·AX Communications 등 신직군은 II에서.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">093 / 100</div>
+  <div class="page-section mono">RECAP / v1.1.0 / 93</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s94" data-n="94">
+  <div class="eyebrow cyan">ARGUMENT</div>
+  <h2 class="content-title">핵심 메시지 재정리</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">AX는 기술 도입이 아니라 일과 조직의 재설계다</div>
+        <div class="card-sub">DX와 결정적으로 다른 본질. 95%가 놓치는 지점.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">HR과 Tech가 같은 본문 안에서 만나야 한다</div>
+        <div class="card-sub">두 자리의 통합이 진심 도입 37%의 첫 행동 양식.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">EPOCH·Skills-based pay·Skill Marketplace의 세 시도</div>
+        <div class="card-sub">성과·보상·시장 세 축에서 동시에 손대는 것이 매뉴얼.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">094 / 100</div>
+  <div class="page-section mono">RECAP / KEY / 94</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s95" data-n="95">
+  <div class="eyebrow cyan">NEXT STEP</div>
+  <h2 class="content-title">Next Action — 청중 유형별 다음 한 걸음</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">CHRO·HR 리더 — 스킬 매트릭스 v0 + EPOCH 매핑 시작</div>
+        <div class="card-sub">직군 3개부터 90일 사이클로 시작. CTO와 공동 위원회 발족.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">CTO·VP — 매니저 평가 재설계 초안 + AgentOps 표준화</div>
+        <div class="card-sub">에이전트 운영 KPI를 매니저 평가에 포함. HR과 공동 검수.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">AX팀 리드 — 90일 변화 관리 플랜 가동</div>
+        <div class="card-sub">Day 1–30 진단부터 시작. 본서의 90일 표를 그대로.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">기여자 — 자기 task 분해 + 스킬 자가 매트릭스</div>
+        <div class="card-sub">내 직무를 task로 쪼개고, 어떤 스킬을 증명할지 정한다.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">095 / 100</div>
+  <div class="page-section mono">RECAP / NEXT / 95</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s96" data-n="96">
+  <div class="eyebrow cyan">FAQ 01</div>
+  <h2 class="content-title">자주 받는 질문 ① — DX와 AX의 차이</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">질문 — '그냥 DX의 한 단계 아닌가?'</div>
+        <div class="card-sub">답 — DX는 시스템·도구 단위, AX는 일·조직의 재설계.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">DX 사고로 AX를 다루면 95%의 실패 패턴에 든다</div>
+        <div class="card-sub">도입은 했는데 일이 그대로 → 가치 0. 진심 도입 37%만 결과를 만든다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">두 단어를 같이 쓰지 말자 — 의미가 다르다</div>
+        <div class="card-sub">사내 메시지에서 DX·AX 구분 명확화가 진심 도입의 첫 행동.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">096 / 100</div>
+  <div class="page-section mono">Q&amp;A / 96</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s97" data-n="97">
+  <div class="eyebrow cyan">FAQ 02</div>
+  <h2 class="content-title">자주 받는 질문 ② — Skills-based pay 도입 부담</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">질문 — '한국에서 스킬급 전면 도입은 불가능하지 않나?'</div>
+        <div class="card-sub">답 — 전면 도입 X. 10–20% 비중으로 부분 도입부터.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">직무급 전환 중간에 스킬급 일부를 더하는 하이브리드</div>
+        <div class="card-sub">롯데 직무기반 + 스킬급 비중 = 한국형 현실 경로.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">노조·노동법 변수는 단계적 적용으로 완충</div>
+        <div class="card-sub">임금 협상 사이클에 맞춰 분기 단위 비중 조정.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">097 / 100</div>
+  <div class="page-section mono">Q&amp;A / 97</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s98" data-n="98">
+  <div class="eyebrow cyan">FAQ 03</div>
+  <h2 class="content-title">자주 받는 질문 ③ — Skill Marketplace를 작은 회사도?</h2>
+  <div class="neon-bar cyan small"></div>
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">질문 — '300명짜리 회사도 ITM 가능한가?'</div>
+        <div class="card-sub">답 — 가능. Slack 채널 + 스킬 매트릭스 v0 + 매니저 협의.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">도구는 작아도 원리는 동일 — 사람·일·스킬의 매칭 시장</div>
+        <div class="card-sub">Gloat 같은 외부 도구 없이도 시작 가능.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">작은 회사의 강점 — 매니저 협의 + 신뢰가 빠르다</div>
+        <div class="card-sub">대기업처럼 알고리즘 의존도 낮음. 매니저 평가 KPI 추가만으로 시작.</div>
+      </div>
+  </div>
+  
+  <div class="page-num mono">098 / 100</div>
+  <div class="page-section mono">Q&amp;A / 98</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide content" id="s99" data-n="99">
+  <div class="eyebrow cyan">QUESTIONS</div>
+  <h2 class="content-title">Q &amp; A</h2>
+  <div class="neon-bar cyan small"></div>
+  <ul class="agenda-list"><li>무엇이든 물어보세요 — EPOCH 매핑 · Skills-based pay · Skill Marketplace · 회사 사정.</li><li>가장 자주 받는 질문: "우리 회사에서는 어디부터 시작할까?"</li><li>답 — 직군 3개 · 90일 사이클 · HR↔Tech 공동 위원회 발족.</li></ul>
+  
+  <div class="page-num mono">099 / 100</div>
+  <div class="page-section mono">Q&amp;A / 99</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+
+<section class="slide cover thanks" id="s100" data-n="100">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="cover-wrap">
+    <div class="eyebrow amber">// END OF SESSION</div>
+    <h1 class="cover-title huge">감사합니다</h1>
+    <div class="neon-bar amber"></div>
+    <p class="cover-quote cyan">"코드 너머의 시대를 사는 사람의 자리에서, 코드 너머의 조직이 자란다."</p>
+    <div class="info-list">
+      <div><span class="k amber">BOOK</span><span>코드 너머의 조직 — AX 시대, 일과 조직을 다시 짜는 법 (시리즈 III)</span></div>
+      <div><span class="k amber">GITHUB</span><a href="https://github.com/ksangki/beyond-code-org" target="_blank">github.com/ksangki/beyond-code-org</a></div>
+      <div><span class="k amber">AUTHOR</span><span>김상기 · 2026 · v1.1.0</span></div>
+      <div><span class="k amber">SERIES</span><span>I 코드 너머의 시대 · II 코드 너머의 직업들 · III 코드 너머의 조직</span></div>
+    </div>
+  </div>
+  
+  <div class="page-num mono">100 / 100</div>
+  <div class="page-section mono">END / 100</div>
+  <div class="page-footer">
+    <span>코드 너머의 조직 · AX 시대, 일과 조직을 다시 짜는 법</span>
+    <span>김상기 · ksangki/beyond-code-org · 시리즈 III</span>
+  </div>
+</section>
+</main>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const indicator = document.getElementById('page-indicator');
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  function update() {
+    const pct = ((current+1) / slides.length) * 100;
+    progress.style.width = pct + '%';
+    indicator.textContent = String(current+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+  }
+
+  function goTo(i) {
+    i = Math.max(0, Math.min(slides.length-1, i));
+    current = i;
+    slides[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    update();
+  }
+  function goPrev() { goTo(current-1); }
+  function goNext() { goTo(current+1); }
+
+  // Track scroll to update current slide
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > 0.4) {
+        const n = parseInt(e.target.dataset.n);
+        current = n - 1;
+        update();
+      }
+    });
+  }, { threshold: [0.4] });
+  slides.forEach(s => obs.observe(s));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault(); goNext();
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); goPrev();
+    }
+    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    if (e.key === 'End') { e.preventDefault(); goTo(slides.length-1); }
+  });
+
+  // Hash navigation
+  if (location.hash) {
+    const id = location.hash.slice(1);
+    const el = document.getElementById(id);
+    if (el) { current = parseInt(el.dataset.n) - 1; }
+  }
+  update();
+</script>
+</body>
+</html>
