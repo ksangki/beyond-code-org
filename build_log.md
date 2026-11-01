@@ -1,8 +1,8 @@
-# Build Log — 코드 너머의 조직 v1.2.2
+# Build Log — 코드 너머의 조직 v1.2.3
 
-- **Date:** 2026-11-01T00:01:30Z
-- **Output:** `코드-너머의-조직-v1.2.2.epub`
-- **Size:** 177721 bytes
+- **Date:** 2026-11-01T00:48:57Z
+- **Output:** `코드-너머의-조직-v1.2.3.epub`
+- **Size:** 177733 bytes
 - **Pandoc exit:** 0
 - **epubcheck:** passed
 - **epubcheck strict:** 1
@@ -14,7 +14,7 @@
 - title: 코드 너머의 조직
 - author: 김상기
 - language: ko
-- version: 1.2.2
+- version: 1.2.3
 - pub_date: 2026-05-17
 - identifier: urn:uuid:7a1501cb-6d3e-405c-819e-b0812696459c
 - license: CC BY-NC-SA 4.0

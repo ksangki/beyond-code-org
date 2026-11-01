@@ -89,4 +89,4 @@ Rutgers·Harvard의 Kruse·Freeman·Blasi가 2010년 NBER에 발표한 *Shared C
 
 8장은 Dario Amodei의 사내 메모 한 줄로 닫습니다. *"여러분은 미션을 보고 왔습니다."* 미션도 *액수의 짝*입니다. 보상 시스템의 가장 작은 단위는 *돈과 미션과 유동성과 재량의 묶음*입니다.
 
-다음 장이 본서의 시그니처 챕터입니다. *Skill Marketplace — Schneider·Unilever의 교과서와 한국의 짝*.
+다음 장이 본서의 시그니처 챕터입니다. *Skill Marketplace — 회사 안에 인재 시장을 만들기*.
