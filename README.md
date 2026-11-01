@@ -10,7 +10,7 @@
 
 - **웹 버전**: [GitHub Pages에서 읽기](https://ksangki.github.io/beyond-code-org/)
 - **오프닝 영상**: [60초 모션그래픽](https://ksangki.github.io/beyond-code-org/media/opening.mp4) · 웹 버전 첫 화면에도 실려 있다
-- **EPUB**: [`코드-너머의-조직-v1.2.1.epub`](docs/epub/코드-너머의-조직-v1.2.1.epub) 다운로드
+- **EPUB**: [`코드-너머의-조직-v1.2.2.epub`](docs/epub/코드-너머의-조직-v1.2.2.epub) 다운로드
 
 ## 목차
 
@@ -25,7 +25,7 @@
 | | 6장 | Agentic Organization과 매니저 재정의 |
 | **PART 3** | 7장 | 새로운 성과 관리 — EPOCH의 한국형 매핑 |
 | AX 실행 세 시도 | 8장 | 새로운 기여자 보상 — Skills-based pay와 한국의 직무기반 전환 |
-| | 9장 | Skill Marketplace ⭐ — Schneider·Unilever의 교과서와 한국의 짝 |
+| | 9장 | Skill Marketplace ⭐ — 회사 안에 인재 시장을 만들기 |
 | **막간** | | 정직한 한 페이지: 우리가 틀릴 수 있는 9가지 |
 | **PART 4** | 10장 | 한국 AX 풍경 — 안에서 겪은 풍경 |
 | | 에필로그 | 코드 너머의 조직 — 사람의 자리는 새로 만들어진다 |
@@ -62,7 +62,10 @@
 
 - 본서 9장의 *한국 ITM 실 운영 사례*는 *2판 보강*으로 남겨두었습니다. 인터뷰 후보 5명을 본문에 명시.
 - Cornell 2025의 *한국 평가 문화 재현*은 미검증입니다. 본문에 정직하게 표기.
-- 저자 김상기는 SKT 근무 중이며, SKT 양대 CIC 사례는 *공개 자료와 외부 관찰만*으로 본문에 다루었습니다.
+
+## v1.2.2 변경 사항
+
+- v1.2.2: 저자 소속 그룹 관련 문장 정리(PART 4 도입·간주곡·README), 9장 제목 표기 맞춤 (2026-11-01)
 
 ## v1.2.1 변경 사항
 
