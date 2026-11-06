@@ -1,11 +1,12 @@
-# 5장. 인간·AI 협업의 두 모드 — EPOCH + Centaur·Cyborg
+# 5장. 인간·AI 협업의 두 모드: EPOCH + Centaur·Cyborg
 
 > *"인간 능력 증강의 증거는 있었지만, 평균적으로 인간-AI 시너지는 발견되지 않았습니다."*
-> — Vaccaro·Almaatouq·Malone, *Nature Human Behaviour* (2024)
+>
+> Vaccaro·Almaatouq·Malone, *Nature Human Behaviour* (2024)
 
 현장 사례 세 가지를 먼저 보고, 학술 자료는 *짧은 박스 네 개*로 나눠 정리합니다.
 
-> **인간·AI 협업에는 *Augmentation(능력 증강)*과 *Synergy(시너지)* 두 모드가 있고, 평균적으로 *Augmentation*만 자연스럽게 작동한다. *Synergy*는 *조직의 재설계*가 따라온 곳에서만 나타난다.**
+> **인간·AI 협업에는 *Augmentation(능력 증강)*과 *Synergy(시너지)* 두 모드가 있고, 평균적으로 *Augmentation*만 자연스럽게 작동한다. *Synergy*는 *조직의 재설계*를 함께 한 곳에서만 나타난다.**
 
 ---
 
@@ -21,15 +22,15 @@
 
 ---
 
-## 박스 1 — EPOCH 프레임 (인간 고유 능력 5요소)
+## 박스 1: EPOCH 프레임 (인간 고유 능력 5요소)
 
 MIT Sloan의 Loaiza와 Rigobon이 2024년에 *The EPOCH of AI*라는 연구를 발표했습니다. *AI가 자동화하기 어려운 인간 고유 능력*을 *5요소*로 정리했습니다. 다섯 글자의 머리글자가 EPOCH입니다.
 
-- **E**mpathy — 공감. 타인의 감정·맥락을 읽는 능력.
-- **P**resence — 현장 존재감. 현장에 있어야 작동하는 신체·사회적 감각.
-- **O**pinion·Judgment·Ethics — 의견·판단·윤리. 가치 판단과 윤리적 결정.
-- **C**reativity — 창의성. 새 패턴·아이디어를 만드는 능력.
-- **H**ope·Vision·Leadership — 비전·리더십. 미래 설계와 사람을 모으는 능력.
+- **E**mpathy: 공감. 타인의 감정·맥락을 읽는 능력.
+- **P**resence: 현장 존재감. 현장에 있어야 작동하는 신체·사회적 감각.
+- **O**pinion·Judgment·Ethics: 의견·판단·윤리. 가치 판단과 윤리적 결정.
+- **C**reativity: 창의성. 새 패턴·아이디어를 만드는 능력.
+- **H**ope·Vision·Leadership: 비전·리더십. 미래 설계와 사람을 모으는 능력.
 
 연구진이 *미국 모든 직업의 task*를 측정했을 때, *EPOCH 점수가 높은 task일수록 고용 증가와 양(+)의 상관* 관계가 있었습니다. 다섯 요소 중 *Hope 능력*이 가장 큰 영향력을 보였습니다. *비전과 리더십을 가진 사람의 자리가 가장 안전*하다는 진단.
 
@@ -37,18 +38,18 @@ EPOCH는 본서 7장 *새로운 성과 관리*의 학술 토대가 됩니다.
 
 ---
 
-## 박스 2 — Centaur vs Cyborg (두 협업 스타일)
+## 박스 2: Centaur vs Cyborg (두 협업 스타일)
 
 Harvard Business School의 Dell'Acqua와 동료 8명이 2023년에 발표한 *BCG 컨설턴트 758명* 실험. AI를 사용하는 사람들이 *두 협업 스타일*로 나뉘었습니다.
 
-- **Centaur(반인반마)** — 인간과 AI 사이에 *task를 분배·위임*합니다. *이건 내가 하고, 저건 AI에게 맡긴다*는 식. 명확한 경계 분할.
-- **Cyborg(사이보그)** — 워크플로우 자체를 AI와 *통합*합니다. 같은 task 안에서 *번갈아 가며* 작업.
+- **Centaur(반인반마)**: 인간과 AI 사이에 *task를 분배·위임*합니다. *이건 내가 하고, 저건 AI에게 맡긴다*는 식. 명확한 경계 분할.
+- **Cyborg(사이보그)**: 워크플로우 자체를 AI와 *통합*합니다. 같은 task 안에서 *번갈아 가며* 작업.
 
-두 스타일 모두 평균 성능을 올렸지만, *어느 쪽이 절대적으로 낫다*는 답은 없었습니다. *task의 위치*가 더 큰 변수입니다. *Jagged Frontier 안쪽 task*에서는 두 스타일 모두 작동하고, *바깥쪽 task*에서는 두 스타일 모두 -19% 손해를 봅니다. 본서가 반복적으로 짚을 *경계 식별 능력*이 여기서 정의됩니다.
+두 스타일 모두 평균 성능을 올렸지만, *어느 쪽이 절대적으로 낫다*는 결론은 나오지 않았습니다. *task의 위치*가 더 큰 변수입니다. *Jagged Frontier 안쪽 task*에서는 두 스타일 모두 작동하고, *바깥쪽 task*에서는 두 스타일 모두 -19% 손해를 봅니다. 본서가 반복적으로 짚을 *경계 식별 능력*이 여기서 정의됩니다.
 
 ---
 
-## 박스 3 — Brynjolfsson·Li·Raymond (콜센터 +34%)
+## 박스 3: Brynjolfsson·Li·Raymond (콜센터 +34%)
 
 위의 *콜센터 풍경*의 원전. Brynjolfsson(Stanford)·Li(MIT)·Raymond(MIT)가 2023년에 NBER로 발표하고 2025년 *Quarterly Journal of Economics*에 정식 게재된 *Generative AI at Work*. 콜센터 5,179명 자연 실험에서 *평균 +14%, 신입 +34%, 숙련자 거의 0%*.
 
@@ -58,7 +59,7 @@ Harvard Business School의 Dell'Acqua와 동료 8명이 2023년에 발표한 *BC
 
 ---
 
-## 박스 4 — Vaccaro (반박 메타분석)
+## 박스 4: Vaccaro (반박 메타분석)
 
 MIT의 Vaccaro·Almaatouq·Malone이 2024년에 *Nature Human Behaviour*에 발표한 메타분석. 2020~2023년 사이의 *106개 실험, 370개 효과 크기*를 종합 정리했습니다.
 
@@ -68,12 +69,12 @@ MIT의 Vaccaro·Almaatouq·Malone이 2024년에 *Nature Human Behaviour*에 발�
 
 ---
 
-## 두 모드 — Augmentation과 Synergy
+## 두 모드: Augmentation과 Synergy
 
 세 풍경과 네 박스를 합치면, 인간·AI 협업의 *두 모드*가 분명해집니다.
 
-- **Augmentation(능력 증강)** — 인간 단독보다 *결합*이 낫다. *인간 단독 < 인간+AI*. 콜센터 +14%·신입 +34%·Copilot +55.8%·BCG +43% — 모두 이 모드.
-- **Synergy(시너지)** — 인간 단독, AI 단독 *중 더 나은 쪽보다* 결합이 낫다. *훨씬 어려운 조건*. Vaccaro 메타분석이 *평균적으로 발견되지 않았다*고 한 모드.
+- **Augmentation(능력 증강)**: 인간 단독보다 *결합*이 낫다. *인간 단독 < 인간+AI*. 콜센터 +14%·신입 +34%·Copilot +55.8%·BCG +43%가 모두 이 모드.
+- **Synergy(시너지)**: 인간 단독, AI 단독 *중 더 나은 쪽보다* 결합이 낫다. *훨씬 어려운 조건*. Vaccaro 메타분석이 *평균적으로 발견되지 않았다*고 한 모드.
 
 대부분의 *AI 협업 광고*는 *Synergy*를 약속합니다. 그러나 학술이 측정한 평균은 *Augmentation* 수준. 그것도 *task가 Jagged Frontier 안쪽일 때만*.
 
@@ -85,8 +86,8 @@ MIT의 Vaccaro·Almaatouq·Malone이 2024년에 *Nature Human Behaviour*에 발�
 
 한국 회사 안으로 옮기면 실용 지침이 두 가지 나옵니다.
 
-첫째, *모든 task가 Jagged Frontier 안쪽이 아니라는 사실을 받아들이는 것*. AI에 모든 task를 던지는 *Cyborg 전략*이 늘 좋지는 않습니다. Frontier 바깥 task에서는 *Centaur* — 사람이 따로 처리 — 가 더 낫습니다.
+첫째, *모든 task가 Jagged Frontier 안쪽이 아니라는 사실을 받아들이는 것*. AI에 모든 task를 던지는 *Cyborg 전략*이 늘 좋지는 않습니다. Frontier 바깥 task에서는 사람이 따로 처리하는 *Centaur*가 더 낫습니다.
 
 둘째, *Synergy를 약속하지 않는 것*. 사내 보고에 *"AI 시너지"*를 약속하면 1~2년 뒤 *측정 가능하게 실패*합니다. *Augmentation을 정직하게 측정*하고, *Synergy로 가는 길*을 *조직 재설계의 시간 위*에 올려두는 것이 더 단단합니다.
 
-다음 장에서, 이 두 모드가 *조직 구조*에서 어떻게 작동하는지 — *Agentic Organization과 매니저 재정의* — 를 들여다보겠습니다.
+다음 장에서는 *Agentic Organization과 매니저 재정의*를 다루며, 이 두 모드가 *조직 구조*에서 어떻게 작동하는지 들여다보겠습니다.

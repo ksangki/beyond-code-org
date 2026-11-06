@@ -1,14 +1,14 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="author" content="김상기"><meta name="description" content="AX 시대, 일과 조직을 다시 짜는 법. 코드 너머의 시리즈 III v1.2.3."><title>코드 너머의 조직</title><style>
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="author" content="김상기"><meta name="description" content="AX 시대, 일과 조직을 다시 짜는 법. 코드 너머의 시리즈 III v1.2.4."><title>코드 너머의 조직</title><style>
   /* 모바일 사파리는 화면보다 넓은 블록의 글자를 제 나름대로 키운다.
      표가 옆으로 스크롤될 때 긴 열만 부풀어 같은 표 안에서 열마다 글자
      크기가 달라 보인다. 지정한 크기를 그대로 쓰게 한다. none이 아니라
      100%다 — none은 독자가 키운 글자 크기 설정까지 막는다. */
   html{-webkit-text-size-adjust:100%; text-size-adjust:100%}
-:root{--bg:#fafaf8;--fg:#1a1a1a;--accent:#d6336c;--muted:#6b7280;--border:#e5e5e0;--code-bg:#f3f3ee;--toc-bg:#fff;--max-w:740px}@media(prefers-color-scheme:dark){:root{--bg:#141418;--fg:#e5e5e5;--accent:#f06595;--muted:#9ca3af;--border:#2e2e2e;--code-bg:#1e1e1e;--toc-bg:#1c1c1c}}*{box-sizing:border-box;margin:0;padding:0}html{font-size:18px;scroll-behavior:smooth}body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--fg);line-height:1.85}.hero{text-align:center;padding:5rem 1.5rem 4rem;border-bottom:1px solid var(--border);max-width:900px;margin:0 auto}.hero h1{font-size:2.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}.hero .subtitle{font-size:1.15rem;color:var(--accent);font-weight:500;margin-bottom:1.5rem}.hero .meta{font-size:.85rem;color:var(--muted)}.wrapper{display:flex;max-width:1100px;margin:0 auto;gap:2rem}nav#TOC{position:sticky;top:1.5rem;align-self:flex-start;width:280px;flex-shrink:0;max-height:calc(100vh - 3rem);overflow-y:auto;padding:1.5rem 1rem;font-size:.78rem;line-height:1.6;background:var(--toc-bg);border-right:1px solid var(--border);border-radius:0 8px 8px 0}nav#TOC ul{list-style:none}nav#TOC>ul>li{margin-bottom:.6rem}nav#TOC ul ul{padding-left:1rem;margin-top:.2rem}nav#TOC a{color:var(--muted);text-decoration:none;transition:color .15s}nav#TOC a:hover{color:var(--accent)}main{flex:1;min-width:0;max-width:var(--max-w);padding:2.5rem 1.5rem 6rem}h1,h2,h3,h4{font-weight:700;letter-spacing:-.01em}h1{font-size:1.8rem;margin:3.5rem 0 1.2rem;padding-bottom:.5rem;border-bottom:2px solid var(--accent)}h2{font-size:1.35rem;margin:2.5rem 0 .8rem;color:var(--accent)}h3{font-size:1.1rem;margin:1.8rem 0 .6rem}p{margin-bottom:1rem}blockquote{border-left:3px solid var(--accent);padding:.8rem 1.2rem;margin:1.2rem 0;background:var(--code-bg);border-radius:0 6px 6px 0;color:var(--muted);font-size:.95rem}code{font-family:'JetBrains Mono','Fira Code',monospace;font-size:.85em;background:var(--code-bg);padding:.15em .4em;border-radius:4px}pre{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:1.2rem;overflow-x:auto;margin:1.2rem 0;font-size:.82rem;line-height:1.6}pre code{background:none;padding:0}table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.9rem}th,td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left}th{background:var(--code-bg);font-weight:600}ul,ol{margin:.8rem 0;padding-left:1.5rem}li{margin-bottom:.3rem}hr{border:none;border-top:1px solid var(--border);margin:3rem 0}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center}.back-top.show{opacity:.8}.back-top:hover{opacity:1}@media(max-width:860px){.wrapper{flex-direction:column}nav#TOC{position:relative;top:0;width:100%;max-height:none;border-right:none;border-bottom:1px solid var(--border);border-radius:0}main{padding:1.5rem 1rem 4rem}.hero{padding:3rem 1rem 2.5rem}.hero h1{font-size:1.8rem}}</style></head><body>
+:root{--bg:#fafaf8;--fg:#1a1a1a;--accent:#d6336c;--muted:#6b7280;--border:#e5e5e0;--code-bg:#f3f3ee;--toc-bg:#fff;--max-w:740px}@media(prefers-color-scheme:dark){:root{--bg:#141418;--fg:#e5e5e5;--accent:#f06595;--muted:#9ca3af;--border:#2e2e2e;--code-bg:#1e1e1e;--toc-bg:#1c1c1c}}*{box-sizing:border-box;margin:0;padding:0}html{font-size:18px;scroll-behavior:smooth}body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--fg);line-height:1.85}.hero{text-align:center;padding:5rem 1.5rem 4rem;border-bottom:1px solid var(--border);max-width:900px;margin:0 auto}.hero h1{font-size:2.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}.hero .subtitle{font-size:1.15rem;color:var(--accent);font-weight:500;margin-bottom:1.5rem}.hero .meta{font-size:.85rem;color:var(--muted)}.wrapper{display:flex;max-width:1100px;margin:0 auto;gap:2rem}nav#TOC{position:sticky;top:1.5rem;align-self:flex-start;width:280px;flex-shrink:0;max-height:calc(100vh - 3rem);overflow-y:auto;padding:1.5rem 1rem;font-size:.78rem;line-height:1.6;background:var(--toc-bg);border-right:1px solid var(--border);border-radius:0 8px 8px 0}nav#TOC ul{list-style:none}nav#TOC>ul>li{margin-bottom:.6rem}nav#TOC ul ul{padding-left:1rem;margin-top:.2rem}nav#TOC a{color:var(--muted);text-decoration:none;transition:color .15s}nav#TOC a:hover{color:var(--accent)}main{flex:1;min-width:0;max-width:var(--max-w);padding:2.5rem 1.5rem 6rem}h1,h2,h3,h4{font-weight:700;letter-spacing:-.01em}h1{font-size:1.8rem;margin:3.5rem 0 1.2rem;padding-bottom:.5rem;border-bottom:2px solid var(--accent)}h2{font-size:1.35rem;margin:2.5rem 0 .8rem;color:var(--accent)}h3{font-size:1.1rem;margin:1.8rem 0 .6rem}p{margin-bottom:1rem}blockquote{border-left:3px solid var(--accent);padding:.8rem 1.2rem;margin:1.2rem 0;background:var(--code-bg);border-radius:0 6px 6px 0;color:var(--muted);font-size:.95rem}code{font-family:'JetBrains Mono','Fira Code',monospace;font-size:.85em;background:var(--code-bg);padding:.15em .4em;border-radius:4px}pre{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:1.2rem;overflow-x:auto;margin:1.2rem 0;font-size:.82rem;line-height:1.6}pre code{background:none;padding:0}table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.9rem}@media(max-width:600px){table{display:block;overflow-x:auto}}main li,main p{overflow-wrap:break-word}th,td{border:1px solid var(--border);padding:.6rem .8rem;text-align:left}th{background:var(--code-bg);font-weight:600}ul,ol{margin:.8rem 0;padding-left:1.5rem}li{margin-bottom:.3rem}hr{border:none;border-top:1px solid var(--border);margin:3rem 0}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center}.back-top.show{opacity:.8}.back-top:hover{opacity:1}@media(max-width:860px){.wrapper{flex-direction:column}nav#TOC{position:relative;top:0;width:100%;max-height:none;border-right:none;border-bottom:1px solid var(--border);border-radius:0}main{padding:1.5rem 1rem 4rem}.hero{padding:3rem 1rem 2.5rem}.hero h1{font-size:1.8rem}}</style></head><body>
 <header class="hero">
   <h1>코드 너머의 조직</h1>
   <div class="subtitle">AX 시대, 일과 조직을 다시 짜는 법</div>
-  <div class="meta">저자: 김상기 · 2026 · 코드 너머의 시리즈 III · v1.2.3</div>
+  <div class="meta">저자: 김상기 · 2026 · 코드 너머의 시리즈 III · v1.2.4</div>
 </header>
 <figure class="opening-video" style="margin:1.5rem auto 2rem;max-width:960px">
 <video controls playsinline preload="metadata" poster="media/opening.jpg" style="width:100%;height:auto;border-radius:10px;display:block">
@@ -41,16 +41,16 @@ id="toc-본문에서-자주-만나는-용어들">본문에서 자주 만나는
 </ul></li>
 <li><a href="#프롤로그.-ax-동상이몽-같은-단어를-다른-의미로-쓰는-시대"
 id="toc-프롤로그.-ax-동상이몽-같은-단어를-다른-의미로-쓰는-시대">프롤로그.
-AX 동상이몽 — 같은 단어를 다른 의미로 쓰는 시대</a></li>
+AX 동상이몽: 같은 단어를 다른 의미로 쓰는 시대</a></li>
 <li><a href="#part-1.-ax란-무엇인가-일과-조직의-재설계"
-id="toc-part-1.-ax란-무엇인가-일과-조직의-재설계">PART 1. AX란 무엇인가
-— 일과 조직의 재설계</a></li>
+id="toc-part-1.-ax란-무엇인가-일과-조직의-재설계">PART 1. AX란 무엇인가:
+일과 조직의 재설계</a></li>
 <li><a href="#장.-ax는-dx가-아니다-결과-중심의-재설계"
-id="toc-장.-ax는-dx가-아니다-결과-중심의-재설계">1장. AX는 DX가 아니다 —
+id="toc-장.-ax는-dx가-아니다-결과-중심의-재설계">1장. AX는 DX가 아니다:
 결과 중심의 재설계</a>
 <ul>
-<li><a href="#dx와-ax-단위의-차이" id="toc-dx와-ax-단위의-차이">DX와 AX
-— 단위의 차이</a></li>
+<li><a href="#dx와-ax-단위의-차이" id="toc-dx와-ax-단위의-차이">DX와 AX:
+단위의 차이</a></li>
 <li><a href="#빅4가-같은-자리에서-던지는-결론"
 id="toc-빅4가-같은-자리에서-던지는-결론">빅4가 같은 자리에서 던지는
 결론</a></li>
@@ -67,21 +67,21 @@ id="toc-장.-95는-왜-가치를-만들지-못하는가">2장. 95%는 왜 가치
 <li><a href="#의-행동-양식" id="toc-의-행동-양식">5%의 행동
 양식</a></li>
 <li><a href="#학술-토대-hackman-자율팀-5조건"
-id="toc-학술-토대-hackman-자율팀-5조건">학술 토대 — Hackman 자율팀
+id="toc-학술-토대-hackman-자율팀-5조건">학술 토대: Hackman 자율팀
 5조건</a></li>
 <li><a href="#한국에-시사하는-한-가지"
 id="toc-한국에-시사하는-한-가지">한국에 시사하는 한 가지</a></li>
 </ul></li>
 <li><a href="#장.-한국이-보내는-신호-위에서-본-풍경"
-id="toc-장.-한국이-보내는-신호-위에서-본-풍경">3장. 한국이 보내는 신호 —
+id="toc-장.-한국이-보내는-신호-위에서-본-풍경">3장. 한국이 보내는 신호:
 위에서 본 풍경</a>
 <ul>
 <li><a href="#같은-분기-다른-약속" id="toc-같은-분기-다른-약속">같은
 분기, 다른 약속</a></li>
 <li><a href="#카카오네이버롯데-각기-다른-길"
-id="toc-카카오네이버롯데-각기-다른-길">카카오·네이버·롯데 — 각기 다른
+id="toc-카카오네이버롯데-각기-다른-길">카카오·네이버·롯데: 각기 다른
 길</a></li>
-<li><a href="#공공-신호-84-증액" id="toc-공공-신호-84-증액">공공 신호 —
+<li><a href="#공공-신호-84-증액" id="toc-공공-신호-84-증액">공공 신호:
 84% 증액</a></li>
 <li><a href="#공통-신호-다섯-가지" id="toc-공통-신호-다섯-가지">공통
 신호 다섯 가지</a></li>
@@ -89,16 +89,16 @@ id="toc-카카오네이버롯데-각기-다른-길">카카오·네이버·롯데
 질문</a></li>
 </ul></li>
 <li><a href="#part-2.-일의-재정의-작동-원리"
-id="toc-part-2.-일의-재정의-작동-원리">PART 2. 일의 재정의 — 작동
+id="toc-part-2.-일의-재정의-작동-원리">PART 2. 일의 재정의: 작동
 원리</a></li>
 <li><a href="#장.-직무에서-task로-작동-원리"
-id="toc-장.-직무에서-task로-작동-원리">4장. 직무에서 task로 — 작동
+id="toc-장.-직무에서-task로-작동-원리">4장. 직무에서 task로: 작동
 원리</a>
 <ul>
 <li><a href="#직무와-task-단위-차이"
-id="toc-직무와-task-단위-차이">직무와 task — 단위 차이</a></li>
+id="toc-직무와-task-단위-차이">직무와 task: 단위 차이</a></li>
 <li><a href="#정량-데이터-두-편의-큰-자료"
-id="toc-정량-데이터-두-편의-큰-자료">정량 데이터 — 두 편의 큰
+id="toc-정량-데이터-두-편의-큰-자료">정량 데이터: 두 편의 큰
 자료</a></li>
 <li><a href="#acemoglurestrepo의-task-프레임"
 id="toc-acemoglurestrepo의-task-프레임">Acemoglu·Restrepo의 task
@@ -108,23 +108,23 @@ id="toc-acemoglurestrepo의-task-프레임">Acemoglu·Restrepo의 task
 </ul></li>
 <li><a href="#장.-인간ai-협업의-두-모드-epoch-centaurcyborg"
 id="toc-장.-인간ai-협업의-두-모드-epoch-centaurcyborg">5장. 인간·AI
-협업의 두 모드 — EPOCH + Centaur·Cyborg</a>
+협업의 두 모드: EPOCH + Centaur·Cyborg</a>
 <ul>
 <li><a href="#세-풍경" id="toc-세-풍경">세 풍경</a></li>
 <li><a href="#박스-1-epoch-프레임-인간-고유-능력-5요소"
-id="toc-박스-1-epoch-프레임-인간-고유-능력-5요소">박스 1 — EPOCH 프레임
+id="toc-박스-1-epoch-프레임-인간-고유-능력-5요소">박스 1: EPOCH 프레임
 (인간 고유 능력 5요소)</a></li>
 <li><a href="#박스-2-centaur-vs-cyborg-두-협업-스타일"
-id="toc-박스-2-centaur-vs-cyborg-두-협업-스타일">박스 2 — Centaur vs
+id="toc-박스-2-centaur-vs-cyborg-두-협업-스타일">박스 2: Centaur vs
 Cyborg (두 협업 스타일)</a></li>
 <li><a href="#박스-3-brynjolfssonliraymond-콜센터-34"
-id="toc-박스-3-brynjolfssonliraymond-콜센터-34">박스 3 —
+id="toc-박스-3-brynjolfssonliraymond-콜센터-34">박스 3:
 Brynjolfsson·Li·Raymond (콜센터 +34%)</a></li>
 <li><a href="#박스-4-vaccaro-반박-메타분석"
-id="toc-박스-4-vaccaro-반박-메타분석">박스 4 — Vaccaro (반박
+id="toc-박스-4-vaccaro-반박-메타분석">박스 4: Vaccaro (반박
 메타분석)</a></li>
 <li><a href="#두-모드-augmentation과-synergy"
-id="toc-두-모드-augmentation과-synergy">두 모드 — Augmentation과
+id="toc-두-모드-augmentation과-synergy">두 모드: Augmentation과
 Synergy</a></li>
 <li><a href="#한국에-시사하는-두-가지"
 id="toc-한국에-시사하는-두-가지">한국에 시사하는 두 가지</a></li>
@@ -134,7 +134,7 @@ id="toc-장.-agentic-organization과-매니저-재정의">6장. Agentic
 Organization과 매니저 재정의</a>
 <ul>
 <li><a href="#work-chart-조직도에서-흐름으로"
-id="toc-work-chart-조직도에서-흐름으로">Work Chart — 조직도에서
+id="toc-work-chart-조직도에서-흐름으로">Work Chart: 조직도에서
 흐름으로</a></li>
 <li><a href="#인-pod-작은-자율-팀" id="toc-인-pod-작은-자율-팀">3~5인
 pod (작은 자율 팀)</a></li>
@@ -143,7 +143,7 @@ pod (작은 자율 팀)</a></li>
 <li><a href="#신입-사다리-부러짐" id="toc-신입-사다리-부러짐">신입
 사다리 부러짐</a></li>
 <li><a href="#한국-매니저-재정의-devocean의-5단계"
-id="toc-한국-매니저-재정의-devocean의-5단계">한국 매니저 재정의 —
+id="toc-한국-매니저-재정의-devocean의-5단계">한국 매니저 재정의:
 DEVOCEAN의 5단계</a></li>
 <li><a href="#part-2를-닫으며" id="toc-part-2를-닫으며">PART 2를
 닫으며</a></li>
@@ -151,67 +151,67 @@ DEVOCEAN의 5단계</a></li>
 <li><a href="#part-3.-ax-실행-세-시도"
 id="toc-part-3.-ax-실행-세-시도">PART 3. AX 실행 세 시도</a></li>
 <li><a href="#장.-새로운-성과-관리-epoch의-한국형-매핑"
-id="toc-장.-새로운-성과-관리-epoch의-한국형-매핑">7장. 새로운 성과 관리
-— EPOCH의 한국형 매핑</a>
+id="toc-장.-새로운-성과-관리-epoch의-한국형-매핑">7장. 새로운 성과 관리:
+EPOCH의 한국형 매핑</a>
 <ul>
 <li><a href="#측정-단위가-흔들립니다"
 id="toc-측정-단위가-흔들립니다">측정 단위가 흔들립니다</a></li>
 <li><a href="#시그니처-자산-epoch의-한국형-매핑"
-id="toc-시그니처-자산-epoch의-한국형-매핑">✦ 시그니처 자산 — EPOCH의
+id="toc-시그니처-자산-epoch의-한국형-매핑">✦ 시그니처 자산: EPOCH의
 한국형 매핑</a></li>
 <li><a href="#cornell-2025-인과-카드-미리-보기"
-id="toc-cornell-2025-인과-카드-미리-보기">Cornell 2025 인과 카드 — 미리
+id="toc-cornell-2025-인과-카드-미리-보기">Cornell 2025 인과 카드: 미리
 보기</a></li>
 <li><a href="#균형-synergy를-약속하지-마시기-바랍니다"
-id="toc-균형-synergy를-약속하지-마시기-바랍니다">균형 —
+id="toc-균형-synergy를-약속하지-마시기-바랍니다">균형:
 <em>Synergy</em>를 약속하지 마시기 바랍니다</a></li>
 <li><a href="#장을-닫으며" id="toc-장을-닫으며">7장을 닫으며</a></li>
 </ul></li>
 <li><a
 href="#장.-새로운-기여자-보상-skills-based-pay와-한국의-직무기반-전환"
 id="toc-장.-새로운-기여자-보상-skills-based-pay와-한국의-직무기반-전환">8장.
-새로운 기여자 보상 — Skills-based pay와 한국의 직무기반 전환</a>
+새로운 기여자 보상: Skills-based pay와 한국의 직무기반 전환</a>
 <ul>
 <li><a href="#ai-회사-네-곳의-풍경" id="toc-ai-회사-네-곳의-풍경">AI
 회사 네 곳의 풍경</a></li>
 <li><a href="#액수의-짝-네-가지" id="toc-액수의-짝-네-가지"><em>액수의
-짝</em> — 네 가지</a></li>
+짝</em>: 네 가지</a></li>
 <li><a href="#학술-cornell-2025-인과-카드"
-id="toc-학술-cornell-2025-인과-카드">✦ 학술 — Cornell 2025 인과
+id="toc-학술-cornell-2025-인과-카드">✦ 학술: Cornell 2025 인과
 카드</a></li>
 <li><a href="#학술-주식-보상은-hpwp-결합-시에만-효과"
-id="toc-학술-주식-보상은-hpwp-결합-시에만-효과">✦ 학술 — 주식 보상은
+id="toc-학술-주식-보상은-hpwp-결합-시에만-효과">✦ 학술: 주식 보상은
 <em>HPWP 결합 시</em>에만 효과</a></li>
 <li><a href="#한국-사례-롯데와-sk하이닉스"
-id="toc-한국-사례-롯데와-sk하이닉스">한국 사례 — 롯데와
+id="toc-한국-사례-롯데와-sk하이닉스">한국 사례: 롯데와
 SK하이닉스</a></li>
 <li><a href="#장을-닫으며-1" id="toc-장을-닫으며-1">8장을
 닫으며</a></li>
 </ul></li>
 <li><a href="#장.-skill-marketplace-회사-안에-인재-시장을-만들기"
 id="toc-장.-skill-marketplace-회사-안에-인재-시장을-만들기">9장. Skill
-Marketplace ⭐ — 회사 안에 인재 시장을 만들기</a>
+Marketplace ⭐: 회사 안에 인재 시장을 만들기</a>
 <ul>
 <li><a href="#용어-한-단락-skill-marketplace가-무엇인가"
-id="toc-용어-한-단락-skill-marketplace가-무엇인가">용어 한 단락 —
+id="toc-용어-한-단락-skill-marketplace가-무엇인가">용어 한 단락:
 <em>Skill Marketplace</em>가 무엇인가</a></li>
 <li><a href="#한-줄-요약" id="toc-한-줄-요약">한 줄 요약</a></li>
 <li><a href="#교과서-사례-세-곳" id="toc-교과서-사례-세-곳">교과서 사례
 세 곳</a></li>
 <li><a href="#한국에-가장-가까운-형태-짝-비교"
-id="toc-한국에-가장-가까운-형태-짝-비교">✦ 한국에 가장 가까운 형태 — 짝
+id="toc-한국에-가장-가까운-형태-짝-비교">✦ 한국에 가장 가까운 형태: 짝
 비교</a></li>
 <li><a href="#균형-자료-플랫폼의-그림자"
-id="toc-균형-자료-플랫폼의-그림자">✦ 균형 자료 — <em>플랫폼의
+id="toc-균형-자료-플랫폼의-그림자">✦ 균형 자료: <em>플랫폼의
 그림자</em></a></li>
 <li><a href="#판-보강-영역-한국-itm-인터뷰-5명-후보"
-id="toc-판-보강-영역-한국-itm-인터뷰-5명-후보">✦ 2판 보강 영역 — 한국
-ITM 인터뷰 5명 후보</a></li>
+id="toc-판-보강-영역-한국-itm-인터뷰-5명-후보">✦ 2판 보강 영역: 한국 ITM
+인터뷰 5명 후보</a></li>
 <li><a href="#장을-닫으며-2" id="toc-장을-닫으며-2">9장을
 닫으며</a></li>
 </ul></li>
-<li><a href="#막간-정직한-한-페이지-우리가-틀릴-수-있는-9가지"
-id="toc-막간-정직한-한-페이지-우리가-틀릴-수-있는-9가지">막간 — 정직한
+<li><a href="#막간.-정직한-한-페이지-우리가-틀릴-수-있는-9가지"
+id="toc-막간.-정직한-한-페이지-우리가-틀릴-수-있는-9가지">막간. 정직한
 한 페이지: 우리가 틀릴 수 있는 9가지</a>
 <ul>
 <li><a href="#베팅이라는-단어를-떳떳이-씁니다"
@@ -221,31 +221,31 @@ id="toc-베팅이라는-단어를-떳떳이-씁니다">베팅이라는 단어를
 <li><a href="#part-4.-한국에서" id="toc-part-4.-한국에서">PART 4.
 한국에서</a></li>
 <li><a href="#장.-한국-ax-풍경-안에서-겪은-풍경"
-id="toc-장.-한국-ax-풍경-안에서-겪은-풍경">10장. 한국 AX 풍경 — 안에서
+id="toc-장.-한국-ax-풍경-안에서-겪은-풍경">10장. 한국 AX 풍경: 안에서
 겪은 풍경</a>
 <ul>
 <li><a href="#현대해상-콜센터-7명-전원-퇴사"
-id="toc-현대해상-콜센터-7명-전원-퇴사">현대해상 콜센터 — 7명 전원
+id="toc-현대해상-콜센터-7명-전원-퇴사">현대해상 콜센터: 7명 전원
 퇴사</a></li>
 <li><a href="#카카오의-두-풍경-의사결정-속도의-긴장"
-id="toc-카카오의-두-풍경-의사결정-속도의-긴장">카카오의 두 풍경 —
+id="toc-카카오의-두-풍경-의사결정-속도의-긴장">카카오의 두 풍경:
 의사결정 속도의 긴장</a></li>
 <li><a href="#si-빅3-안에서-본-동상이몽"
-id="toc-si-빅3-안에서-본-동상이몽">SI 빅3 — 안에서 본 동상이몽</a></li>
+id="toc-si-빅3-안에서-본-동상이몽">SI 빅3: 안에서 본 동상이몽</a></li>
 <li><a href="#devocean-5단계-한국-표준-자료"
-id="toc-devocean-5단계-한국-표준-자료">DEVOCEAN 5단계 — 한국 표준
+id="toc-devocean-5단계-한국-표준-자료">DEVOCEAN 5단계: 한국 표준
 자료</a></li>
 <li><a href="#한국-ax-풍경을-한-줄로"
 id="toc-한국-ax-풍경을-한-줄로">한국 AX 풍경을 한 줄로</a></li>
 </ul></li>
 <li><a href="#에필로그.-코드-너머의-조직-사람의-자리는-새로-만들어진다"
 id="toc-에필로그.-코드-너머의-조직-사람의-자리는-새로-만들어진다">에필로그.
-코드 너머의 조직 — 사람의 자리는 새로 만들어진다</a>
+코드 너머의 조직: 사람의 자리는 새로 만들어진다</a>
 <ul>
 <li><a href="#세-권을-합치면" id="toc-세-권을-합치면">세 권을
 합치면</a></li>
 <li><a href="#autor의-60-사람의-자리는-새로-만들어집니다"
-id="toc-autor의-60-사람의-자리는-새로-만들어집니다">Autor의 60% — 사람의
+id="toc-autor의-60-사람의-자리는-새로-만들어집니다">Autor의 60%: 사람의
 자리는 새로 만들어집니다</a></li>
 <li><a href="#carlota-perez의-deployment-period"
 id="toc-carlota-perez의-deployment-period">Carlota Perez의
@@ -288,34 +288,35 @@ id="toc-익명커뮤니티-검증-필요">11. 익명·커뮤니티 (검증 필�
 법</h2>
 <p><strong>저자:</strong> 김상기 <strong>시리즈:</strong> 코드 너머의
 III <strong>전작 I:</strong> 코드 너머의 시대 (2026) <strong>전작
-II:</strong> 코드 너머의 직업들 (2026) <strong>버전:</strong> 1.2.3
-<strong>발행일:</strong> 2026-05-17 <strong>개정일:</strong> 2026-11-01
-<strong>판 이력:</strong> v1.2.1: 문체 점검 — AI 문체 패턴 147곳 정리,
-내용·수치 변경 없음; v1.2.2: 저자 소속 그룹 관련 문장 정리(PART 4
+II:</strong> 코드 너머의 직업들 (2026) <strong>버전:</strong> 1.2.4
+<strong>발행일:</strong> 2026-05-17 <strong>개정일:</strong> 2026-11-07
+<strong>판 이력:</strong> v1.2.1: 문체 점검(AI 문체 패턴 147곳 정리,
+내용·수치 변경 없음); v1.2.2: 저자 소속 그룹 관련 문장 정리(PART 4
 도입·간주곡·README), 9장 제목 표기 맞춤; v1.2.3: 9장 제목 표기 남은 곳
-맞춤</p>
+맞춤; v1.2.4: 문체 2차 점검(한국어 표현 지침), 194곳 정리, 내용·수치
+변경 없음</p>
 <hr />
 <h2 id="목차">목차</h2>
 <ul>
 <li>책을 펴내며</li>
-<li>프롤로그. AX 동상이몽 — 같은 단어를 다른 의미로 쓰는 시대</li>
+<li>프롤로그. AX 동상이몽: 같은 단어를 다른 의미로 쓰는 시대</li>
 </ul>
-<p><strong>PART 1. AX란 무엇인가 — 일과 조직의 재설계</strong> - 1장.
-AX는 DX가 아니다 — 결과 중심의 재설계 - 2장. 95%는 왜 가치를 만들지
-못하는가 - 3장. 한국이 보내는 신호 — 위에서 본 풍경</p>
-<p><strong>PART 2. 일의 재정의 — 작동 원리</strong> - 4장. 직무에서
-task로 — 작동 원리 - 5장. 인간·AI 협업의 두 모드 — EPOCH +
-Centaur·Cyborg - 6장. Agentic Organization과 매니저 재정의</p>
-<p><strong>PART 3. AX 실행 세 시도</strong> - 7장. 새로운 성과 관리 —
-EPOCH의 한국형 매핑 - 8장. 새로운 기여자 보상 — Skills-based pay와
-한국의 직무기반 전환 - 9장. Skill Marketplace ⭐ — 회사 안에 인재 시장을
+<p><strong>PART 1. AX란 무엇인가: 일과 조직의 재설계</strong> - 1장.
+AX는 DX가 아니다: 결과 중심의 재설계 - 2장. 95%는 왜 가치를 만들지
+못하는가 - 3장. 한국이 보내는 신호: 위에서 본 풍경</p>
+<p><strong>PART 2. 일의 재정의: 작동 원리</strong> - 4장. 직무에서
+task로: 작동 원리 - 5장. 인간·AI 협업의 두 모드: EPOCH + Centaur·Cyborg
+- 6장. Agentic Organization과 매니저 재정의</p>
+<p><strong>PART 3. AX 실행 세 시도</strong> - 7장. 새로운 성과 관리:
+EPOCH의 한국형 매핑 - 8장. 새로운 기여자 보상: Skills-based pay와 한국의
+직무기반 전환 - 9장. Skill Marketplace ⭐: 회사 안에 인재 시장을
 만들기</p>
 <p><strong>막간. 정직한 한 페이지: 우리가 틀릴 수 있는
 9가지</strong></p>
-<p><strong>PART 4. 한국에서</strong> - 10장. 한국 AX 풍경 — 안에서 겪은
+<p><strong>PART 4. 한국에서</strong> - 10장. 한국 AX 풍경: 안에서 겪은
 풍경</p>
 <ul>
-<li>에필로그. 코드 너머의 조직 — 사람의 자리는 새로 만들어진다</li>
+<li>에필로그. 코드 너머의 조직: 사람의 자리는 새로 만들어진다</li>
 <li>참고문헌</li>
 </ul>
 <hr />
@@ -337,21 +338,21 @@ EPOCH의 한국형 매핑 - 8장. 새로운 기여자 보상 — Skills-based pa
 <p>본문에 <em>영문 표현</em>이 몇 가지 등장합니다. 처음 등장할 때 <em>한
 줄로 풀어</em> 두지만, 미리 정리해 두면 읽기가 한결 편합니다.</p>
 <ul>
-<li><strong>AX (AI Transformation)</strong> — AI 시대의 <em>일과 조직
+<li><strong>AX (AI Transformation)</strong>: AI 시대의 <em>일과 조직
 재설계</em>. DX(디지털 전환)와 짝지어 등장합니다.</li>
-<li><strong>EPOCH</strong> — MIT Sloan이 만든 <em>인간 고유 능력
+<li><strong>EPOCH</strong>: MIT Sloan이 만든 <em>인간 고유 능력
 5요소</em>. Empathy(공감)·Presence(현장
 존재감)·Opinion(판단)·Creativity(창의성)·Hope(비전). 본서 5장과 7장의
 핵심 자료.</li>
-<li><strong>ITM (Internal Talent Marketplace, 사내 인재 시장)</strong> —
+<li><strong>ITM (Internal Talent Marketplace, 사내 인재 시장)</strong>:
 <em>사내에 직무와 작업을 사고파는 시장</em>을 만든다는 발상. 본서 9장의
 시그니처 주제.</li>
-<li><strong>gig</strong> — <em>작은 단위의 임시 작업</em>. 짧게는 6주,
+<li><strong>gig</strong>: <em>작은 단위의 임시 작업</em>. 짧게는 6주,
 길게는 6개월짜리 사내 프로젝트. ITM의 기본 단위.</li>
-<li><strong>Skill Marketplace</strong> — 본서가 ITM을 한국 독자에게 더
+<li><strong>Skill Marketplace</strong>: 본서가 ITM을 한국 독자에게 더
 친근하게 풀어 쓴 표현입니다. 본문 9장에서 두 용어가 어떻게 짝지어지는지
 한 번 더 정리합니다.</li>
-<li><strong>Agentic Organization</strong> — <em>AI 에이전트가 동료처럼
+<li><strong>Agentic Organization</strong>: <em>AI 에이전트가 동료처럼
 일하는 조직</em>. McKinsey가 만든 단어로, 본서 6장에서 다룹니다.</li>
 </ul>
 <p>이 정도가 본문에서 가장 자주 등장하는 영문 용어입니다. 다른 표현들은
@@ -367,17 +368,18 @@ EPOCH의 한국형 매핑 - 8장. 새로운 기여자 보상 — Skills-based pa
 원리, PART 3이 본론, 막간에서 <em>틀릴 수 있는 9가지</em>를 직시, PART
 4에서 한국 풍경으로 닫습니다.</p>
 <p>자료의 전체 목록은 프로젝트 저장소(<code>research/</code>)에 정리되어
-있습니다. 본서 9장의 한국 ITM 인터뷰는 <em>2판 보강</em>으로
-남겼습니다.</p>
+있습니다. 본서 9장의 한국 ITM 인터뷰는 <em>2판 보강</em> 과제로
+미뤘습니다.</p>
 <p>이 책의 모든 오류는 저자의 몫입니다.</p>
-<p><em>— 김상기, 2026년 5월</em></p>
+<p><em>김상기, 2026년 5월</em></p>
 <h1
 id="프롤로그.-ax-동상이몽-같은-단어를-다른-의미로-쓰는-시대">프롤로그.
-AX 동상이몽 — 같은 단어를 다른 의미로 쓰는 시대</h1>
+AX 동상이몽: 같은 단어를 다른 의미로 쓰는 시대</h1>
 <blockquote>
 <p><em>“표면적으로는 모두 AI와 클라우드 강화를 공통점으로 보이지만, 실적
 구조와 사업 포지셔닝에 따라 전략과 조직 설계는 적지 않은 차이가
-있다.”</em> — ZDNet Korea, 2025년 12월 5일</p>
+있다.”</em></p>
+<p>ZDNet Korea, 2025년 12월 5일</p>
 </blockquote>
 <p>같은 회사 안에서 <em>AX</em>라는 단어를 세 사람이 다르게 씁니다.</p>
 <p>임원에게는 <em>매출 구조의 재편</em>, HR 리더에게는 <em>직무와 평가
@@ -407,8 +409,8 @@ Firm</em>이라는 개념을 만들어 <em>조직도가 워크차트로 옮겨�
 <hr />
 <p>이 책은 그 <em>동상이몽</em>을 한곳에 모으자고 제안합니다. <em>HR
 리더와 기술 리더가 같은 페이지에서 같은 문제를 보자</em>는 것입니다.
-본론 3부 — 새로운 성과 관리, 새로운 기여자 보상, Skill Marketplace — 가
-그 합의를 만드는 매뉴얼입니다.</p>
+본론 3부(새로운 성과 관리, 새로운 기여자 보상, Skill Marketplace)가 그
+합의를 만드는 매뉴얼입니다.</p>
 <p>PART 1은 시대를 봅니다. PART 2는 작동 원리를 봅니다. PART 3이
 본론입니다. PART 3과 PART 4 사이의 <em>막간</em>에서 이 책의 가설이
 <em>틀릴 수 있는 9가지</em>를 직시합니다. PART 4는 한국 AX 풍경의
@@ -416,25 +418,25 @@ Firm</em>이라는 개념을 만들어 <em>조직도가 워크차트로 옮겨�
 <p><em>내면(I) → 외형(II) → 환경(III)</em>으로 이어 온 시리즈가 이
 책에서 끝납니다. 1장에서 <em>AX와 DX는 무엇이 다른가</em>부터
 시작합니다.</p>
-<h1 id="part-1.-ax란-무엇인가-일과-조직의-재설계">PART 1. AX란 무엇인가
-— 일과 조직의 재설계</h1>
+<h1 id="part-1.-ax란-무엇인가-일과-조직의-재설계">PART 1. AX란 무엇인가:
+일과 조직의 재설계</h1>
 <blockquote>
 <p>시대를 봅니다. 빅4 결론이 일치하는 자리.</p>
 </blockquote>
-<p>McKinsey·BCG·Microsoft·Deloitte가 같은 분기에 <em>같은 한 문장</em>을
-던졌습니다. <em>AX는 기술 도입이 아니라 일과 조직의 재설계다.</em>
-본서는 그 한 문장을 <em>한국 시장 매뉴얼</em>로 옮깁니다.</p>
+<p>프롤로그에서 본 McKinsey·BCG·Microsoft·Deloitte의 한 문장을 본서는
+<em>한국 시장 매뉴얼</em>로 옮깁니다.</p>
 <p>PART 1은 세 장으로 이루어집니다. 1장은 <em>AX와 DX의 차이</em>. 2장은
 <em>95%가 가치를 만들지 못하는 이유와 5%의 공통점</em>. 3장은 <em>한국이
-보내는 신호 — 위에서 본 풍경</em>.</p>
+보내는 신호: 위에서 본 풍경</em>.</p>
 <p>이 PART의 톤은 <em>분석적</em>입니다. 빅4 데이터·정부 정책·인사
 발표를 나란히 놓고 <em>AX 시대의 좌표</em>를 잡습니다.</p>
-<h1 id="장.-ax는-dx가-아니다-결과-중심의-재설계">1장. AX는 DX가 아니다 —
+<h1 id="장.-ax는-dx가-아니다-결과-중심의-재설계">1장. AX는 DX가 아니다:
 결과 중심의 재설계</h1>
 <blockquote>
 <p><em>“AI를 활용해 할 수 없는 일이라는 것을 증명하기 전에는,
 헤드카운트를 늘려달라는 말을 하지 마세요. AI 활용은 평가에
-반영됩니다.”</em> — Tobi Lütke, Shopify CEO 사내 메모, 2025년 4월</p>
+반영됩니다.”</em></p>
+<p>Tobi Lütke, Shopify CEO 사내 메모, 2025년 4월</p>
 </blockquote>
 <p>2025년 4월, Shopify CEO Tobi Lütke가 사내 5,000여 명에게 메모 한 통을
 보냈습니다. <em>AI로 할 수 없는 일임을 먼저 증명하기 전에는 새 사람을
@@ -450,17 +452,16 @@ Firm</em>이라는 개념을 만들어 <em>조직도가 워크차트로 옮겨�
 재설계</em>입니다.</strong></p>
 </blockquote>
 <hr />
-<h2 id="dx와-ax-단위의-차이">DX와 AX — 단위의 차이</h2>
+<h2 id="dx와-ax-단위의-차이">DX와 AX: 단위의 차이</h2>
 <p>DX(Digital Transformation)는 지난 10년 동안 표준 정의가 정착된
 단어입니다. <em>디지털 기술과 디지털화된 운영 모델로 기업의 일하는
 방식을 바꾸는 것.</em> 클라우드, 데이터 파이프라인, 보안 시스템, 협업
 도구. <em>기반</em>을 디지털로 옮기는 작업이었습니다.</p>
 <p>DX 시대의 가정은 단순했습니다. <em>기술이 바뀌면 일하는 방식도
-따라온다.</em> 클라우드 인프라를 깔면 개발 속도가 빨라졌고, 데이터
-호수를 만들면 BI 보고서가 깔끔해졌습니다. 인과 관계가 비교적
-단순했습니다.</p>
+바뀐다.</em> 클라우드 인프라를 깔면 개발 속도가 빨라졌고, 데이터 호수를
+만들면 BI 보고서가 깔끔해졌습니다. 인과 관계가 비교적 단순했습니다.</p>
 <p>AX 시대에 들어오면서, 이 인과의 방향이 <em>역방향</em>으로 흐릅니다.
-기술에서 시작하지 않고 <em>결과에서 시작</em>합니다.</p>
+기술 대신 <em>결과에서 시작</em>합니다.</p>
 <table>
 <colgroup>
 <col style="width: 33%" />
@@ -523,7 +524,7 @@ redesign</em>이었습니다. 전체 기업의 <em>21%만</em> 워크플로우�
 옮겨가는 회사. 1단계 <em>Assistance</em>에서 2단계 <em>Colleague</em>,
 3단계 <em>BPA</em>로 가는 길. 대부분의 회사가 1단계에 머물러
 있습니다.</p>
-<p>Deloitte는 <em>13,000명 리더 조사</em>에서 한 가지 격차를 짚었습니다.
+<p>Deloitte는 <em>13,000명 리더 조사</em>에서 또 다른 격차를 짚었습니다.
 <em>93%의 리더가 경직된 직무 구조에서 벗어나야 한다고 답했지만, 실제로
 그 작업을 진행 중인 곳은 19%였습니다.</em> 74%포인트의 격차. <em>문제
 인식은 90% 위에 있고, 실행은 20% 아래에 있습니다.</em> 그 사이에
@@ -534,11 +535,11 @@ redesign</em>이었습니다. 전체 기업의 <em>21%만</em> 워크플로우�
 <p>여기까지가 너무 결연하게 들렸다면 균형 자료를 하나 보겠습니다.</p>
 <p>Harvard Business School의 Fuller·Raman·McKittrick이 2024년에 발표한
 <em>Skills-Based Hiring: The Long Road from Pronouncements to
-Practice</em> 보고서가 한 가지 격차를 보고했습니다. <em>학위 요구사항을
-폐기하겠다는 발표는 흔해졌지만, 실제로 그 약속이 실행된 직무는 3.6%에
-불과했고, 비학위자 채용은 평균 3.5% 증가에 그쳤습니다.</em> 말은 빠르고
-실행은 느렸다는 진단.</p>
-<p>그러나 같은 보고서가 한 가지 희망도 짚었습니다. <em>진심으로 도입한
+Practice</em> 보고서가 발표와 실행의 격차를 보고했습니다. <em>학위
+요구사항을 폐기하겠다는 발표는 흔해졌지만, 실제로 그 약속이 실행된
+직무는 3.6%에 불과했고, 비학위자 채용은 평균 3.5% 증가에
+그쳤습니다.</em> 말은 빠르고 실행은 느렸다는 진단.</p>
+<p>그러나 같은 보고서에는 희망적인 결과도 있습니다. <em>진심으로 도입한
 37%의 기업은 비학위자 채용을 18% 늘렸습니다.</em> 평균의 5배.</p>
 <p>본서는 이 <em>37%의 행동 양식</em>을 다룹니다. 광고는 책 밖에 충분히
 많으니, 책은 <em>37%가 어떻게 실행에 성공하는지</em>에 집중합니다.</p>
@@ -559,7 +560,8 @@ Practice</em> 보고서가 한 가지 격차를 보고했습니다. <em>학위 �
 못하는가</h1>
 <blockquote>
 <p><em>“AI 전환을 막을 것이 있다면, 그것은 기술이 아닙니다. 사람과 조직
-문화입니다.”</em> — Josh Bersin (2025)</p>
+문화입니다.”</em></p>
+<p>Josh Bersin (2025)</p>
 </blockquote>
 <p>1장에서 빅4가 거의 같은 결론을 냈다는 것을 봤습니다. 그리고 결론과
 실행 사이에 <em>큰 격차</em>가 있다는 점도 짚었습니다. McKinsey 21%, BCG
@@ -596,7 +598,7 @@ Practice</em> 보고서가 한 가지 격차를 보고했습니다. <em>학위 �
 <p>다섯 가지 중 <em>한 가지</em>만 빠져도 5%에 못 든다는 게 BCG의
 진단입니다.</p>
 <hr />
-<h2 id="학술-토대-hackman-자율팀-5조건">학술 토대 — Hackman 자율팀
+<h2 id="학술-토대-hackman-자율팀-5조건">학술 토대: Hackman 자율팀
 5조건</h2>
 <p>이 5%의 행동 양식이 <em>학술적으로는 새로운 게 아닙니다</em>.</p>
 <p>Yale의 J. Richard Hackman이 1977년에 <em>자율팀(self-managing
@@ -625,15 +627,16 @@ Relations</em>에 발표한 후속 실증 연구가 그 결론을 받쳐줬습�
 ROI”</em>를 물을 때, <em>“6개월 뒤 보고드리겠습니다”</em>라고 답하는
 것이 한국 회사 안에서 거의 불가능에 가깝습니다.</p>
 <p><em>분기 압박에 굴하지 않고 사람에 6개월 투자</em>할 수 있는 곳이 그
-5%입니다. 본서는 그 5%의 행동 양식을 매뉴얼로 옮깁니다.</p>
+5%입니다.</p>
 <p>다음 장에서 한국 시장의 <em>동상이몽</em>을 데이터로
 정리하겠습니다.</p>
-<h1 id="장.-한국이-보내는-신호-위에서-본-풍경">3장. 한국이 보내는 신호 —
+<h1 id="장.-한국이-보내는-신호-위에서-본-풍경">3장. 한국이 보내는 신호:
 위에서 본 풍경</h1>
 <blockquote>
 <p><em>“표면적으로는 모두 AI와 클라우드 강화를 공통점으로 보이지만, 실적
 구조와 사업 포지셔닝에 따라 전략과 조직 설계는 적지 않은 차이가
-있다.”</em> — ZDNet Korea, 2025년 12월 5일</p>
+있다.”</em></p>
+<p>ZDNet Korea, 2025년 12월 5일</p>
 </blockquote>
 <p>1·2장에서 본 빅4의 결론은 <em>글로벌 풍경</em>이었습니다. 이 장은 그
 결론이 한국 시장에 <em>어떻게 도착했는지</em>를 인사 발표·정부
@@ -647,15 +650,15 @@ CNS·SK, 인사 키워드는 ‘AX’… 전략은 ‘동상이몽’.”</em></
 <p>세 회사의 발표는 같은 <em>AX</em>라는 단어를 서로 다른 곳에
 걸었습니다.</p>
 <ul>
-<li><strong>삼성SDS</strong> — <em>그룹 내부</em> AI 컨설팅·플랫폼. 외부
+<li><strong>삼성SDS</strong>: <em>그룹 내부</em> AI 컨설팅·플랫폼. 외부
 매출보다 그룹사 시너지에 무게.</li>
-<li><strong>LG CNS</strong> — <em>대규모 인재 확보</em>. AI 11개 직무
+<li><strong>LG CNS</strong>: <em>대규모 인재 확보</em>. AI 11개 직무
 1,000명 채용 목표.</li>
-<li><strong>SK</strong> — <em>AX 사업 카테고리화</em>. SK C&amp;C에서 SK
+<li><strong>SK</strong>: <em>AX 사업 카테고리화</em>. SK C&amp;C에서 SK
 AX로 사명 변경하면서 <em>AI 컨설팅을 사업 영역으로 분리</em>.</li>
 </ul>
 <hr />
-<h2 id="카카오네이버롯데-각기-다른-길">카카오·네이버·롯데 — 각기 다른
+<h2 id="카카오네이버롯데-각기-다른-길">카카오·네이버·롯데: 각기 다른
 길</h2>
 <p>같은 시기, IT 빅컴퍼니와 그룹사들이 각자 다른 형태로 AX 조직을
 신설했습니다.</p>
@@ -664,7 +667,7 @@ CAIO(Chief AI Officer, 최고 AI 책임자)로 영입했지만, 2025년에 CAIO
 직책이 폐지되었고 2026년 1월 본인이 회사를 떠났습니다. <em>AX는 한
 사람의 직책으로 안 된다</em>는 한 가지 신호입니다.</p>
 <p><strong>네이버</strong>는 <em>최수연 대표 직속 R-TF</em>를 2025년
-10월에 신설했습니다. 직책에 권한을 위임하지 않고 <em>대표가 직접 챙기는
+10월에 신설했습니다. 직책에 권한을 위임하는 대신 <em>대표가 직접 챙기는
 임시 조직</em>. 결정 속도가 빠른 대신 <em>지속 가능성</em>이
 변수입니다.</p>
 <p><strong>롯데</strong>는 2025년 9월에 <em>한국 대기업 최초로 직무기반
@@ -673,31 +676,31 @@ CAIO(Chief AI Officer, 최고 AI 책임자)로 영입했지만, 2025년에 CAIO
 <em>사장으로 승진</em>. 한국 대기업이 <em>연공서열 중심 인사를 직무 중심
 인사로 바꾸는</em> 시도를 사장 직급까지 인정한 첫 사례입니다.</p>
 <hr />
-<h2 id="공공-신호-84-증액">공공 신호 — 84% 증액</h2>
+<h2 id="공공-신호-84-증액">공공 신호: 84% 증액</h2>
 <p>조직 외부의 신호도 같은 분기에 강했습니다.</p>
 <p>한국 정부가 2026년 AX 예산을 <em>4,552억 원</em>으로 책정했습니다.
 전년 대비 <em>+83.6%</em>. 거의 두 배입니다. 예산의 가장 큰 비중이
 <em>AI 인재 양성과 산업 AI 확산</em>에 배정됐습니다. 2장에서 본 BCG의
-<em>trailblazer 행동 양식</em> — <em>예산의 70%를 사람과 프로세스에</em>
-— 와 맞습니다. 한국 대기업의 <em>알고리즘·기술 70% 예산 구성</em>과는
-반대입니다.</p>
+<em>trailblazer 행동 양식</em>(<em>예산의 70%를 사람과
+프로세스에</em>)과 맞습니다. 한국 대기업의 <em>알고리즘·기술 70% 예산
+구성</em>과는 반대입니다.</p>
 <hr />
 <h2 id="공통-신호-다섯-가지">공통 신호 다섯 가지</h2>
 <p>정리하면 한국 AX의 <em>공통 신호</em>는 다섯 가지입니다.</p>
 <ol type="1">
-<li><strong>한 사람의 직책으로는 안 된다는 학습</strong> — 카카오 CAIO
+<li><strong>한 사람의 직책으로는 안 된다는 학습</strong>: 카카오 CAIO
 폐지가 가장 분명한 신호. <em>팀과 시스템</em>이 필요하다는 인식이 퍼지고
 있습니다.</li>
-<li><strong>직무 중심 인사로의 변화</strong> — 롯데가 한국 대기업
+<li><strong>직무 중심 인사로의 변화</strong>: 롯데가 한국 대기업
 처음으로 직무기반 인사제도를 그룹사 차원에 도입했고, 동의율 95.3%. 다른
 대기업이 2~3년 안에 따라갈 가능성이 높습니다.</li>
-<li><strong>공공 부문의 사람·산업 중심 예산</strong> — 정부 2026 예산이
+<li><strong>공공 부문의 사람·산업 중심 예산</strong>: 정부 2026 예산이
 <em>알고리즘 70%가 아니라 사람·산업 70%</em>로 짜였다는 점.</li>
-<li><strong>AI 사업 조직의 분리·신설 시도</strong> — 그룹사 산하 별도
+<li><strong>AI 사업 조직의 분리·신설 시도</strong>: 그룹사 산하 별도
 자회사·CIC·R-TF의 다양한 형태로.</li>
-<li><strong>빅4 결론과의 정합</strong> — 한국 인식은 90% 위에 있고
-실행은 <em>글로벌 19%보다 낮을 가능성</em>이 있다는 진단. 한국이
-<em>진심 도입 37%</em>의 그룹에 어디까지 진입하는지는 앞으로 1~2년 안에
+<li><strong>빅4 결론과의 정합</strong>: 한국 인식은 90% 위에 있고 실행은
+<em>글로벌 19%보다 낮을 가능성</em>이 있다는 진단. 한국이 <em>진심 도입
+37%</em>의 그룹에 어디까지 진입하는지는 앞으로 1~2년 안에
 드러납니다.</li>
 </ol>
 <hr />
@@ -707,7 +710,7 @@ CAIO(Chief AI Officer, 최고 AI 책임자)로 영입했지만, 2025년에 CAIO
 이뤄지고, 일상은 <em>아래</em>에서 굴러갑니다. 그 사이의 <em>연결
 고리</em>가 본서 PART 2와 PART 3에서 다룰 주제입니다.</p>
 <p>다음 장에서, <em>직무에서 task로의 사고 전환</em>부터 시작합니다.</p>
-<h1 id="part-2.-일의-재정의-작동-원리">PART 2. 일의 재정의 — 작동
+<h1 id="part-2.-일의-재정의-작동-원리">PART 2. 일의 재정의: 작동
 원리</h1>
 <blockquote>
 <p>지형을 압니다. 직무에서 task로, 인간·AI 협업의 두 모드, Agentic
@@ -718,18 +721,18 @@ Organization과 매니저 재정의.</p>
 들여다봅니다.</p>
 <p>4장은 <em>직무에서 task로의 사고 전환</em>.
 WEF·Eloundou·Autor·Acemoglu-Restrepo가 모두 <em>task 단위 분해</em>를 새
-표준으로 제안합니다. 5장은 <em>인간·AI 협업의 두 모드 — Augmentation과
+표준으로 제안합니다. 5장은 <em>인간·AI 협업의 두 모드: Augmentation과
 Synergy</em>. MIT Sloan의 EPOCH 프레임과 HBS의 Centaur·Cyborg가 학술
 백본. Vaccaro 메타분석이 <em>균형 자료</em>. 6장은 <em>Agentic
 Organization과 매니저 재정의</em>. McKinsey·MS의 자료와 Hackman의 자율팀
 5조건, 그리고 신입 사다리 부러짐.</p>
 <p>세 장은 <em>PART 3 본론</em>의 바탕이 됩니다.</p>
-<h1 id="장.-직무에서-task로-작동-원리">4장. 직무에서 task로 — 작동
+<h1 id="장.-직무에서-task로-작동-원리">4장. 직무에서 task로: 작동
 원리</h1>
 <blockquote>
 <p><em>“2026년의 생산성은 더 긴 시간이나 더 강한 감시에서 오지 않습니다.
-명료성·협업·역량 빌딩을 위한 <em>일의 재설계</em>에서 옵니다.”</em> —
-Lynda Gratton, London Business School (2025)</p>
+명료성·협업·역량 빌딩을 위한 <em>일의 재설계</em>에서 옵니다.”</em></p>
+<p>Lynda Gratton, London Business School (2025)</p>
 </blockquote>
 <p>이번 주제는 한 단어, <em>task</em>입니다.</p>
 <p>한국 HR이 익숙하게 다루는 단위는 <em>직무</em>입니다. 직무 기술서,
@@ -742,7 +745,7 @@ Lynda Gratton, London Business School (2025)</p>
 배분이 가능해진다.</strong></p>
 </blockquote>
 <hr />
-<h2 id="직무와-task-단위-차이">직무와 task — 단위 차이</h2>
+<h2 id="직무와-task-단위-차이">직무와 task: 단위 차이</h2>
 <p><em>직무(job)</em>는 <em>한 사람이 맡는 일의 묶음</em>입니다.
 <em>콜센터 상담원·소프트웨어 개발자·HR Business Partner</em>.
 <em>task</em>는 <em>그 직무 안의 작은 작업 단위</em>. 콜센터 상담원의
@@ -750,10 +753,10 @@ Lynda Gratton, London Business School (2025)</p>
 환불 처리 / 사후 만족도 확인</em>. 보통 한 직무가 <em>수십에서 수백 개의
 task</em>로 분해됩니다.</p>
 <p>AX 시대에는 이 단위 차이가 중요해집니다. AI가 잘하는 일과 못하는 일의
-경계가 <em>직무 단위가 아니라 task 단위</em>에서 결정되기 때문입니다.
-콜센터 상담원이라는 <em>직무 전체</em>를 <em>AI가 한다 / 못한다</em>로
-단정할 수 없습니다. 답변 작성은 AI가 잘하지만, 복잡한 환불 정책 판단은
-사람이 잘합니다. 같은 직무 안의 <em>task별로 적합도가 다릅니다</em>.</p>
+경계가 <em>직무보다 작은 task 단위</em>에서 결정되기 때문입니다. 콜센터
+상담원이라는 <em>직무 전체</em>를 <em>AI가 한다 / 못한다</em>로 단정할
+수 없습니다. 답변 작성은 AI가 잘하지만, 복잡한 환불 정책 판단은 사람이
+잘합니다. 같은 직무 안의 <em>task별로 적합도가 다릅니다</em>.</p>
 <p>이 사실 하나가 한국 HR의 <em>직무 명세서</em>를 흔듭니다. <em>상위
 활동</em>(“고객 문의 응대”) 수준에서는 인간과 AI의 배분이 안 됩니다.
 같은 <em>“고객 문의 응대”</em> 안에서 <em>어떤 작은 task는 AI</em>,
@@ -761,7 +764,7 @@ task</em>로 분해됩니다.</p>
 명세서</em>를 <em>task 명세서</em>로 한 단계 더 풀어내야 하는
 이유입니다.</p>
 <hr />
-<h2 id="정량-데이터-두-편의-큰-자료">정량 데이터 — 두 편의 큰 자료</h2>
+<h2 id="정량-데이터-두-편의-큰-자료">정량 데이터: 두 편의 큰 자료</h2>
 <p>이 변화의 규모를 보여주는 두 편의 자료가 있습니다.</p>
 <p><strong>Eloundou 외 2024 <em>Science</em></strong>. OpenAI의 연구팀이
 미국 노동시장 전반에서 <em>task 단위 노출도</em>를 측정했습니다.
@@ -788,17 +791,17 @@ Perspectives</em>에 발표한 <em>task content of production</em>
 <p>핵심 모델은 단순합니다. 기술 변화의 노동 효과는 <em>두 힘의
 균형</em>입니다.</p>
 <ul>
-<li><em>Displacement effect</em> — 자본이 노동의 task를 대체합니다.</li>
-<li><em>Reinstatement effect</em> — 새 task가 등장합니다.</li>
+<li><em>Displacement effect</em>: 자본이 노동의 task를 대체합니다.</li>
+<li><em>Reinstatement effect</em>: 새 task가 등장합니다.</li>
 </ul>
 <p>지난 30년은 <em>displacement가 reinstatement를 추월</em>했습니다. 그
 결과 노동 분배율이 하락했습니다. 새 task가 만들어지는 속도가 둔화된 게
 원인입니다.</p>
 <p>이 학술 결론이 AX 시대에 시사하는 바가 분명합니다.
 <em>displacement(AI가 task를 대체하는 힘)는 빨라지고 있지만,
-reinstatement(새 task가 만들어지는 힘)는 자동으로 따라오지
-않습니다</em>. 새 task는 <em>조직이 만들어줘야</em> 등장합니다. 본서가
-<em>일과 조직의 재설계</em>를 강조하는 학술 토대.</p>
+reinstatement(새 task가 만들어지는 힘)는 저절로 생기지 않습니다</em>. 새
+task는 <em>조직이 만들어줘야</em> 등장합니다. 본서가 <em>일과 조직의
+재설계</em>를 강조하는 학술 토대.</p>
 <hr />
 <h2 id="사고-전환-체크리스트">사고 전환 체크리스트</h2>
 <p><em>직무에서 task로</em> 사고 전환을 시작할 때 확인할 체크리스트는 세
@@ -817,11 +820,11 @@ reinstatement(새 task가 만들어지는 힘)는 자동으로 따라오지
 단계를 통과</em>한 셈입니다. 다음 장에서, 그 task들이 <em>어떻게 인간과
 AI 사이에 배분되는지</em>의 두 모드를 들여다보겠습니다.</p>
 <h1 id="장.-인간ai-협업의-두-모드-epoch-centaurcyborg">5장. 인간·AI
-협업의 두 모드 — EPOCH + Centaur·Cyborg</h1>
+협업의 두 모드: EPOCH + Centaur·Cyborg</h1>
 <blockquote>
 <p><em>“인간 능력 증강의 증거는 있었지만, 평균적으로 인간-AI 시너지는
-발견되지 않았습니다.”</em> — Vaccaro·Almaatouq·Malone, <em>Nature Human
-Behaviour</em> (2024)</p>
+발견되지 않았습니다.”</em></p>
+<p>Vaccaro·Almaatouq·Malone, <em>Nature Human Behaviour</em> (2024)</p>
 </blockquote>
 <p>현장 사례 세 가지를 먼저 보고, 학술 자료는 <em>짧은 박스 네 개</em>로
 나눠 정리합니다.</p>
@@ -829,7 +832,7 @@ Behaviour</em> (2024)</p>
 <p><strong>인간·AI 협업에는 <em>Augmentation(능력 증강)</em>과
 <em>Synergy(시너지)</em> 두 모드가 있고, 평균적으로
 <em>Augmentation</em>만 자연스럽게 작동한다. <em>Synergy</em>는
-<em>조직의 재설계</em>가 따라온 곳에서만 나타난다.</strong></p>
+<em>조직의 재설계</em>를 함께 한 곳에서만 나타난다.</strong></p>
 </blockquote>
 <hr />
 <h2 id="세-풍경">세 풍경</h2>
@@ -852,20 +855,20 @@ Frontier(들쭉날쭉한 경계)</em>라고 불렀습니다. AI의 능력은 <em
 닿습니다. <em>인간·AI 협업은 작동한다. 단, 어떻게 작동하는지가 task별로
 다르다.</em></p>
 <hr />
-<h2 id="박스-1-epoch-프레임-인간-고유-능력-5요소">박스 1 — EPOCH 프레임
+<h2 id="박스-1-epoch-프레임-인간-고유-능력-5요소">박스 1: EPOCH 프레임
 (인간 고유 능력 5요소)</h2>
 <p>MIT Sloan의 Loaiza와 Rigobon이 2024년에 <em>The EPOCH of AI</em>라는
 연구를 발표했습니다. <em>AI가 자동화하기 어려운 인간 고유 능력</em>을
 <em>5요소</em>로 정리했습니다. 다섯 글자의 머리글자가 EPOCH입니다.</p>
 <ul>
-<li><strong>E</strong>mpathy — 공감. 타인의 감정·맥락을 읽는 능력.</li>
-<li><strong>P</strong>resence — 현장 존재감. 현장에 있어야 작동하는
+<li><strong>E</strong>mpathy: 공감. 타인의 감정·맥락을 읽는 능력.</li>
+<li><strong>P</strong>resence: 현장 존재감. 현장에 있어야 작동하는
 신체·사회적 감각.</li>
-<li><strong>O</strong>pinion·Judgment·Ethics — 의견·판단·윤리. 가치
+<li><strong>O</strong>pinion·Judgment·Ethics: 의견·판단·윤리. 가치
 판단과 윤리적 결정.</li>
-<li><strong>C</strong>reativity — 창의성. 새 패턴·아이디어를 만드는
+<li><strong>C</strong>reativity: 창의성. 새 패턴·아이디어를 만드는
 능력.</li>
-<li><strong>H</strong>ope·Vision·Leadership — 비전·리더십. 미래 설계와
+<li><strong>H</strong>ope·Vision·Leadership: 비전·리더십. 미래 설계와
 사람을 모으는 능력.</li>
 </ul>
 <p>연구진이 <em>미국 모든 직업의 task</em>를 측정했을 때, <em>EPOCH
@@ -874,25 +877,25 @@ Frontier(들쭉날쭉한 경계)</em>라고 불렀습니다. AI의 능력은 <em
 <em>비전과 리더십을 가진 사람의 자리가 가장 안전</em>하다는 진단.</p>
 <p>EPOCH는 본서 7장 <em>새로운 성과 관리</em>의 학술 토대가 됩니다.</p>
 <hr />
-<h2 id="박스-2-centaur-vs-cyborg-두-협업-스타일">박스 2 — Centaur vs
+<h2 id="박스-2-centaur-vs-cyborg-두-협업-스타일">박스 2: Centaur vs
 Cyborg (두 협업 스타일)</h2>
 <p>Harvard Business School의 Dell’Acqua와 동료 8명이 2023년에 발표한
 <em>BCG 컨설턴트 758명</em> 실험. AI를 사용하는 사람들이 <em>두 협업
 스타일</em>로 나뉘었습니다.</p>
 <ul>
-<li><strong>Centaur(반인반마)</strong> — 인간과 AI 사이에 <em>task를
+<li><strong>Centaur(반인반마)</strong>: 인간과 AI 사이에 <em>task를
 분배·위임</em>합니다. <em>이건 내가 하고, 저건 AI에게 맡긴다</em>는 식.
 명확한 경계 분할.</li>
-<li><strong>Cyborg(사이보그)</strong> — 워크플로우 자체를 AI와
+<li><strong>Cyborg(사이보그)</strong>: 워크플로우 자체를 AI와
 <em>통합</em>합니다. 같은 task 안에서 <em>번갈아 가며</em> 작업.</li>
 </ul>
 <p>두 스타일 모두 평균 성능을 올렸지만, <em>어느 쪽이 절대적으로
-낫다</em>는 답은 없었습니다. <em>task의 위치</em>가 더 큰 변수입니다.
-<em>Jagged Frontier 안쪽 task</em>에서는 두 스타일 모두 작동하고,
-<em>바깥쪽 task</em>에서는 두 스타일 모두 -19% 손해를 봅니다. 본서가
-반복적으로 짚을 <em>경계 식별 능력</em>이 여기서 정의됩니다.</p>
+낫다</em>는 결론은 나오지 않았습니다. <em>task의 위치</em>가 더 큰
+변수입니다. <em>Jagged Frontier 안쪽 task</em>에서는 두 스타일 모두
+작동하고, <em>바깥쪽 task</em>에서는 두 스타일 모두 -19% 손해를 봅니다.
+본서가 반복적으로 짚을 <em>경계 식별 능력</em>이 여기서 정의됩니다.</p>
 <hr />
-<h2 id="박스-3-brynjolfssonliraymond-콜센터-34">박스 3 —
+<h2 id="박스-3-brynjolfssonliraymond-콜센터-34">박스 3:
 Brynjolfsson·Li·Raymond (콜센터 +34%)</h2>
 <p>위의 <em>콜센터 풍경</em>의 원전.
 Brynjolfsson(Stanford)·Li(MIT)·Raymond(MIT)가 2023년에 NBER로 발표하고
@@ -908,7 +911,7 @@ Brynjolfsson(Stanford)·Li(MIT)·Raymond(MIT)가 2023년에 NBER로 발표하고
 <em>경험 곡선이 압축</em>됩니다. 둘째, <em>신입과 숙련자의 성과 분포가
 압축되면서 보상 차등의 근거가 흔들립니다</em>. 본서 8장의 핵심 자료.</p>
 <hr />
-<h2 id="박스-4-vaccaro-반박-메타분석">박스 4 — Vaccaro (반박
+<h2 id="박스-4-vaccaro-반박-메타분석">박스 4: Vaccaro (반박
 메타분석)</h2>
 <p>MIT의 Vaccaro·Almaatouq·Malone이 2024년에 <em>Nature Human
 Behaviour</em>에 발표한 메타분석. 2020~2023년 사이의 <em>106개 실험,
@@ -923,15 +926,15 @@ task에서는 결합이 열등. 이 발견 때문에 본서의 가설은 <em>조
 됩니다. <em>AI 협업은 무조건 좋다</em>는 식의 광고를 학술이 반박한
 셈입니다.</p>
 <hr />
-<h2 id="두-모드-augmentation과-synergy">두 모드 — Augmentation과
+<h2 id="두-모드-augmentation과-synergy">두 모드: Augmentation과
 Synergy</h2>
 <p>세 풍경과 네 박스를 합치면, 인간·AI 협업의 <em>두 모드</em>가
 분명해집니다.</p>
 <ul>
-<li><strong>Augmentation(능력 증강)</strong> — 인간 단독보다
+<li><strong>Augmentation(능력 증강)</strong>: 인간 단독보다
 <em>결합</em>이 낫다. <em>인간 단독 &lt; 인간+AI</em>. 콜센터 +14%·신입
-+34%·Copilot +55.8%·BCG +43% — 모두 이 모드.</li>
-<li><strong>Synergy(시너지)</strong> — 인간 단독, AI 단독 <em>중 더 나은
++34%·Copilot +55.8%·BCG +43%가 모두 이 모드.</li>
+<li><strong>Synergy(시너지)</strong>: 인간 단독, AI 단독 <em>중 더 나은
 쪽보다</em> 결합이 낫다. <em>훨씬 어려운 조건</em>. Vaccaro 메타분석이
 <em>평균적으로 발견되지 않았다</em>고 한 모드.</li>
 </ul>
@@ -949,20 +952,21 @@ Synergy</h2>
 <p>한국 회사 안으로 옮기면 실용 지침이 두 가지 나옵니다.</p>
 <p>첫째, <em>모든 task가 Jagged Frontier 안쪽이 아니라는 사실을
 받아들이는 것</em>. AI에 모든 task를 던지는 <em>Cyborg 전략</em>이 늘
-좋지는 않습니다. Frontier 바깥 task에서는 <em>Centaur</em> — 사람이 따로
-처리 — 가 더 낫습니다.</p>
+좋지는 않습니다. Frontier 바깥 task에서는 사람이 따로 처리하는
+<em>Centaur</em>가 더 낫습니다.</p>
 <p>둘째, <em>Synergy를 약속하지 않는 것</em>. 사내 보고에 <em>“AI
 시너지”</em>를 약속하면 1~2년 뒤 <em>측정 가능하게 실패</em>합니다.
 <em>Augmentation을 정직하게 측정</em>하고, <em>Synergy로 가는 길</em>을
 <em>조직 재설계의 시간 위</em>에 올려두는 것이 더 단단합니다.</p>
-<p>다음 장에서, 이 두 모드가 <em>조직 구조</em>에서 어떻게 작동하는지 —
-<em>Agentic Organization과 매니저 재정의</em> — 를 들여다보겠습니다.</p>
+<p>다음 장에서는 <em>Agentic Organization과 매니저 재정의</em>를 다루며,
+이 두 모드가 <em>조직 구조</em>에서 어떻게 작동하는지
+들여다보겠습니다.</p>
 <h1 id="장.-agentic-organization과-매니저-재정의">6장. Agentic
 Organization과 매니저 재정의</h1>
 <blockquote>
 <p><em>“AI 시대 관리자의 가치는 ’얼마나 많이 아는가’가 아니라 ’무엇을
-질문하는가’에서 결정됩니다.”</em> — 한국경제 비즈니스 인사이트, 2026년
-5월</p>
+질문하는가’에서 결정됩니다.”</em></p>
+<p>한국경제 비즈니스 인사이트, 2026년 5월</p>
 </blockquote>
 <p>지난 두 장이 <em>task(작은 일감 단위)</em>와 <em>협업의 두
 모드</em>를 다뤘다면, 이 장은 그 둘이 모이는 <em>조직 단위</em>를
@@ -977,7 +981,7 @@ McKinsey가 만든 단어. 한국어로 풀면 <em>AI 에이전트가 동료처�
 사다리를 다시 만들어야 한다.</strong></p>
 </blockquote>
 <hr />
-<h2 id="work-chart-조직도에서-흐름으로">Work Chart — 조직도에서
+<h2 id="work-chart-조직도에서-흐름으로">Work Chart: 조직도에서
 흐름으로</h2>
 <p>Microsoft가 <em>Work Trend Index 2025</em>에서 짚은 새 그림이
 <em>Work Chart</em>입니다. 한국어로 풀면 <em>작업 흐름도</em>.</p>
@@ -990,12 +994,12 @@ task를 가지고, 그 결과가 어디로 흘러가는지의 흐름. 위계 대
 <em>능력과 적합도</em>가 노드 배치를 결정합니다.</p>
 <p>MS는 이 변화의 <em>세 단계</em>를 정리했습니다.</p>
 <ul>
-<li>1단계 <strong>Assistance(보조)</strong> — AI를 <em>개인
-비서</em>처럼 사용</li>
-<li>2단계 <strong>Colleague(동료)</strong> — AI가 팀의 <em>한
-자리</em>에 들어옴</li>
+<li>1단계 <strong>Assistance(보조)</strong>: AI를 <em>개인 비서</em>처럼
+사용</li>
+<li>2단계 <strong>Colleague(동료)</strong>: AI가 팀의 <em>한 자리</em>에
+들어옴</li>
 <li>3단계 <strong>BPA (Business Process Automation, 비즈니스 프로세스
-자동화)</strong> — AI가 <em>프로세스 전체</em>를 자율 운영</li>
+자동화)</strong>: AI가 <em>프로세스 전체</em>를 자율 운영</li>
 </ul>
 <p>대부분의 회사가 1단계에 머물러 있다는 게 MS의 진단입니다.</p>
 <hr />
@@ -1003,10 +1007,10 @@ task를 가지고, 그 결과가 어디로 흘러가는지의 흐름. 위계 대
 <p>McKinsey의 <em>State of AI 2025</em> 리포트가 한 가지 새 작업 단위를
 짚었습니다. <em>3~5인 pod</em>. 한국어로 풀면 <em>작은 자율 팀</em>.</p>
 <p>8~12명의 전통 애자일 팀이 <em>3~5명</em>으로 줄어들었는데 <em>비슷한
-산출</em>을 낸다는 데이터. 단, 한 가지 조건이 따라옵니다. <em>3~6개월의
+산출</em>을 낸다는 데이터. 단, 한 가지 조건이 붙습니다. <em>3~6개월의
 워크플로우 재설계 + 역할 재정의 + 집중 업스킬링</em>.</p>
 <p><em>그냥 사람 수를 줄여서</em> 3~5인 pod를 만들면 산출이
-반토막납니다. <em>워크플로우 재설계 + 에이전트 통합</em>이 따라온
+반토막납니다. <em>워크플로우 재설계 + 에이전트 통합</em>을 함께 한
 곳에서만 <em>같은 산출</em>이 나옵니다.</p>
 <p>Cursor가 극단 사례입니다. <em>50명 안팎의 회사가 ARR 2조 원
 수준</em>. PM이 없고, 매니저가 거의 없고, 엔지니어가
@@ -1024,8 +1028,8 @@ task를 가지고, 그 결과가 어디로 흘러가는지의 흐름. 위계 대
 팀이 풀어야 할 진짜 문제는 무엇인가? 그 문제를 어떤 결과로 정의할 수
 있는가? 그 결과를 어떻게 측정할 것인가?</em></p>
 <p>같은 시기 미국에서 Mark Zuckerberg가 Meta 조직 개편을 발표하면서
-<em>“평평할수록 빠릅니다”</em>라는 발언을 남겼습니다. Meta가 <em>매니저
-한 단계</em>를 의도적으로 제거한 사건. 매니저 단계가 줄어들면 <em>결정
+<em>“평평할수록 빠릅니다”</em>라고 말했습니다. Meta가 <em>매니저 한
+단계</em>를 의도적으로 제거한 사건. 매니저 단계가 줄어들면 <em>결정
 부담</em>은 커지지만 <em>의사결정 속도</em>가 빨라집니다. 이
 트레이드오프 안에서 <em>질문 설계 능력이 있는 매니저</em>만
 살아남습니다.</p>
@@ -1052,19 +1056,19 @@ Matt Garman은 <em>“주니어 개발자를 AI로 대체하는 것은 재앙적
 압축 조직. 전자를 선택한 회사가 <em>Agentic Organization의 매뉴얼</em>을
 따라야 합니다.</p>
 <hr />
-<h2 id="한국-매니저-재정의-devocean의-5단계">한국 매니저 재정의 —
+<h2 id="한국-매니저-재정의-devocean의-5단계">한국 매니저 재정의:
 DEVOCEAN의 5단계</h2>
 <p>한국 회사 안에서 <em>매니저 재정의</em>가 어떻게 진행 중인지를
 들여다볼 자료가 있습니다.</p>
 <p>DEVOCEAN이라는 한국 기술 블로그가 <em>AI 5단계 내재화 모델</em>을
 정리해 공개했습니다.</p>
 <ol type="1">
-<li><strong>학습</strong> — 직원 개인이 AI 도구를 학습</li>
-<li><strong>PoC</strong>(Proof of Concept, 개념 증명) — 작은 단위
+<li><strong>학습</strong>: 직원 개인이 AI 도구를 학습</li>
+<li><strong>PoC</strong>(Proof of Concept, 개념 증명): 작은 단위
 실험</li>
-<li><strong>팀·조직 체감</strong> — 한 팀의 일상에 AI가 정착</li>
-<li><strong>제도화</strong> — 평가·보상·프로세스에 반영</li>
-<li><strong>문화적 내재화</strong> — 의식하지 않아도 AI가 일의 일부</li>
+<li><strong>팀·조직 체감</strong>: 한 팀의 일상에 AI가 정착</li>
+<li><strong>제도화</strong>: 평가·보상·프로세스에 반영</li>
+<li><strong>문화적 내재화</strong>: 의식하지 않아도 AI가 일의 일부</li>
 </ol>
 <p>이 5단계가 <em>매니저의 일</em>을 단계별로 다르게 정의합니다.
 1·2단계에서 매니저는 <em>학습 환경을 만드는 사람</em>, 3단계에서
@@ -1078,8 +1082,8 @@ DEVOCEAN의 5단계</h2>
 <hr />
 <h2 id="part-2를-닫으며">PART 2를 닫으며</h2>
 <p>PART 3은 본론입니다. 4~6장에서 본 task 분해·협업의 두 모드·매니저
-재정의 위에서 <em>AX 실행 세 시도</em> — 새로운 성과 관리, 새로운 기여자
-보상, Skill Marketplace — 가 어떻게 작동하는지를 들여다봅니다.</p>
+재정의 위에서 <em>AX 실행 세 시도</em>(새로운 성과 관리, 새로운 기여자
+보상, Skill Marketplace)가 어떻게 작동하는지를 들여다봅니다.</p>
 <h1 id="part-3.-ax-실행-세-시도">PART 3. AX 실행 세 시도</h1>
 <blockquote>
 <p>책의 무게중심.</p>
@@ -1094,12 +1098,12 @@ Marketplace</em>(회사 안에 인재 시장을 만들기). 세 시도가 <em>�
 교과서급 사례가 있고 한국에는 가장 큰 빈자리가 있는 주제입니다. 본서가
 <em>학술의 70% 받침 위에 책의 30% 기여</em>를 더한 시도는 PART 3 전체에
 걸쳐 있습니다.</p>
-<h1 id="장.-새로운-성과-관리-epoch의-한국형-매핑">7장. 새로운 성과 관리
-— EPOCH의 한국형 매핑</h1>
+<h1 id="장.-새로운-성과-관리-epoch의-한국형-매핑">7장. 새로운 성과 관리:
+EPOCH의 한국형 매핑</h1>
 <blockquote>
 <p><em>“개발자는 21% 더 일하고 PR을 98% 더 머지하지만, PR 리뷰 시간은
-91% 더 길어집니다. 시스템의 병목은 <em>인간 승인</em>입니다.”</em> —
-Faros AI, <em>Productivity Paradox Research</em> (2025)</p>
+91% 더 길어집니다. 시스템의 병목은 <em>인간 승인</em>입니다.”</em></p>
+<p>Faros AI, <em>Productivity Paradox Research</em> (2025)</p>
 </blockquote>
 <p>본론 첫 장의 질문은 AX 시대에 성과를 어떻게 측정할 것인가입니다.</p>
 <blockquote>
@@ -1132,14 +1136,14 @@ Faros AI, <em>Productivity Paradox Research</em> (2025)</p>
 <em>개인</em>에서 <em>시스템</em>으로 옮겨가야 합니다.</p>
 <p>콜센터·컨설팅·HR 부서에서도 마찬가지입니다. 상담원이 +14% 처리하지만
 <em>고객의 후속 응대 결과</em>는 4주 뒤에 측정되어야 하고, 컨설턴트의
-+43% 결과는 고객사 KPI 변화가 6~12개월 뒤에 나타납니다. <em>측정의
-시간축</em>도 함께 늘어났습니다.</p>
++43% 결과는 고객사 KPI 변화가 6~12개월 뒤에 나타납니다. <em>측정에
+걸리는 시간</em>도 함께 늘어났습니다.</p>
 <hr />
-<h2 id="시그니처-자산-epoch의-한국형-매핑">✦ 시그니처 자산 — EPOCH의
+<h2 id="시그니처-자산-epoch의-한국형-매핑">✦ 시그니처 자산: EPOCH의
 한국형 매핑</h2>
 <p>이 책이 학술에 더하는 몫이 이 절에 있습니다.</p>
-<p>5장에서 살펴본 EPOCH 5요소(공감·현장 존재감·판단·창의성·비전) — MIT
-Sloan의 Loaiza·Rigobon 2024 — 가 <em>학술 단계</em>에서 <em>실무
+<p>5장에서 살펴본 EPOCH 5요소(공감·현장 존재감·판단·창의성·비전, MIT
+Sloan의 Loaiza·Rigobon 2024)가 <em>학술 단계</em>에서 <em>실무
 자리</em>로 옮겨가지 못한 상태입니다. <em>5요소를 어떤 회사의 평가
 항목으로 옮길지</em>가 <em>빈 공간</em>으로 남아 있었습니다.</p>
 <p>본서가 그 빈 공간을 <em>한국 직무 유형 3</em>에 매핑한 시그니처 표를
@@ -1204,14 +1208,14 @@ Sloan의 Loaiza·Rigobon 2024 — 가 <em>학술 단계</em>에서 <em>실무
 <em>미래 비전·자기 설계</em>를 측정하는 항목은 대부분의 한국 회사에
 없습니다.</p>
 <hr />
-<h2 id="cornell-2025-인과-카드-미리-보기">Cornell 2025 인과 카드 — 미리
+<h2 id="cornell-2025-인과-카드-미리-보기">Cornell 2025 인과 카드: 미리
 보기</h2>
 <p>8장에서 본격 다루지만, 한 가지 학술 발견을 여기서 미리 봅니다.</p>
 <p>Cornell University의 Wiernsperger와 동료들이 2025년에 <em>Management
 Science</em>라는 학술지에 한 연구를 발표했습니다. <em>성과 기반 보상을
 받는 의사결정자는 AI 활용도가 유의미하게 증가했다.</em> 1980~90년대에
-<em>algorithm aversion</em>(알고리즘 회피)이라는 이름으로 알려진 결론 —
-<em>성과 보상은 알고리즘 의존을 낮춘다</em> — 을 <em>정반대로
+<em>algorithm aversion</em>(알고리즘 회피)이라는 이름으로 알려진
+결론(<em>성과 보상은 알고리즘 의존을 낮춘다</em>)을 <em>정반대로
 뒤집은</em> 발견입니다.</p>
 <p>이 발견이 <em>AX 시대 성과 관리의 인과 카드</em>가 됩니다. <em>성과
 보상 → AI 채택 증가 → 시스템 결과 향상</em>. 다만 단서가 하나 있습니다.
@@ -1220,7 +1224,7 @@ Science</em>라는 학술지에 한 연구를 발표했습니다. <em>성과 기
 카드를 적용하려면 <em>작은 실험</em>부터 시작해서 <em>재현 여부</em>를
 확인해야 합니다.</p>
 <hr />
-<h2 id="균형-synergy를-약속하지-마시기-바랍니다">균형 —
+<h2 id="균형-synergy를-약속하지-마시기-바랍니다">균형:
 <em>Synergy</em>를 약속하지 마시기 바랍니다</h2>
 <p>5장에서 본 Vaccaro 2024 메타분석에서 <em>Synergy는 평균적으로
 발견되지 않았습니다.</em> 성과 측정에도 그대로 적용됩니다. 사내 보고에서
@@ -1235,11 +1239,12 @@ Science</em>라는 학술지에 한 연구를 발표했습니다. <em>성과 기
 카드</em>가 8장에서 본격 풀립니다.</p>
 <h1
 id="장.-새로운-기여자-보상-skills-based-pay와-한국의-직무기반-전환">8장.
-새로운 기여자 보상 — Skills-based pay와 한국의 직무기반 전환</h1>
+새로운 기여자 보상: Skills-based pay와 한국의 직무기반 전환</h1>
 <blockquote>
 <p><em>“여러분은 미션을 보고 왔습니다. 누가 다트를 던졌다는 이유만으로
 우리가 지금의 열 배를 줄 일은 없습니다. 그건 문화를 분열시키고
-파괴합니다.”</em> — Dario Amodei, Anthropic CEO 사내 메모, 2025</p>
+파괴합니다.”</em></p>
+<p>Dario Amodei, Anthropic CEO 사내 메모, 2025</p>
 </blockquote>
 <p>본론의 두 번째 장입니다. <em>AX 시대의 기여자 보상</em>.</p>
 <p>7장에서 성과 관리가 <em>개인 산출에서 시스템 결과로</em> 옮겨간다고
@@ -1312,25 +1317,23 @@ Zuckerberg가 OpenAI 핵심 연구자에게 <em>역사상 최대 시그니처
 때문입니다. <em>유동성 있는 주식</em>과 <em>유동성 없는 옵션 더미</em>는
 <em>액면이 같아도 다른 가치</em>입니다.</p>
 <hr />
-<h2 id="액수의-짝-네-가지"><em>액수의 짝</em> — 네 가지</h2>
+<h2 id="액수의-짝-네-가지"><em>액수의 짝</em>: 네 가지</h2>
 <p>Murati 회귀 사건이 드러낸 <em>액수의 짝</em>은 네 가지입니다.</p>
 <ul>
-<li><strong>액수</strong> — RSU·옵션·현금. 시장 가격에 가까운 단위.</li>
-<li><strong>유동성</strong> — 액면이 같아도 <em>현금화 가능성</em>은
+<li><strong>액수</strong>: RSU·옵션·현금. 시장 가격에 가까운 단위.</li>
+<li><strong>유동성</strong>: 액면이 같아도 <em>현금화 가능성</em>은
 다릅니다. PPU·secondary market 접근 가능성·IPO 시점이 변수.</li>
-<li><strong>재량</strong> — 표준 등급에 묶이지 않고 <em>시니어 리더가
+<li><strong>재량</strong>: 표준 등급에 묶이지 않고 <em>시니어 리더가
 협상으로 조정 가능한 폭</em>. OpenAI에서 <em>예외 패키지</em>가 흔해진
 풍경.</li>
-<li><strong>미션</strong> — Dario Amodei가 사내 메모에서 짚은 요소.
+<li><strong>미션</strong>: Dario Amodei가 사내 메모에서 짚은 요소.
 <em>돈이 미션을 대체하지 않는다</em>는 사실.</li>
 </ul>
-<p>네 가지가 <em>동시에 작동할 때</em>만 보상이 의도한 결과를 만듭니다.
-하나라도 빠진 곳은 사람을 유지하는 데 <em>더 큰 액수가
+<p>넷 중 하나라도 빠진 곳은 사람을 유지하는 데 <em>더 큰 액수가
 필요해집니다</em>. 본서는 이 패턴을 <em>유동성·재량 프리미엄</em>이라
 부릅니다.</p>
 <hr />
-<h2 id="학술-cornell-2025-인과-카드">✦ 학술 — Cornell 2025 인과
-카드</h2>
+<h2 id="학술-cornell-2025-인과-카드">✦ 학술: Cornell 2025 인과 카드</h2>
 <p>7장에서 미리 본 연구를 자세히 봅니다.</p>
 <p>Cornell University의 Wiernsperger와 동료들이 2025년 <em>Management
 Science</em>에 발표한 <em>Incentives, Framing, and Reliance on
@@ -1352,7 +1355,7 @@ Algorithmic Advice</em>. 1980~90년대의 <em>algorithm aversion</em>
 있습니다. 한국에서 <em>작은 실험</em>부터 시작해서 <em>재현 여부</em>를
 확인하는 것이 안전합니다.</p>
 <hr />
-<h2 id="학술-주식-보상은-hpwp-결합-시에만-효과">✦ 학술 — 주식 보상은
+<h2 id="학술-주식-보상은-hpwp-결합-시에만-효과">✦ 학술: 주식 보상은
 <em>HPWP 결합 시</em>에만 효과</h2>
 <p>또 한 편의 학술이 보상 챕터의 학술 백본입니다.</p>
 <p>Rutgers·Harvard의 Kruse·Freeman·Blasi가 2010년 NBER에 발표한
@@ -1378,7 +1381,7 @@ effect)</em>로 나뉘는데, <em>Sorting effect가 incentive effect의
 <em>인재 풀의 구성 자체</em>를 바꿉니다. 한국 HR이 자주 놓치는
 부분입니다.</p>
 <hr />
-<h2 id="한국-사례-롯데와-sk하이닉스">한국 사례 — 롯데와 SK하이닉스</h2>
+<h2 id="한국-사례-롯데와-sk하이닉스">한국 사례: 롯데와 SK하이닉스</h2>
 <p><strong>롯데</strong>는 2025년 9월에 한국 대기업 <em>최초로</em>
 그룹사 차원의 <em>직무기반 인사제도</em>를 시행했습니다. GL/JL 5등급,
 40개 직무, 사내 동의율 95.3%, 등급 간 보상 격차 20%. 박두환 HQ혁신실장이
@@ -1397,30 +1400,30 @@ effect)</em>로 나뉘는데, <em>Sorting effect가 incentive effect의
 <p>8장은 Dario Amodei의 사내 메모 한 줄로 닫습니다. <em>“여러분은 미션을
 보고 왔습니다.”</em> 미션도 <em>액수의 짝</em>입니다. 보상 시스템의 가장
 작은 단위는 <em>돈과 미션과 유동성과 재량의 묶음</em>입니다.</p>
-<p>다음 장이 본서의 시그니처 챕터입니다. <em>Skill Marketplace — 회사
+<p>다음 장이 본서의 시그니처 챕터입니다. <em>Skill Marketplace: 회사
 안에 인재 시장을 만들기</em>.</p>
 <h1 id="장.-skill-marketplace-회사-안에-인재-시장을-만들기">9장. Skill
-Marketplace ⭐ — 회사 안에 인재 시장을 만들기</h1>
+Marketplace ⭐: 회사 안에 인재 시장을 만들기</h1>
 <blockquote>
 <p><em>“내부 인재 시장은 우리가 처음 가본 길입니다. 한국 회사가 7년의
 시행착오를 줄일 수 있다면, 그게 우리가 이야기를 공개하는
-이유입니다.”</em> — Andrew Saidy, Chief Talent Officer, Schneider
-Electric (요지)</p>
+이유입니다.”</em></p>
+<p>Andrew Saidy, Chief Talent Officer, Schneider Electric (요지)</p>
 </blockquote>
 <p>본론의 마지막 장이자 <em>본서의 시그니처 챕터</em>입니다.</p>
 <hr />
-<h2 id="용어-한-단락-skill-marketplace가-무엇인가">용어 한 단락 —
+<h2 id="용어-한-단락-skill-marketplace가-무엇인가">용어 한 단락:
 <em>Skill Marketplace</em>가 무엇인가</h2>
 <p>먼저 용어부터 정리하겠습니다. 본 장의 핵심 단어가 세 개입니다.</p>
 <ul>
-<li><strong>Internal Talent Marketplace (ITM, 사내 인재 시장)</strong> —
+<li><strong>Internal Talent Marketplace (ITM, 사내 인재 시장)</strong>:
 글로벌 산업과 학술에서 <em>표준으로 쓰는 용어</em>입니다. <em>사내에
 작은 일감과 사람을 사고파는 시장을 만든다</em>는 발상.</li>
-<li><strong>Skill Marketplace (스킬 마켓플레이스)</strong> — <em>같은
+<li><strong>Skill Marketplace (스킬 마켓플레이스)</strong>: <em>같은
 개념</em>을 한국 독자에게 더 친근하게 풀어 쓴 표현입니다. 본서가 한국
 시장에 옮길 때 <em>스킬</em>이라는 단어가 <em>인재</em>라는 단어보다 더
 직관적이라고 보고 두 용어를 함께 씁니다.</li>
-<li><strong>Gig (긱)</strong> — 시장에서 거래되는 <em>작은 단위의 임시
+<li><strong>Gig (긱)</strong>: 시장에서 거래되는 <em>작은 단위의 임시
 작업</em>. 짧게는 <em>6주</em>, 길게는 <em>6개월</em> 정도의 사내
 프로젝트. 정규 발령 없이 <em>기존 부서를 유지한 채</em> 다른 일을 잠시
 맡는 형태.</li>
@@ -1441,7 +1444,7 @@ Marketplace입니다.</strong> 마치 <em>사내판 우아한형제들 배달앱
 </blockquote>
 <hr />
 <h2 id="교과서-사례-세-곳">교과서 사례 세 곳</h2>
-<h3 id="schneider-electric-open-talent-market">Schneider Electric — Open
+<h3 id="schneider-electric-open-talent-market">Schneider Electric: Open
 Talent Market</h3>
 <p>프랑스의 다국적 에너지 관리 회사 Schneider Electric이 2018년에
 <em>Open Talent Market</em>이라는 사내 플랫폼을 출범했습니다. 직원이
@@ -1487,22 +1490,22 @@ Talent Market</h3>
 설계·운영했습니다. 자주 인용되는 <em>운영 원칙 여섯 가지</em>가
 있습니다.</p>
 <ol type="1">
-<li><strong>매니저 사전 승인 없는 자율 신청</strong> — 직원이 직접 gig를
+<li><strong>매니저 사전 승인 없는 자율 신청</strong>: 직원이 직접 gig를
 신청합니다. 매니저 OK를 미리 받지 않아도 됨.</li>
-<li><strong>gig 단위</strong> — <em>6주~6개월의 작은 작업 단위</em>.
-정규 이동이 아닙니다.</li>
-<li><strong>멘토 매칭</strong> — 작업뿐 아니라 <em>시니어 1대1
+<li><strong>gig 단위</strong>: <em>6주~6개월의 작은 작업 단위</em>. 정규
+이동이 아닙니다.</li>
+<li><strong>멘토 매칭</strong>: 작업뿐 아니라 <em>시니어 1대1
 멘토</em>도 같은 플랫폼에서 신청 가능.</li>
-<li><strong>AI 스킬 추론</strong> — 직원이 <em>자기 스킬을 일일이
+<li><strong>AI 스킬 추론</strong>: 직원이 <em>자기 스킬을 일일이
 입력하지 않아도</em> AI가 과거 작업·자기 기록·동료 피드백에서 추론.</li>
-<li><strong>공정성 가시화</strong> — 누가 어떤 gig를 받았는지가
+<li><strong>공정성 가시화</strong>: 누가 어떤 gig를 받았는지가
 <em>플랫폼에서 공개</em>됩니다. 뒷거래 방지.</li>
-<li><strong>분기 사이클 측정</strong> — 운영팀이 <em>매분기 사용
+<li><strong>분기 사이클 측정</strong>: 운영팀이 <em>매분기 사용
 데이터·만족도·결과</em>를 추적하고 시스템을 다시 조정.</li>
 </ol>
 <p>이 여섯 원칙이 <em>한국 회사가 따라 할 수 있는 매뉴얼</em>에
 가깝습니다.</p>
-<h3 id="unilever-flex-experiences">Unilever — FLEX Experiences</h3>
+<h3 id="unilever-flex-experiences">Unilever: FLEX Experiences</h3>
 <p>영국·네덜란드의 다국적 소비재 회사. 비슷한 시기에 출범한 사내
 플랫폼.</p>
 <table>
@@ -1533,9 +1536,9 @@ Talent Market</h3>
 </table>
 <p>특히 <em>팬데믹 시기</em>가 결정적이었습니다. 2020~2021년
 <em>8,000명의 직원</em>이 FLEX를 통해 다른 부서로 임시 재배치되었습니다.
-외부 채용을 새로 하지 않고 <em>사내 인력의 유동성</em>만으로 위기를
+외부 채용을 새로 하는 대신 <em>사내 인력의 유동성</em>으로 위기를
 통과했습니다.</p>
-<h3 id="ibm-blue">IBM — Blue</h3>
+<h3 id="ibm-blue">IBM: Blue</h3>
 <p>IBM이 2014년에 시작한 <em>Blue</em> 프로그램. <em>가장 오래된 ITM
 사례</em>. 1,000명 견습생 매칭, $250M 누적 투자, 직원당 평균 86시간/년
 학습 시간, <em>학습 활동 상위 5%(슈퍼러너)의 승진 속도가 +40%</em>. 핵심
@@ -1547,7 +1550,7 @@ Talent Market</h3>
 임계점</em>입니다. 1~2년 안에 <em>50% 이상의 글로벌 대기업이 ITM을
 도입</em>할 가능성이 큽니다.</p>
 <hr />
-<h2 id="한국에-가장-가까운-형태-짝-비교">✦ 한국에 가장 가까운 형태 — 짝
+<h2 id="한국에-가장-가까운-형태-짝-비교">✦ 한국에 가장 가까운 형태: 짝
 비교</h2>
 <p>본서의 시그니처 자산은 이 비교입니다. 한국에서 <em>ITM에 가장 근접한
 형태</em> 두 가지를 짝지어 비교합니다.</p>
@@ -1617,7 +1620,7 @@ Talent Market</h3>
 Schneider 수준의 ITM을 가동할 것이다.</em> 다만 <em>공식 발표</em>가
 나오기 전까지는 가설에 머뭅니다.</p>
 <hr />
-<h2 id="균형-자료-플랫폼의-그림자">✦ 균형 자료 — <em>플랫폼의
+<h2 id="균형-자료-플랫폼의-그림자">✦ 균형 자료: <em>플랫폼의
 그림자</em></h2>
 <p>학술 균형 자료도 <em>반드시</em> 봐야 합니다.</p>
 <p>Northeastern의 Vallas와 Boston College의 Schor가 2020년에 발표한
@@ -1633,48 +1636,47 @@ Schneider 수준의 ITM을 가동할 것이다.</em> 다만 <em>공식 발표</e
 <p>ITM을 도입하는 한국 회사는 <em>이 경고에 대한 안전장치</em>를
 처음부터 함께 설계해야 합니다. 다섯 가지입니다.</p>
 <ol type="1">
-<li><strong>gig 단위에 최소 보상 기준</strong> — 시간당·건당 최소 인정
+<li><strong>gig 단위에 최소 보상 기준</strong>: 시간당·건당 최소 인정
 시간</li>
-<li><strong>알고리즘의 공정성·편향 추적</strong> — 별도 위원회가
-분기마다 점검</li>
-<li><strong>직원 부담 한도</strong> — 한 직원이 동시에 받을 gig의
+<li><strong>알고리즘의 공정성·편향 추적</strong>: 별도 위원회가 분기마다
+점검</li>
+<li><strong>직원 부담 한도</strong>: 한 직원이 동시에 받을 gig의
 상한</li>
-<li><strong>비참여 자유</strong> — ITM에 참여하지 않는 직원의 <em>불이익
+<li><strong>비참여 자유</strong>: ITM에 참여하지 않는 직원의 <em>불이익
 없는</em> 보장</li>
-<li><strong>데이터 권리</strong> — 직원의 <em>자기 데이터 접근권</em>과
+<li><strong>데이터 권리</strong>: 직원의 <em>자기 데이터 접근권</em>과
 <em>삭제권</em></li>
 </ol>
 <p>이 다섯 장치 없이 ITM이 가동되면 <em>플랫폼화의 위험</em>이
 본격화됩니다. 본서가 <em>교과서 사례</em>만 인용하지 않고 <em>경고
 자료까지 본문에 싣는</em> 이유.</p>
 <hr />
-<h2 id="판-보강-영역-한국-itm-인터뷰-5명-후보">✦ 2판 보강 영역 — 한국
-ITM 인터뷰 5명 후보</h2>
+<h2 id="판-보강-영역-한국-itm-인터뷰-5명-후보">✦ 2판 보강 영역: 한국 ITM
+인터뷰 5명 후보</h2>
 <p>본서 9장의 한국 쪽 사례는 <em>글로벌 사례보다 얇습니다</em>. <em>공개
 자료</em>만으로 한국 ITM 실 운영 사례를 채울 수 없습니다. <em>2판
 보강</em>에서 인터뷰로 메우겠다는 약속을 본문에 명시해 두겠습니다.</p>
 <p>인터뷰 후보 5명 (익명·직책 단위):</p>
 <ol type="1">
-<li><em>삼성전자 잡포스팅 운영 담당</em> — 한국 ITM의 가장 진화된 사례의
+<li><em>삼성전자 잡포스팅 운영 담당</em>: 한국 ITM의 가장 진화된 사례의
 운영 디테일</li>
-<li><em>롯데지주 박두환 HQ혁신실장 (또는 후임)</em> — 직무기반 인사제도
+<li><em>롯데지주 박두환 HQ혁신실장 (또는 후임)</em>: 직무기반 인사제도
 1년 운영 회고</li>
-<li><em>DEVOCEAN 운영진</em> — <em>AI 5단계 내재화 모델</em>의 실제 적용
+<li><em>DEVOCEAN 운영진</em>: <em>AI 5단계 내재화 모델</em>의 실제 적용
 사례</li>
-<li><em>카카오 카나나 PO 또는 전 CAIO 라인</em> — AI 통합 조직 1.5년의
+<li><em>카카오 카나나 PO 또는 전 CAIO 라인</em>: AI 통합 조직 1.5년의
 교훈</li>
-<li><em>한국 People Analytics 리더</em> — 데이터 기반 HR의 한국
-현실</li>
+<li><em>한국 People Analytics 리더</em>: 데이터 기반 HR의 한국 현실</li>
 </ol>
 <p>본서 1판은 <em>공개 자료의 한계 안에서 멈춥니다</em>. 2판에서 이
 인터뷰로 9장의 한국 사례를 채웁니다.</p>
 <hr />
 <h2 id="장을-닫으며-2">9장을 닫으며</h2>
-<p><em>세 시그니처 자산</em> — EPOCH 한국형 매핑·Cornell 인과 카드·한국
-ITM 짝 비교 — 을 7·8·9장에 하나씩 실었습니다.</p>
+<p><em>세 시그니처 자산</em>(EPOCH 한국형 매핑·Cornell 인과 카드·한국
+ITM 짝 비교)을 7·8·9장에 하나씩 실었습니다.</p>
 <p>다음 페이지는 <em>막간</em>으로, <em>우리가 틀릴 수 있는 9가지</em>를
 짚습니다.</p>
-<h1 id="막간-정직한-한-페이지-우리가-틀릴-수-있는-9가지">막간 — 정직한
+<h1 id="막간.-정직한-한-페이지-우리가-틀릴-수-있는-9가지">막간. 정직한
 한 페이지: 우리가 틀릴 수 있는 9가지</h1>
 <p>본론 세 챕터가 끝났습니다. 한 페이지 멈춰 서서 <em>틀릴 수 있는
 9가지</em>를 직시하고 가겠습니다. 이 9가지는 <em>본서의 가설을
@@ -1695,73 +1697,74 @@ ITM 짝 비교 — 을 7·8·9장에 하나씩 실었습니다.</p>
 <tbody>
 <tr>
 <td>1</td>
-<td><strong>Vaccaro 2024</strong> <em>Nat. Hum. Behav.</em> — 인간-AI
+<td><strong>Vaccaro 2024</strong> <em>Nat. Hum. Behav.</em>: 인간-AI
 결합의 synergy가 평균적으로 발견되지 않음</td>
 <td><em>재설계 없이는 결합이 단독을 이기지 못한다</em>는 조건부 굴절.
 본서는 <em>Synergy를 약속하지 않는다</em>.</td>
 </tr>
 <tr>
 <td>2</td>
-<td><strong>Fuller·Raman·McKittrick 2024</strong> HBS — Skills-based
+<td><strong>Fuller·Raman·McKittrick 2024</strong> HBS: Skills-based
 전환이 발표는 빠르고 실행은 3.6%</td>
 <td>본서는 <em>37%의 행동 양식 매뉴얼</em>에 가깝다. 광고는 책 밖에
 충분하다.</td>
 </tr>
 <tr>
 <td>3</td>
-<td><strong>Vallas·Schor 2020</strong> <em>Annual Rev. Soc.</em> —
+<td><strong>Vallas·Schor 2020</strong> <em>Annual Rev. Soc.</em>:
 플랫폼은 <em>permissive potentate</em></td>
 <td>9장 결론에 <em>안전장치 다섯 가지</em>를 명시. ITM이 사내 gig 경제로
 변질될 위험을 본문에 박았다.</td>
 </tr>
 <tr>
 <td>4</td>
-<td><strong>Anthropic Economic Index 5차 (2026/03)</strong> — 22~25세
+<td><strong>Anthropic Economic Index 5차 (2026/03)</strong>: 22~25세
 신입 진입이 -14% 감소</td>
-<td><em>신입의 두 얼굴</em> — AI를 <em>쓰는</em> 신입은 빠르게 크고,
-AI에 <em>대체되는 위치</em>의 신입은 진입조차 막힌다. 6장 <em>신입
-사다리 부러짐</em> 자리.</td>
+<td><em>신입의 두 얼굴</em>: AI를 <em>쓰는</em> 신입은 빠르게 크고, AI에
+<em>대체되는 위치</em>의 신입은 진입조차 막힌다. 6장 <em>신입 사다리
+부러짐</em> 자리.</td>
 </tr>
 <tr>
 <td>5</td>
-<td><strong>Hackman 1977 / Cohen·Ledford 1996</strong> — 자율팀은
+<td><strong>Hackman 1977 / Cohen·Ledford 1996</strong>: 자율팀은
 <em>5조건</em>을 모두 충족해야 효과</td>
 <td><em>Pod·Agentic Organization은 조건부 약속</em>. 단순 도입 광고를
 본서는 권하지 않는다.</td>
 </tr>
 <tr>
 <td>6</td>
-<td><strong>Acemoglu 2024</strong> NBER — AI 거시 효과 TFP 10년
+<td><strong>Acemoglu 2024</strong> NBER: AI 거시 효과 TFP 10년
 ≤0.66%</td>
 <td><em>거시는 천천히, 미시(조직)는 빠르게</em>. 본서는 거시 낙관에
 베팅하지 않는다.</td>
 </tr>
 <tr>
 <td>7</td>
-<td><strong>Autor 2015·2024</strong> JEP·QJE — AI가 양극화를 가속할 수
+<td><strong>Autor 2015·2024</strong> JEP·QJE: AI가 양극화를 가속할 수
 있음</td>
 <td><em>양극화 압력 안에서 조직이 압축에 베팅</em>. Brynjolfsson의 분포
 압축과 Autor의 양극화가 동시에 진행.</td>
 </tr>
 <tr>
 <td>8</td>
-<td><strong>Gerhart·Jenkins·Kim 메타분석</strong> — 보상의 <em>선별
+<td><strong>Gerhart·Jenkins·Kim 메타분석</strong>: 보상의 <em>선별
 효과</em>가 동기 효과의 1.5~2배</td>
 <td>보상은 <em>동기와 선별의 두 메커니즘</em>. 한국 HR이 자주 놓치는
 자리.</td>
 </tr>
 <tr>
 <td>9</td>
-<td><strong>Cornell 2025</strong> <em>Management Science</em> — 한국
-평가 문화에서 <em>재현 미검증</em></td>
+<td><strong>Cornell 2025</strong> <em>Management Science</em>: 한국 평가
+문화에서 <em>재현 미검증</em></td>
 <td>본문 8장에 정직히 명시. 한국에서 <em>작은 실험</em>부터 시작해 재현
 여부 확인 필요.</td>
 </tr>
 </tbody>
 </table>
-<p>9가지를 직시한 다음에도 본서의 가설은 흔들리지 않습니다. 오히려 더
-정확해집니다. <em>재설계가 따라온 곳에서만 작동하는 매뉴얼</em>.
-<em>거시 낙관에 베팅하지 않고 조직 차원의 결정에 베팅하는 책</em>.</p>
+<p>9가지를 직시한 다음에도 본서의 가설은 흔들리지 않고, 오히려 더
+정확해집니다. 본서는 <em>재설계를 함께 한 곳에서만 작동하는
+매뉴얼</em>이고, <em>거시 낙관 대신 조직 차원의 결정에 베팅하는
+책</em>입니다.</p>
 <hr />
 <h2 id="베팅이라는-단어를-떳떳이-씁니다">베팅이라는 단어를 떳떳이
 씁니다</h2>
@@ -1785,11 +1788,12 @@ Schneider·Unilever·IBM이 <em>7년 동안 작동시켰고</em>, 한국에서�
 <em>위에서 본 분석적 풍경</em>이었다면, 10장은 <em>서사적 톤·현장
 사례</em>. 이 한 장으로 PART 4를 닫고, 에필로그가 시리즈 세 권을
 회수합니다.</p>
-<h1 id="장.-한국-ax-풍경-안에서-겪은-풍경">10장. 한국 AX 풍경 — 안에서
+<h1 id="장.-한국-ax-풍경-안에서-겪은-풍경">10장. 한국 AX 풍경: 안에서
 겪은 풍경</h1>
 <blockquote>
 <p><em>“AI 상담 도입 후, 작년에 직무 전환된 7명은 전원 회사를
-나갔습니다.”</em> — 헤럴드경제, [AI시대 노사 2.0] 시리즈 (2025)</p>
+나갔습니다.”</em></p>
+<p>헤럴드경제, [AI시대 노사 2.0] 시리즈 (2025)</p>
 </blockquote>
 <p>3장이 <em>위에서 본 한국 풍경</em>이었다면, 10장은 <em>안에서 겪은
 풍경</em>입니다. 같은 한국 시장의 같은 분기를 다루지만 톤이 다릅니다.
@@ -1801,7 +1805,7 @@ Schneider·Unilever·IBM이 <em>7년 동안 작동시켰고</em>, 한국에서�
 한국 표준.</strong></p>
 </blockquote>
 <hr />
-<h2 id="현대해상-콜센터-7명-전원-퇴사">현대해상 콜센터 — 7명 전원
+<h2 id="현대해상-콜센터-7명-전원-퇴사">현대해상 콜센터: 7명 전원
 퇴사</h2>
 <p>헤럴드경제 [AI시대 노사 2.0] 시리즈가 한국 AX 현장의 사례를
 보고했습니다.</p>
@@ -1816,11 +1820,11 @@ Schneider·Unilever·IBM이 <em>7년 동안 작동시켰고</em>, 한국에서�
 <em>적응하지 못합니다</em>. 살아남기 위한 <em>집착적 실적 경쟁</em>이
 부서에 퍼져 있습니다.”</em></p>
 </blockquote>
-<p>5장에서 본 Vaccaro 2024 메타분석 — <em>재설계 없이는 결합이 단독을
-이기지 못한다</em> — 가 한국 현장에서 <em>7명 전원 퇴사</em>로 드러난
-셈입니다. 현대해상이 한 결정은 <em>AI 도구 도입 + 직무 전환</em>이었지만
-<em>워크플로우 재설계나 새 직무에서의 학습 지원</em>이 빠져
-있었습니다.</p>
+<p>5장에서 본 Vaccaro 2024 메타분석의 결론(<em>재설계 없이는 결합이
+단독을 이기지 못한다</em>)이 한국 현장에서 <em>7명 전원 퇴사</em>로
+드러난 셈입니다. 현대해상이 한 결정은 <em>AI 도구 도입 + 직무
+전환</em>이었지만 <em>워크플로우 재설계나 새 직무에서의 학습 지원</em>이
+빠져 있었습니다.</p>
 <p>7명 전원 퇴사가 <em>변화 관리의 0점</em>입니다. 다음 해에 14명을
 전환했는데 <em>절반이 나간 사실</em>은 <em>같은 실패의 반복</em>일
 가능성이 높습니다. <em>워크플로우 재설계와 학습 지원</em>이 없는 직무
@@ -1829,7 +1833,7 @@ Schneider·Unilever·IBM이 <em>7년 동안 작동시켰고</em>, 한국에서�
 도입의 성공 여부</em>가 아니라 <em>사람이 그 변화를 통과하는지</em>로
 평가받습니다.</p>
 <hr />
-<h2 id="카카오의-두-풍경-의사결정-속도의-긴장">카카오의 두 풍경 —
+<h2 id="카카오의-두-풍경-의사결정-속도의-긴장">카카오의 두 풍경:
 의사결정 속도의 긴장</h2>
 <p>같은 시기 카카오에서는 두 가지 일이 동시에 벌어졌습니다.</p>
 <p><strong>카카오엔터프라이즈</strong>는 B2B SaaS 자회사입니다.
@@ -1850,7 +1854,7 @@ FAANG 출신도 다 퇴사했다.”</em> 본서는 이 후기를
 <p>두 일이 같은 회사 안에서 동시에 일어났습니다. 한국 AX 현장의 두 번째
 신호입니다.</p>
 <hr />
-<h2 id="si-빅3-안에서-본-동상이몽">SI 빅3 — 안에서 본 동상이몽</h2>
+<h2 id="si-빅3-안에서-본-동상이몽">SI 빅3: 안에서 본 동상이몽</h2>
 <p>3장에서 <em>위에서 본 풍경</em>으로 SI 빅3의 동상이몽을 짚었습니다.
 10장에서는 <em>안에서 본 풍경</em>으로 같은 3사를 <em>유형별로</em>
 비교해 보겠습니다.</p>
@@ -1900,7 +1904,7 @@ FAANG 출신도 다 퇴사했다.”</em> 본서는 이 후기를
 검증됩니다. 한국 SI 시장의 <em>AX 실험실 3개</em>가 동시에 작동하는
 셈입니다.</p>
 <hr />
-<h2 id="devocean-5단계-한국-표준-자료">DEVOCEAN 5단계 — 한국 표준
+<h2 id="devocean-5단계-한국-표준-자료">DEVOCEAN 5단계: 한국 표준
 자료</h2>
 <p>한국 회사 안에서 <em>AI 내재화가 어떻게 일어나는지</em>를 들여다볼
 자료가 있습니다. DEVOCEAN이 운영하는 기술 블로그에 공개된 <em>5단계
@@ -1916,31 +1920,24 @@ DEVOCEAN의 진단이고 본격적 변화 관리·매니저 재정의는
 <h2 id="한국-ax-풍경을-한-줄로">한국 AX 풍경을 한 줄로</h2>
 <p><em>한국 AX는 발표가 풍부하고 실행은 진행 중이며, 실패 사례와 시도
 사례가 동시에 자라고 있다.</em></p>
-<p>10장에서 본 사례들:</p>
-<ul>
-<li><em>현대해상 7명 전원 퇴사</em> — 변화 관리 실패</li>
-<li><em>카카오엔터프라이즈·카카오톡 UI 개편</em> — 의사결정 속도와
-합의의 긴장</li>
-<li><em>SI 빅3 동상이몽</em> — 같은 분기 세 다른 길</li>
-<li><em>DEVOCEAN 5단계 내재화 모델</em> — 한국 표준</li>
-</ul>
-<p>이 사례들은 모두 <em>1~2년 뒤에 검증됩니다</em>. 그래서 본서는
+<p>이 장의 사례들은 모두 <em>1~2년 뒤에 검증됩니다</em>. 그래서 본서는
 <em>단정적 평가</em>를 피하고 위치만 짚었습니다. 2판에서 <em>어느 사례가
 5% future-built에 진입했는지</em>를 추적하겠다는 약속이 본서의 자기
 한계입니다.</p>
 <p>다음 페이지 에필로그에서 시리즈 세 권을 묶고 책을 닫습니다.</p>
 <h1
 id="에필로그.-코드-너머의-조직-사람의-자리는-새로-만들어진다">에필로그.
-코드 너머의 조직 — 사람의 자리는 새로 만들어진다</h1>
+코드 너머의 조직: 사람의 자리는 새로 만들어진다</h1>
 <blockquote>
 <p><em>“현재 고용 대다수는 1940년 이후 도입된 새로운 직무 전문성에 속해
-있습니다.”</em> — David Autor 외, <em>New Frontiers</em>, <em>Quarterly
-Journal of Economics</em> (2024)</p>
+있습니다.”</em></p>
+<p>David Autor 외, <em>New Frontiers</em>, <em>Quarterly Journal of
+Economics</em> (2024)</p>
 </blockquote>
 <p>이 책은 <em>코드 너머의</em> 시리즈 세 번째 책이었습니다. 시리즈 첫
 권 <em>코드 너머의 시대</em>가 사람의 <em>내면</em>을 다뤘고, 두 번째 권
 <em>코드 너머의 직업들</em>이 사람의 <em>외형</em>을 다뤘습니다. 본서가
-사람의 <em>환경</em> — 조직 — 을 다뤘습니다.</p>
+사람의 <em>환경</em>인 조직을 다뤘습니다.</p>
 <hr />
 <h2 id="세-권을-합치면">세 권을 합치면</h2>
 <table>
@@ -1976,15 +1973,15 @@ Journal of Economics</em> (2024)</p>
 </table>
 <p>세 권의 답은 <em>시대·직업·조직</em>이라는 세 단위에서 모두 <em>코드
 너머</em>를 가리킵니다.</p>
-<p>본서 PART 1에서 다룬 <em>빅4의 일치된 결론</em> — <em>AX는 기술
-도입이 아니라 일과 조직의 재설계다</em> — 가 시리즈 전체의 <em>조직 차원
+<p>본서 PART 1에서 다룬 <em>빅4의 일치된 결론</em>(<em>AX는 기술 도입이
+아니라 일과 조직의 재설계다</em>)이 시리즈 전체의 <em>조직 차원
 응답</em>입니다. 그 응답의 뿌리는 시리즈 I의 <em>역량 재정의</em>에
 있고, 시리즈 II의 <em>새 직업 도감</em>과 짝지어 있습니다.</p>
 <p>이 시리즈가 <em>한 사람의 작은 역량</em>에서 시작해서 <em>한 조직의
 큰 운영 모델</em>까지 확장되는 동안, 한 가지가 변하지 않았습니다.
 <em>사람의 자리는 새로 만들어진다</em>는 사실.</p>
 <hr />
-<h2 id="autor의-60-사람의-자리는-새로-만들어집니다">Autor의 60% — 사람의
+<h2 id="autor의-60-사람의-자리는-새로-만들어집니다">Autor의 60%: 사람의
 자리는 새로 만들어집니다</h2>
 <p>본서 4장에서 인용한 Autor 외 2024년 <em>QJE</em> 게재 논문은 이렇게
 적었습니다.</p>
@@ -1994,8 +1991,8 @@ Journal of Economics</em> (2024)</p>
 </blockquote>
 <p>1940년에는 <em>없던</em> 직업이 <em>2018년 고용의 60% 이상</em>을
 만듭니다. 컴퓨터 응용 엔지니어, 데이터 사이언티스트, UX 디자이너, AI
-Product Manager, Forward Deployed Engineer, Agent 운영자, Eval Engineer
-— 모두 <em>언젠가는 이름이 없던</em> 자리들이었습니다.</p>
+Product Manager, Forward Deployed Engineer, Agent 운영자, Eval
+Engineer는 모두 <em>언젠가는 이름이 없던</em> 자리들이었습니다.</p>
 <p>이 60%는 <em>과거 데이터</em>입니다. <em>미래에 대한 약속</em>은 또
 한 줄 있습니다. <em>2080년 고용의 60% 이상</em>은 <em>2025년 지금 이름이
 없는 직업</em>일 가능성이 높습니다.</p>
@@ -2006,8 +2003,8 @@ Product Manager, Forward Deployed Engineer, Agent 운영자, Eval Engineer
 <h2 id="carlota-perez의-deployment-period">Carlota Perez의
 <em>Deployment Period</em></h2>
 <p>본서가 자주 인용한 또 한 명의 학자가 있습니다. 영국의 경제사학자
-Carlota Perez. 그의 <em>기술 혁명의 두 단계</em> 모델 —
-<em>Installation</em>(약 20년)과 <em>Deployment</em>(약 30년) — 이
+Carlota Perez. 그의 <em>기술 혁명의 두 단계</em>
+모델(<em>Installation</em> 약 20년, <em>Deployment</em> 약 30년)이
 시리즈 세 권을 묶는 <em>시간 좌표</em>가 됩니다.</p>
 <blockquote>
 <p><em>“새 기술의 진정한 사회·경제적 잠재력은 거대한 금융 붕괴가 지나간
@@ -2016,9 +2013,9 @@ Carlota Perez. 그의 <em>기술 혁명의 두 단계</em> 모델 —
 </blockquote>
 <p>AI 시대는 지금 <em>Installation의 후반</em>에 있다는 게 Perez의 진단.
 <em>Deployment</em>가 시작될 때 누가 그 자리에 있을지는 <em>지금의 조직
-결정</em>에 달려 있습니다. <em>발표만 한 95%의 회사</em>가 아니라
-<em>진심 도입한 37%의 회사</em>가, 그 안에서도 <em>5% future-built에
-진입한 곳</em>이, Deployment Period의 <em>주인공</em>이 될 가능성이
+결정</em>에 달려 있습니다. <em>발표만 한 95%의 회사</em>보다는 <em>진심
+도입한 37%의 회사</em>가, 그 안에서도 <em>5% future-built에 진입한
+곳</em>이, Deployment Period의 <em>주인공</em>이 될 가능성이
 높습니다.</p>
 <hr />
 <h2 id="한국에서">한국에서</h2>
@@ -2027,7 +2024,7 @@ Carlota Perez. 그의 <em>기술 혁명의 두 단계</em> 모델 —
 <p>가장 큰 빈자리 두 곳은 <em>EPOCH 한국형 매핑</em>과 <em>한국형
 ITM(사내 인재 시장) 매뉴얼</em>입니다. 두 빈자리에 본서가 <em>학술의 70%
 받침</em> 위에 <em>책의 30% 기여</em>를 더했습니다. 다만 <em>완성된
-답</em>이 아니라 <em>시작점</em>입니다. 한국 회사 중 한 곳이 본서의
+해결책</em>은 아니고 <em>시작점</em>입니다. 한국 회사 중 한 곳이 본서의
 매뉴얼을 <em>진심으로 적용</em>하는 1~2년이 <em>2판 보강</em>의
 시점입니다.</p>
 <p>한국 회사 안에서 일하는 <em>수많은 HR 리더·기술 리더</em>들이
@@ -2044,7 +2041,7 @@ ITM(사내 인재 시장) 매뉴얼</em>입니다. 두 빈자리에 본서가 <e
 사람을 자라게 합니다.</p>
 <p>이 순환이 <em>AX 시대의 한국 회사</em>에서 자라기를 기대합니다.</p>
 <p>읽어주셔서 감사합니다.</p>
-<p><em>— 김상기, 2026년 5월</em></p>
+<p><em>김상기, 2026년 5월</em></p>
 <h1 id="참고문헌">참고문헌</h1>
 <p>본문에서 인용된 자료를 카테고리별로 정리합니다.</p>
 <h2 id="빅4-리포트">1. 빅4 리포트</h2>
