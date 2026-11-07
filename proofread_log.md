@@ -131,3 +131,22 @@
 - 웹(`docs/index.html`): 같은 방식으로 `pandoc --toc --toc-depth=2` 출력의 `<nav id="TOC">`와 `<main>` 안만 바꿨다(옛 원고로 같은 절차를 돌리면 기존 파일과 바이트 단위로 같음을 먼저 확인). 머리 판본 표기 2곳을 v1.2.4로 고쳤고 오프닝 영상 블록은 그대로다. TOC 링크 95개 모두 본문 id로 연결된다.
 - 웹 390px에서 기존부터 가로 넘침(문서 폭 629px)이 있었다. 원인은 참고문헌 목록의 긴 URL과 8장 보상 표다. CSS 두 줄을 더했다: `@media(max-width:600px){table{display:block;overflow-x:auto}}`, `main li,main p{overflow-wrap:break-word}`. Playwright 결과: 웹 390·1440, 덱 390·1440 모두 문서 가로 폭 = 화면 폭(넘침 0).
 - 고치기 전 상태는 `_v1.2.3/`에 백업(커밋하지 않음).
+
+## 내용 정정 — v1.2.5 (2026-11-07)
+
+근거: 종합편 사실 검증 `book-writer-omnibus/omnibus-2026/factcheck_log.md` 04장 판정 [04:34]. 1차 출처 재확인(웹, 2026-11-07).
+
+| 위치 | 전 | 후 | 근거 |
+|---|---|---|---|
+| 1장 (원고 38행, 통합 170행) | 전체 기업의 *21%만* 워크플로우를 근본적으로 재설계했고, 그 21%가 *평균 대비 2.8배의 ROI*를 만들었습니다. | 전체 기업의 *21%만* 워크플로우를 근본적으로 재설계했습니다. | McKinsey State of AI 2025에 "21%가 2.8배 ROI"는 없다. 보고서의 비교는 AI 고성과 기업이 워크플로를 근본적으로 재설계했을 가능성이 "세 배 가까이" 높다는 것. 21%는 출처대로 둔다. |
+| 막간 (원고 25행, 통합 925행) | 5%의 future-built 기업이 *2.8배 ROI*를 만들었고, | 5%의 future-built 기업이 뒤처진 기업보다 *2.7배 높은 투하자본이익률(ROIC)*을 냈고, | BCG *The Widening AI Value Gap: Build for the Future 2025*(2025-09, n=1,250) 도표: future-built 대 stagnating+emerging 비교 1.7x 매출 성장·3.6x 3년 TSR·**2.7x Return on invested capital**·1.6x EBIT 마진. 2.8배는 BCG에도 없다. |
+
+- 발표 자료(`docs/presentation/`)·README에는 해당 수치가 없어 고치지 않았다.
+- 참고: 참고문헌의 BCG 항목 제목(*Are You Generating Value from AI? The Widening Gap.*)은 보고서 정식 제목과 다르다. 이번 판 범위 밖이라 그대로 두었다.
+
+### 빌드
+
+- EPUB: 하네스 `build_epub.sh`, `코드-너머의-조직-v1.2.5.epub` 177,539 bytes, pandoc exit 0, epubcheck 0 오류·0 경고(JAVA_HOME=/opt/homebrew/opt/openjdk@17). `docs/epub/`에 넣었다(이전 판 파일은 그대로 둠).
+- 웹(`docs/index.html`): v1.2.4와 같은 방식(`pandoc --toc --toc-depth=2`의 `<nav id="TOC">`·본문만 교체, 옛 원고로 돌리면 기존 파일과 바이트 단위로 같음을 먼저 확인). 머리 판본 2곳 v1.2.5. 오프닝 영상 블록 그대로, TOC 링크 95개 모두 본문 id로 연결.
+- Playwright: 웹 390·1440, 덱 390·1440 모두 문서 가로 폭 = 화면 폭(넘침 0).
+- 고치기 전 상태는 `_v1.2.4/`에 백업(커밋하지 않음).

@@ -10,7 +10,7 @@
 
 - **웹 버전**: [GitHub Pages에서 읽기](https://ksangki.github.io/beyond-code-org/)
 - **오프닝 영상**: [60초 모션그래픽](https://ksangki.github.io/beyond-code-org/media/opening.mp4) · 웹 버전 첫 화면에도 실려 있다
-- **EPUB**: [`코드-너머의-조직-v1.2.4.epub`](docs/epub/코드-너머의-조직-v1.2.4.epub) 다운로드
+- **EPUB**: [`코드-너머의-조직-v1.2.5.epub`](docs/epub/코드-너머의-조직-v1.2.5.epub) 다운로드
 
 ## 목차
 
@@ -62,6 +62,10 @@
 
 - 본서 9장의 *한국 ITM 실 운영 사례*는 *2판 보강* 과제로 미뤘습니다. 인터뷰 후보 5명을 본문에 명시.
 - Cornell 2025의 *한국 평가 문화 재현*은 미검증입니다. 본문에 정직하게 표기.
+
+## v1.2.5 변경 사항
+
+- v1.2.5: McKinsey·BCG 수치 정정(1장, 막간), 그 밖의 내용 변경 없음 (2026-11-07)
 
 ## v1.2.4 변경 사항
 
